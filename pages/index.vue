@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted, nextTick } from 'vue'
+import { ref, computed, watch, watchEffect, onMounted, nextTick } from 'vue'
 import { LMap, LTileLayer, LMarker, LIcon, LPopup, LTooltip, LGeoJson } from '@vue-leaflet/vue-leaflet'
 import * as L from 'leaflet'
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
@@ -25,6 +25,7 @@ const homeIconUrl = '/SVG/Home.svg'
 const hoveredIndex = ref(null)
 const activeListTooltip = ref(null)
 const leaveTimer = ref(null)
+let busCircleLayer = null
 const hoveredBoundary = ref(null)
 const boundaryLayers = ref({})
 const activeBoundaryTooltip = ref(null)
@@ -428,6 +429,248 @@ watch(hoveredBoundary, (newLevel, oldLevel) => {
   if (oldLevel) applyBoundaryStyle(oldLevel, false)
   if (newLevel) applyBoundaryStyle(newLevel, true)
 })
+
+const route = useRoute()
+const router = useRouter()
+const activeTab = ref(route.query.tab === 'bus-stops' ? 'bus-stops' : 'schools')
+const busStops = ref([])
+const busRadius = ref(selectedLocation.value ? 1 : 100000)
+const selectedBusSchool = ref((route.query.school) || '')
+const busLoading = ref(false)
+const busHoveredStop = ref(null)
+const busIconUrl = '/SVG/Bus%20Stop.svg'
+
+const busIconSize = computed(() => {
+  const z = zoom.value
+  if (z <= 12) return [16, 16]
+  if (z <= 14) return [20, 20]
+  return [24, 24]
+})
+const busIconAnchor = computed(() => [busIconSize.value[0] / 2, busIconSize.value[1] / 2])
+const busIconHoverSize = computed(() => [Math.round(busIconSize.value[0] * 1.33), Math.round(busIconSize.value[1] * 1.33)])
+const busIconHoverAnchor = computed(() => [busIconHoverSize.value[0] / 2, busIconHoverSize.value[1] / 2])
+
+const busIcon = computed(() => L.icon({
+  iconUrl: busIconUrl,
+  iconSize: busIconSize.value,
+  iconAnchor: busIconAnchor.value,
+  popupAnchor: [0, -Math.round(busIconSize.value[1] / 2)]
+}))
+const busIconHover = computed(() => L.icon({
+  iconUrl: busIconUrl,
+  iconSize: busIconHoverSize.value,
+  iconAnchor: busIconHoverAnchor.value,
+  popupAnchor: [0, -Math.round(busIconHoverSize.value[1] / 2)]
+}))
+
+watch(() => route.query, (q) => {
+  activeTab.value = q.tab === 'bus-stops' ? 'bus-stops' : 'schools'
+  if (q.school && typeof q.school === 'string') {
+    selectedBusSchool.value = q.school
+  } else {
+    selectedBusSchool.value = ''
+  }
+}, { immediate: true })
+
+watch(activeTab, (tab) => {
+  if (tab === 'bus-stops') loadBusStops()
+  router.replace({ query: { ...route.query, tab } })
+})
+
+watch(selectedBusSchool, (school) => {
+  const query = { ...route.query, tab: activeTab.value }
+  if (school) query.school = school
+  else delete query.school
+  router.replace({ query })
+})
+
+watch(selectedLocation, (newLoc, oldLoc) => {
+  if (newLoc && !oldLoc) busRadius.value = 1
+  else if (!newLoc && oldLoc) busRadius.value = 100000
+})
+
+watchEffect(() => {
+  const map = mapRef.value?.leafletObject
+  if (!map) return
+  if (busCircleLayer) {
+    map.removeLayer(busCircleLayer)
+    busCircleLayer = null
+  }
+  if (activeTab.value !== 'bus-stops' || !selectedLocation.value) return
+  const [lat, lng] = selectedLocation.value
+  busCircleLayer = L.circle([lat, lng], {
+    radius: busRadius.value * 1609.344,
+    color: '#0033CC',
+    fill: false,
+    weight: 2,
+    dashArray: '5, 10'
+  }).addTo(map)
+})
+
+onMounted(() => {
+  if (activeTab.value === 'bus-stops') loadBusStops()
+})
+
+function fitMapToContent() {
+  const map = mapRef.value?.leafletObject
+  if (!map) return
+  const points = []
+  if (selectedLocation.value) {
+    const [lat, lng] = selectedLocation.value
+    points.push([lat, lng])
+  }
+  if (activeTab.value === 'schools') {
+    if (selectedLocation.value) {
+      for (const s of closest.value) points.push([s.latLng[0], s.latLng[1]])
+      for (const b of relevantBoundaries.value) {
+        if (b.latLng) points.push([b.latLng[0], b.latLng[1]])
+      }
+    } else {
+      for (const s of allSchools.value) {
+        points.push([s.geometry.coordinates[1], s.geometry.coordinates[0]])
+      }
+    }
+  } else if (activeTab.value === 'bus-stops') {
+    for (const s of nearbyBusStops.value) points.push([s.lat, s.lng])
+    const [lat, lng] = selectedLocation.value || []
+    if (lat !== undefined && lng !== undefined) points.push([lat, lng])
+  }
+  if (points.length === 1) {
+    map.flyTo(points[0], 16)
+    return
+  }
+  if (points.length < 2) {
+    if (selectedLocation.value) map.flyTo(selectedLocation.value, 15)
+    return
+  }
+  const bounds = L.latLngBounds(points)
+  map.fitBounds(bounds, { padding: [60, 60], maxZoom: 16, animate: false })
+}
+
+watchEffect(fitMapToContent)
+
+async function loadBusStops() {
+  if (busStops.value.length) return
+  busLoading.value = true
+  try {
+    const res = await fetch('/data/bus-stops.json')
+    if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`)
+    busStops.value = await res.json()
+    await nextTick()
+    fitMapToContent()
+  } catch (err) {
+    console.error('Bus stops load error:', err)
+    alert('Could not load bus stop data: ' + (err?.message || 'unknown'))
+  } finally {
+    busLoading.value = false
+  }
+}
+
+const busSchoolOptions = computed(() => {
+  const map = new Map()
+  for (const stop of busStops.value) {
+    for (const e of stop.entries) {
+      map.set(e.school, e.schoolName || e.school)
+    }
+  }
+  return Array.from(map, ([raw, name]) => ({ raw, name }))
+    .sort((a, b) => a.name.localeCompare(b.name))
+})
+
+const nearbyBusStops = computed(() => {
+  if (!busStops.value.length) return []
+  let stops = busStops.value
+    .filter((s) => s.lat !== null && s.lng !== null)
+    .map((s) => ({ ...s, distance: null }))
+  if (selectedBusSchool.value) {
+    stops = stops.filter((s) => s.entries.some((e) => e.schoolName === selectedBusSchool.value || e.school === selectedBusSchool.value))
+  }
+  if (selectedLocation.value) {
+    const [lat, lng] = selectedLocation.value
+    stops = stops
+      .map((s) => {
+        const dist = distance([lng, lat], [s.lng, s.lat], { units: 'miles' })
+        return { ...s, distance: dist }
+      })
+      .filter((s) => s.distance <= busRadius.value)
+      .sort((a, b) => a.distance - b.distance)
+  }
+  return stops
+})
+
+function setBusSchool(school) {
+  activeTab.value = 'bus-stops'
+  selectedBusSchool.value = school
+}
+
+function onBusStopEnter(s) {
+  busHoveredStop.value = s.stop
+  if (leaveTimer.value) {
+    clearTimeout(leaveTimer.value)
+    leaveTimer.value = null
+  }
+  const map = mapRef.value?.leafletObject
+  if (!map) return
+  activeListTooltip.value?.close()
+  activeListTooltip.value = L.tooltip({
+    className: 'school-tooltip',
+    direction: 'top',
+    offset: [0, -10]
+  })
+    .setLatLng([s.lat, s.lng])
+    .setContent(busStopTooltip(s))
+    .openOn(map)
+}
+
+function onBusStopLeave() {
+  busHoveredStop.value = null
+  if (leaveTimer.value) clearTimeout(leaveTimer.value)
+  leaveTimer.value = setTimeout(() => {
+    if (busHoveredStop.value === null && activeListTooltip.value) {
+      activeListTooltip.value.close()
+      activeListTooltip.value = null
+    }
+    leaveTimer.value = null
+  }, 50)
+}
+
+function busStopTooltip(s) {
+  const parts = [`<strong>${s.stop}</strong>`]
+  if (s.distance !== null && s.distance !== undefined) {
+    parts.push(`${s.distance.toFixed(2)} miles`)
+  }
+  for (const e of s.entries) {
+    let line = e.school
+    if (e.type === 'Pickup') {
+      line += ` — Pickup route ${e.pickupRoute} @ ${e.pickupTime}`
+    } else if (e.type === 'Dropoff') {
+      line += ` — Dropoff route ${e.dropoffRoute} @ ${e.dropoffTime}`
+    } else {
+      line += ` — Route ${e.pickupRoute} — Pickup ${e.pickupTime}, Dropoff ${e.dropoffTime}`
+    }
+    parts.push(line)
+  }
+  return parts.join('<br/>')
+}
+
+function busStopPopup(s) {
+  const parts = [`<strong>${s.stop}</strong>`]
+  if (s.distance !== null && s.distance !== undefined) {
+    parts.push(`${s.distance.toFixed(2)} miles`)
+  }
+  for (const e of s.entries) {
+    let line = e.school
+    if (e.type === 'Pickup') {
+      line += ` — Pickup route ${e.pickupRoute} @ ${e.pickupTime}`
+    } else if (e.type === 'Dropoff') {
+      line += ` — Dropoff route ${e.dropoffRoute} @ ${e.dropoffTime}`
+    } else {
+      line += ` — Pickup route ${e.pickupRoute} @ ${e.pickupTime}, Dropoff @ ${e.dropoffTime}`
+    }
+    parts.push(line)
+  }
+  return parts.join('<br/>')
+}
 </script>
 
 <template>
@@ -450,7 +693,20 @@ watch(hoveredBoundary, (newLevel, oldLevel) => {
 
     <div class="content">
       <aside class="panel">
-        <p class="muted">Find your neighborhood school and other schools near you.</p>
+        <nav class="tabs">
+          <button
+            :class="['tab', { active: activeTab === 'schools' }]"
+            @click="activeTab = 'schools'"
+          >Schools</button>
+          <button
+            :class="['tab', { active: activeTab === 'bus-stops' }]"
+            @click="activeTab = 'bus-stops'"
+          >Bus Stops</button>
+        </nav>
+
+        <p v-if="activeTab === 'schools'" class="muted">Find your neighborhood school and other schools near you.</p>
+        <p v-if="activeTab === 'bus-stops'" class="muted">Find bus stops near you.</p>
+        <div v-if="activeTab === 'schools'">
 
         <form class="search" @submit.prevent="searchAddress">
           <label for="address">Address</label>
@@ -525,6 +781,70 @@ watch(hoveredBoundary, (newLevel, oldLevel) => {
           </ol>
           <p v-else class="muted">No schools found for this grade level.</p>
         </section>
+        </div>
+
+        <div v-if="activeTab === 'bus-stops'" class="bus-stops">
+          <form class="search" @submit.prevent="searchAddress">
+            <label for="busAddress">Address</label>
+            <input id="busAddress" v-model="address" placeholder="123 Main St" type="text" />
+            <button :disabled="!address.trim() || loading" type="submit">
+              {{ loading ? 'Searching…' : 'Search' }}
+            </button>
+          </form>
+
+          <div class="field">
+            <label for="busRadius">Radius</label>
+            <select id="busRadius" v-model="busRadius">
+              <option v-for="r in [0.25, 0.5, 1, 1.5, 2]" :key="r" :value="r">{{ r }} miles</option>
+              <option :value="100000">Show All</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="busSchool">School</label>
+            <select id="busSchool" v-model="selectedBusSchool">
+              <option value="">All schools</option>
+              <option v-for="s in busSchoolOptions" :key="s.raw" :value="s.raw">{{ s.name }}</option>
+            </select>
+          </div>
+
+          <p v-if="!selectedLocation" class="hint">All bus stops are shown. Click the map or search an address to filter by radius.</p>
+
+          <section v-if="nearbyBusStops.length" class="results">
+            <h2>{{ selectedBusSchool ? selectedBusSchool : (selectedLocation ? 'Nearby Bus Stops' : 'All Bus Stops') }}</h2>
+            <ol class="cards ranked">
+              <li
+                v-for="(s, i) in nearbyBusStops"
+                :key="`b-${i}`"
+                class="closest-row"
+                @click="flyTo([s.lat, s.lng])"
+                @mouseenter="onBusStopEnter(s)"
+                @mouseleave="onBusStopLeave"
+              >
+                <strong>{{ s.stop }}</strong>
+                <span v-if="s.distance != null" class="tag">{{ s.distance.toFixed(2) }} miles</span>
+                <ul class="stop-entries">
+                  <li v-for="(e, j) in s.entries" :key="j" class="stop-entry">
+                    <div class="entry-line entry-school">
+                      <button class="link-btn" @click.stop="setBusSchool(e.school)">{{ e.school }}</button>
+                      <span class="entry-route">— Route {{ e.type === 'Dropoff' ? e.dropoffRoute : e.pickupRoute }}</span>
+                    </div>
+                    <div class="entry-line entry-meta">
+                      <span v-if="e.type === 'Pickup'" class="entry-type pickup">Pickup</span>
+                      <span v-else-if="e.type === 'Dropoff'" class="entry-type dropoff">Dropoff</span>
+                      <span v-else class="entry-type both">Pickup & Dropoff</span>
+                      <span v-if="e.pickupTime" class="time">{{ e.pickupTime }}</span>
+                      <span v-if="e.pickupTime && e.dropoffTime" class="time-sep"> / </span>
+                      <span v-if="e.dropoffTime" class="time">{{ e.dropoffTime }}</span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <p v-else-if="selectedLocation" class="muted">No bus stops found within the selected radius.</p>
+          <p v-else class="muted">No bus stops found.</p>
+        </div>
       </aside>
 
       <main class="map-wrap">
@@ -534,6 +854,7 @@ watch(hoveredBoundary, (newLevel, oldLevel) => {
           :center="center"
           style="height: 100%; width: 100%"
           @click="onMapClick"
+          @ready="fitMapToContent"
         >
           <l-tile-layer
             url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
@@ -541,6 +862,7 @@ watch(hoveredBoundary, (newLevel, oldLevel) => {
           />
 
           <l-geo-json
+            v-if="activeTab === 'schools'"
             v-for="b in relevantBoundaries"
             :key="b.level"
             :ref="el => setBoundaryLayer(el, b.level)"
@@ -561,12 +883,13 @@ watch(hoveredBoundary, (newLevel, oldLevel) => {
             <l-icon
               :icon-url="homeIconUrl"
               :icon-size="[32, 32]"
-              :icon-anchor="[16, 32]"
+              :icon-anchor="[16, 16]"
             />
             <l-popup>Selected location</l-popup>
           </l-marker>
 
           <l-marker
+            v-if="activeTab === 'schools'"
             v-for="b in relevantBoundaries"
             :key="`n-${b.level}`"
             :lat-lng="b.latLng"
@@ -587,6 +910,7 @@ watch(hoveredBoundary, (newLevel, oldLevel) => {
           </l-marker>
 
           <l-marker
+            v-if="activeTab === 'schools'"
             v-for="(s, i) in closest"
             :key="`c-${i}`"
             :lat-lng="s.latLng"
@@ -606,7 +930,7 @@ watch(hoveredBoundary, (newLevel, oldLevel) => {
             </l-popup>
           </l-marker>
 
-          <template v-if="!selectedLocation">
+          <template v-if="activeTab === 'schools' && !selectedLocation">
             <l-marker
               v-for="(s, i) in allSchools"
               :key="`all-${i}`"
@@ -621,6 +945,18 @@ watch(hoveredBoundary, (newLevel, oldLevel) => {
                 :content="tooltipContent(s)"
                 :options="{ interactive: true, direction: 'top', className: 'school-tooltip' }"
               />
+            </l-marker>
+          </template>
+
+          <template v-if="activeTab === 'bus-stops'">
+            <l-marker
+              v-for="s in nearbyBusStops"
+              :key="s.stop"
+              :lat-lng="[s.lat, s.lng]"
+              :z-index-offset="busHoveredStop === s.stop ? 1000 : 0"
+              :icon="busHoveredStop === s.stop ? busIconHover : busIcon"
+            >
+              <l-popup><span v-html="busStopPopup(s)"></span></l-popup>
             </l-marker>
           </template>
         </l-map>
@@ -994,5 +1330,104 @@ ol.ranked .closest-row::before {
 
 .school-tooltip a.tooltip-link:hover {
   text-decoration: underline;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #e5e5e5;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.5rem;
+  background: #f0f0f0;
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 4px 4px 0 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tab:hover,
+.tab.active {
+  background: #e5e5e5;
+  border-bottom-color: var(--dpscd-primary, #0033CC);
+  color: var(--dpscd-primary, #0033CC);
+}
+
+.stop-entries {
+  list-style: none;
+  padding: 0.25rem 0 0;
+  margin: 0;
+}
+
+.stop-entry {
+  padding: 0.2rem 0;
+  font-size: 0.8rem;
+  color: var(--dpscd-gray, #373737);
+}
+
+.entry-line {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.entry-meta {
+  margin-top: 0.15rem;
+}
+
+.entry-route {
+  color: var(--dpscd-gray, #373737);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: var(--dpscd-primary, #0033CC);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+.entry-type {
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.entry-type.pickup { background: #d1e7ff; color: #0033CC; }
+.entry-type.dropoff { background: #ffe7d1; color: #a64400; }
+.entry-type.both { background: #e7d1ff; color: #6600a6; }
+
+.time {
+  color: var(--dpscd-gray, #373737);
+  font-size: 0.75rem;
+}
+
+.time-sep {
+  color: #999;
+  font-size: 0.75rem;
 }
 </style>

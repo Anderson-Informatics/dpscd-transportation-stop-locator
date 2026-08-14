@@ -9,6 +9,8 @@ import { RuntimeConfig as UserRuntimeConfig, PublicRuntimeConfig as UserPublicRu
 
       cdnURL: string,
    },
+
+   busStopUpdatePassword: string,
   }
   interface SharedPublicRuntimeConfig {
 

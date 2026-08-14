@@ -1,0 +1,270 @@
+{
+  "AL HOLMES": {
+    "schoolId": 5,
+    "schoolName": "A.L. Holmes Academy of Blended Learning"
+  },
+  "LAW ES/MS": {
+    "schoolId": 2377,
+    "schoolName": "Marion Law Academy"
+  },
+  "BRENDA SCOTT": {
+    "schoolId": 9341,
+    "schoolName": "Brenda Scott Academy"
+  },
+  "BREWER ES/MS": {
+    "schoolId": 9991,
+    "schoolName": "Brewer Academy"
+  },
+  "BAGLEY ES": {
+    "schoolId": 168,
+    "schoolName": "Bagley Elementary School of Journalism and Technology"
+  },
+  "BETHUNE ES/MS": {
+    "schoolId": 1518,
+    "schoolName": "Mary McLeod Bethune Elementary-Middle School"
+  },
+  "PALMER PARK PREP ES/MS": {
+    "schoolId": 1552,
+    "schoolName": "Palmer Park Preparatory Academy"
+  },
+  "SCHULZE ES/MS": {
+    "schoolId": 3420,
+    "schoolName": "Schulze Academy for Technology and Arts"
+  },
+  "PASTEUR ES": {
+    "schoolId": 2969,
+    "schoolName": "Pasteur Elementary School"
+  },
+  "BARTON ES": {
+    "schoolId": 3640,
+    "schoolName": "Barton Elementary School"
+  },
+  "MACKENZIE ES/MS": {
+    "schoolId": 853,
+    "schoolName": "Mackenzie Elementary-Middle School"
+  },
+  "CODY HIGH SCHOOL": {
+    "schoolId": 18,
+    "schoolName": "Cody High School"
+  },
+  "BENNETT ES": {
+    "schoolId": 277,
+    "schoolName": "Bennett Elementary School"
+  },
+  "EARHART ES/MS": {
+    "schoolId": 860,
+    "schoolName": "Earhart Elementary-Middle School"
+  },
+  "WESTERN INTERNATIONAL HS": {
+    "schoolId": 4477,
+    "schoolName": "Western International High School"
+  },
+  "NEINAS ES": {
+    "schoolId": 2669,
+    "schoolName": "Neinas Dual Language Learning Academy"
+  },
+  "PRIEST ES/MS": {
+    "schoolId": 3123,
+    "schoolName": "Priest Elementary-Middle School"
+  },
+  "THURGOOD MARSHALL": {
+    "schoolId": 857,
+    "schoolName": "Thurgood Marshall Elementary School"
+  },
+  "DURFEE @ CENTRAL": {
+    "schoolId": 975,
+    "schoolName": "Durfee Elementary-Middle School"
+  },
+  "NOBLE ES/MS": {
+    "schoolId": 6103,
+    "schoolName": "Noble Elementary-Middle School"
+  },
+  "JOHN R KING": {
+    "schoolId": 2036,
+    "schoolName": "John R.King Academic and Performing Arts Academy"
+  },
+  "HENDERSON ES/MS": {
+    "schoolId": 4,
+    "schoolName": "Henderson Academy"
+  },
+  "ROBESON / MALCOLM X ACADEMY": {
+    "schoolId": 7633,
+    "schoolName": "Paul Robeson Malcolm X Academy"
+  },
+  "BOW ES/MS": {
+    "schoolId": 4319,
+    "schoolName": "Bow Elementary-Middle School"
+  },
+  "COOKE ES": {
+    "schoolId": 781,
+    "schoolName": "Cooke STEM Academy"
+  },
+  "EMERSON ES/MS": {
+    "schoolId": 1134,
+    "schoolName": "Emerson Elementary-Middle School"
+  },
+  "PULASKI": {
+    "schoolId": 3130,
+    "schoolName": "Pulaski Elementary-Middle School"
+  },
+  "FISHER MAGNET ACADEMY": {
+    "schoolId": 4349,
+    "schoolName": "Fisher Magnet Academy (PreK-4)"
+  },
+  "RONALD BROWN": {
+    "schoolId": 4062,
+    "schoolName": "Ronald Brown Academy"
+  },
+  "CARLETON ES": {
+    "schoolId": 5553,
+    "schoolName": "Carleton Elementary School"
+  },
+  "MASON ES/MS": {
+    "schoolId": 2431,
+    "schoolName": "Mason Academy"
+  },
+  "DUKE ELLINGTON": {
+    "schoolId": 3737,
+    "schoolName": "Edward 'Duke' Ellington Conservatory of Music & Art at Beckham Academy"
+  },
+  "WAYNE ES": {
+    "schoolId": 4406,
+    "schoolName": "Wayne Elementary School"
+  },
+  "BUNCHE ES/MS": {
+    "schoolId": 446,
+    "schoolName": "Bunche Preparatory Academy"
+  },
+  "MARCUS GARVEY": {
+    "schoolId": 7581,
+    "schoolName": "Garvey Academy"
+  },
+  "NICHOLS ES": {
+    "schoolId": 2703,
+    "schoolName": "Nichols Elementary-Middle School"
+  },
+  "BURNS ES/MS": {
+    "schoolId": 456,
+    "schoolName": "Burns Elementary-Middle School"
+  },
+  "EDISON ES": {
+    "schoolId": 1084,
+    "schoolName": "Edison Elementary School"
+  },
+  "DOSSIN ES/MS": {
+    "schoolId": 939,
+    "schoolName": "Dossin Elementary-Middle School"
+  },
+  "COLEMAN A YOUNG": {
+    "schoolId": 3717,
+    "schoolName": "Coleman A. Young Elementary School"
+  },
+  "BURTON INT'L ES/MS": {
+    "schoolId": 468,
+    "schoolName": "Burton International Academy"
+  },
+  "MUNGER ES/MS": {
+    "schoolId": 858,
+    "schoolName": "Munger Elementary-Middle School"
+  },
+  "SAMPSON WEBBER ES/MS": {
+    "schoolId": 4413,
+    "schoolName": "Sampson-Webber Leadership Academy"
+  },
+  "MARQUETTE ES/MS": {
+    "schoolId": 2390,
+    "schoolName": "Marquette Elementary-Middle School"
+  },
+  "CARSTENS ES/MS": {
+    "schoolId": 542,
+    "schoolName": "Carstens Academy of Aquatic Science at Remus "
+  },
+  "CARVER ES/MS": {
+    "schoolId": 546,
+    "schoolName": "Carver STEM Academy"
+  },
+  "DIXON ES/MS": {
+    "schoolId": 925,
+    "schoolName": "Dixon Educational Learning Academy"
+  },
+  "GARDNER ES": {
+    "schoolId": 1362,
+    "schoolName": "Gardner Elementary School"
+  },
+  "CASS TECHNICAL HS": {
+    "schoolId": 554,
+    "schoolName": "Cass Technical High School"
+  },
+  "CHARLES WRIGHT": {
+    "schoolId": 9125,
+    "schoolName": "Charles Wright Academy of Arts and Science"
+  },
+  "GOMPERS ES/MS": {
+    "schoolId": 1438,
+    "schoolName": "Gompers Elementary-Middle School"
+  },
+  "COMMUNICATION & MEDIA ARTS HS": {
+    "schoolId": 7654,
+    "schoolName": "Communication and Media Arts High School"
+  },
+  "DAVISON ES/MS": {
+    "schoolId": 880,
+    "schoolName": "Davison Elementary-Middle School"
+  },
+  "DETROIT INT'L ACDMY FOR YOUNG WOMEN": {
+    "schoolId": 39,
+    "schoolName": "Detroit International Academy for Young Women"
+  },
+  "PERSHING HS": {
+    "schoolId": 3015,
+    "schoolName": "Pershing High School"
+  },
+  "NOLAN ES/MS": {
+    "schoolId": 2708,
+    "schoolName": "Nolan Elementary-Middle School"
+  },
+  "GOLIGHTLY ED ES/MS": {
+    "schoolId": 176,
+    "schoolName": "Golightly Education Center"
+  },
+  "DETROIT SCHOOL OF ARTS HS": {
+    "schoolId": 7794,
+    "schoolName": "Detroit School of Arts"
+  },
+  "MANN ES": {
+    "schoolId": 2341,
+    "schoolName": "Mann Learning Community"
+  },
+  "THIRKELL ES": {
+    "schoolId": 4156,
+    "schoolName": "Thirkell Elementary-Middle School"
+  },
+  "ROBERTO CLEMENTE": {
+    "schoolId": 238,
+    "schoolName": "Roberto Clemente Learning Academy"
+  },
+  "HARMS ES": {
+    "schoolId": 1574,
+    "schoolName": "Harms Elementary School"
+  },
+  "VERNOR ES": {
+    "schoolId": 4292,
+    "schoolName": "Vernor Elementary-Middle School"
+  },
+  "SPAIN ES/MS": {
+    "schoolId": 3558,
+    "schoolName": "Spain Elementary-Middle School"
+  },
+  "HAMILTON ES/MS": {
+    "schoolId": 9994,
+    "schoolName": "Hamilton Elementary-Middle School"
+  },
+  "HUTCHINSON ES/MS": {
+    "schoolId": 1803,
+    "schoolName": "Hutchinson Elementary-Middle School at Howe"
+  },
+  "MARK TWAIN": {
+    "schoolId": 2383,
+    "schoolName": "Mark Twain School for Scholars"
+  }
+}

@@ -1,12 +1,13 @@
 import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { tmpdir } from 'node:os';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, createError, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, getQuery as getQuery$1, getRequestWebStream, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, readBody, getResponseStatusText } from 'file:///home/anderoy/school-finder/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, createError, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, getQuery as getQuery$1, getRequestWebStream, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, readBody, readMultipartFormData, getResponseStatusText } from 'file:///home/anderoy/school-finder/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
 import { resolve, dirname, join } from 'node:path';
-import nodeCrypto from 'node:crypto';
+import nodeCrypto, { randomUUID } from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
 import { escapeHtml } from 'file:///home/anderoy/school-finder/node_modules/@vue/shared/dist/shared.cjs.js';
 import viteNodeEntry_mjs from 'file:///home/anderoy/school-finder/node_modules/@nuxt/vite-builder/dist/vite-node-entry.mjs';
 import { viteNodeFetch } from 'file:///home/anderoy/school-finder/node_modules/@nuxt/vite-builder/dist/vite-node.mjs';
+import { promises, readFileSync, existsSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createFetch, Headers as Headers$1, $fetch } from 'file:///home/anderoy/school-finder/node_modules/ofetch/dist/node.mjs';
 import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, encodePath, joinRelativeURL } from 'file:///home/anderoy/school-finder/node_modules/ufo/dist/index.mjs';
 import destr, { destr as destr$1 } from 'file:///home/anderoy/school-finder/node_modules/destr/dist/index.mjs';
@@ -33,7 +34,6 @@ import { getContext as getContext$1 } from 'file:///home/anderoy/school-finder/n
 import { captureRawStackTrace, parseRawStackTrace } from 'file:///home/anderoy/school-finder/node_modules/errx/dist/index.mjs';
 import { isVNode, isRef, toValue } from 'file:///home/anderoy/school-finder/node_modules/vue/index.mjs';
 import _wH6JrtIxmaSoA8lCPWFnE9z4lQeXW6H5z3l5aymEQw from 'file:///home/anderoy/school-finder/node_modules/@nuxt/vite-builder/dist/fix-stacktrace.mjs';
-import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname as dirname$1, resolve as resolve$1 } from 'file:///home/anderoy/school-finder/node_modules/pathe/dist/index.mjs';
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///home/anderoy/school-finder/node_modules/vue-bundle-renderer/dist/runtime.mjs';
@@ -652,7 +652,8 @@ const _inlineRuntimeConfig = {
       }
     }
   },
-  "public": {}
+  "public": {},
+  "busStopUpdatePassword": ""
 };
 const envOptions = {
   prefix: "NITRO_",
@@ -2761,11 +2762,19 @@ async function getIslandContext(event) {
 	};
 }
 
+const _lazy_9WYmqL = () => Promise.resolve().then(function () { return _jobs; });
+const _lazy_uY20ck = () => Promise.resolve().then(function () { return _schoolMap; });
+const _lazy_RSoomI = () => Promise.resolve().then(function () { return index_post$1; });
+const _lazy_J6uKT6 = () => Promise.resolve().then(function () { return status_get$1; });
 const _lazy_1vqzFQ = () => Promise.resolve().then(function () { return geocode_get$1; });
 const _lazy_SDyn47 = () => Promise.resolve().then(function () { return renderer; });
 
 const handlers = [
   { route: '', handler: _OLN19m, lazy: false, middleware: true, method: undefined },
+  { route: '/api/build-bus-stops/_jobs', handler: _lazy_9WYmqL, lazy: true, middleware: false, method: undefined },
+  { route: '/api/build-bus-stops/_school-map', handler: _lazy_uY20ck, lazy: true, middleware: false, method: undefined },
+  { route: '/api/build-bus-stops', handler: _lazy_RSoomI, lazy: true, middleware: false, method: "post" },
+  { route: '/api/build-bus-stops/status', handler: _lazy_J6uKT6, lazy: true, middleware: false, method: "get" },
   { route: '/api/geocode', handler: _lazy_1vqzFQ, lazy: true, middleware: false, method: "get" },
   { route: '/__nuxt_error', handler: _lazy_SDyn47, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: handler$1, lazy: false, middleware: false, method: undefined },
@@ -3122,6 +3131,589 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: styles
 }, Symbol.toStringTag, { value: 'Module' }));
 
+const jobs = /* @__PURE__ */ new Map();
+
+const _jobs = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  jobs: jobs
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const SCHOOL_MAP_FILE = "school-name-map.json";
+const SCHOOL_LOCATIONS_FILE = "School_Locations_2026-27.geojson";
+const MIN_TOKEN_LEN = 2;
+const KEEP_SINGLE = /* @__PURE__ */ new Set(["X"]);
+const NOISE = /* @__PURE__ */ new Set([
+  "ES",
+  "MS",
+  "HS",
+  "E",
+  "M",
+  "H",
+  "ELEMENTARY",
+  "MIDDLE",
+  "HIGH",
+  "SCHOOL",
+  "ACADEMY",
+  "ACAD",
+  "SCH",
+  "PREPARATORY",
+  "PREP",
+  "CENTER",
+  "LEARNING",
+  "COMMUNITY",
+  "INSTITUTE",
+  "TECHNICAL",
+  "TRANSITION",
+  "VIRTUAL",
+  "FORMER",
+  "ED",
+  "EDUCATION",
+  "AND",
+  "OF",
+  "FOR",
+  "THE",
+  "AT",
+  "TO",
+  "A"
+]);
+const ABBREVIATIONS = [
+  [/\bINT'L\b/g, "INTERNATIONAL"],
+  [/\bINTL\b/g, "INTERNATIONAL"],
+  [/\bACDMY\b/g, "ACADEMY"],
+  [/\bACAD\b/g, "ACADEMY"],
+  [/\bPREP\b/g, "PREPARATORY"],
+  [/\bSCH\b/g, "SCHOOL"],
+  [/\bED\b/g, "EDUCATION"],
+  [/\bELEM\b/g, "ELEMENTARY"]
+];
+function clean(s) {
+  let out = (s || "").toUpperCase().replace(/&/g, " AND ").replace(/[.,']/g, " ").replace(/\([^)]*\)/g, " ").replace(/[^A-Z0-9\s]/g, " ");
+  for (const [re, repl] of ABBREVIATIONS) {
+    out = out.replace(re, repl);
+  }
+  return out.replace(/\s+/g, " ").trim();
+}
+function tokens(s) {
+  return clean(s).split(" ").filter((t) => t && (t.length >= MIN_TOKEN_LEN || KEEP_SINGLE.has(t)) && !NOISE.has(t));
+}
+function loadSchoolMap(publicDataDir) {
+  const file = resolve(publicDataDir, SCHOOL_MAP_FILE);
+  if (!existsSync(file)) return {};
+  try {
+    return JSON.parse(readFileSync(file, "utf-8"));
+  } catch {
+    return {};
+  }
+}
+function saveSchoolMap(map, publicDataDir) {
+  const file = resolve(publicDataDir, SCHOOL_MAP_FILE);
+  writeFileSync(file, JSON.stringify(map, null, 2));
+}
+function loadSchoolLocations(publicDataDir) {
+  const file = resolve(publicDataDir, SCHOOL_LOCATIONS_FILE);
+  const raw = JSON.parse(readFileSync(file, "utf-8"));
+  return (raw.features || []).filter((f) => {
+    const p = f == null ? void 0 : f.properties;
+    return p && p.status === "Active" && (p.schoolName || p.School);
+  });
+}
+function resolveSchoolName(raw, locations) {
+  var _a;
+  if (!raw || !raw.trim()) return null;
+  const rawToks = tokens(raw);
+  if (!rawToks.length) return { schoolId: null, schoolName: raw.trim() };
+  let best = null;
+  let bestScore = -1;
+  for (const loc of locations) {
+    const p = loc.properties || {};
+    const schoolToks = tokens(p.School || "");
+    const shortToks = tokens(p.shortName || "");
+    const nameToks = tokens(p.schoolName || "");
+    [.../* @__PURE__ */ new Set([...schoolToks, ...shortToks, ...nameToks])];
+    let matched = 0;
+    let fieldScore = 0;
+    let firstBonus = 0;
+    for (const t of rawToks) {
+      if (schoolToks.includes(t)) {
+        matched++;
+        fieldScore += 10;
+      } else if (shortToks.includes(t)) {
+        matched++;
+        fieldScore += 8;
+      } else if (nameToks.includes(t)) {
+        matched++;
+        fieldScore += 3;
+      }
+    }
+    if (rawToks[0] && schoolToks[0] === rawToks[0]) firstBonus += 5;
+    if (rawToks[0] && shortToks[0] === rawToks[0]) firstBonus += 3;
+    if (rawToks[0] && nameToks[0] === rawToks[0]) firstBonus += 1;
+    const exactSchool = schoolToks.join(" ") === rawToks.join(" ");
+    const exactShort = shortToks.join(" ") === rawToks.join(" ");
+    const exactName = nameToks.join(" ") === rawToks.join(" ");
+    if (exactSchool) fieldScore += 80;
+    if (exactShort) fieldScore += 60;
+    if (exactName) fieldScore += 40;
+    const score = matched * 100 + fieldScore + firstBonus;
+    if (score > bestScore) {
+      bestScore = score;
+      best = {
+        schoolId: (_a = p.meapCode) != null ? _a : null,
+        schoolName: p.schoolName || p.School || p.shortName || raw.trim()
+      };
+    }
+  }
+  if (bestScore < 20) return null;
+  return best;
+}
+
+const _schoolMap = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  loadSchoolLocations: loadSchoolLocations,
+  loadSchoolMap: loadSchoolMap,
+  resolveSchoolName: resolveSchoolName,
+  saveSchoolMap: saveSchoolMap
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const BATCH_SIZE = 1e3;
+const ROOT = process.cwd();
+const PUBLIC_DATA = resolve(ROOT, "public/data");
+const BUS_STOPS_FILE = resolve(PUBLIC_DATA, "bus-stops.json");
+const BACKUPS_DIR = resolve(PUBLIC_DATA, "backups");
+function ensureDir(p) {
+  if (!existsSync(p)) mkdirSync(p, { recursive: true });
+}
+function nowStamp() {
+  const d = /* @__PURE__ */ new Date();
+  return d.toISOString().replace(/[-:T]/g, "").split(".")[0];
+}
+function parseCsvLine(line) {
+  return line.split(",").map((s) => s.trim());
+}
+function readInputCsv(text) {
+  const lines = text.split(/\r?\n/).filter(Boolean);
+  const rows = [];
+  for (let i = 1; i < lines.length; i++) {
+    const parts = parseCsvLine(lines[i]);
+    if (parts.length < 7) continue;
+    const [school, pickupRoute, rawPickupStop, pickupTime, dropoffRoute, rawDropoffStop, dropoffTime] = parts;
+    const pickupStop = normalizeForGeocode(rawPickupStop);
+    const pickupStopDesc = extractDescription(rawPickupStop);
+    const dropoffStop = normalizeForGeocode(rawDropoffStop);
+    const dropoffStopDesc = extractDescription(rawDropoffStop);
+    rows.push({ school, pickupRoute, pickupStop, pickupStopDesc, pickupTime, dropoffRoute, dropoffStop, dropoffStopDesc, dropoffTime });
+  }
+  return rows;
+}
+function normalizeForGeocode(stop) {
+  return stop.replace(/@/g, " & ").replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
+}
+function extractDescription(stop) {
+  const match = stop.match(/\(([^)]*)\)/);
+  return match ? match[1].trim() : null;
+}
+function buildStopIndex(rows, schoolMap) {
+  var _a, _b;
+  const index = {};
+  for (const row of rows) {
+    const match = schoolMap[row.school];
+    const base = {
+      school: row.school,
+      schoolId: (_a = match == null ? void 0 : match.schoolId) != null ? _a : null,
+      schoolName: (_b = match == null ? void 0 : match.schoolName) != null ? _b : null
+    };
+    if (!row.pickupStop || !row.dropoffStop) continue;
+    if (row.pickupStop === row.dropoffStop) {
+      ensureStop(index, row.pickupStop, row.pickupStopDesc).entries.push({
+        ...base,
+        pickupRoute: row.pickupRoute,
+        pickupTime: row.pickupTime,
+        dropoffRoute: row.dropoffRoute,
+        dropoffTime: row.dropoffTime,
+        type: "Pickup & Dropoff"
+      });
+    } else {
+      ensureStop(index, row.pickupStop, row.pickupStopDesc).entries.push({
+        ...base,
+        pickupRoute: row.pickupRoute,
+        pickupTime: row.pickupTime,
+        dropoffRoute: null,
+        dropoffTime: null,
+        type: "Pickup"
+      });
+      ensureStop(index, row.dropoffStop, row.dropoffStopDesc).entries.push({
+        ...base,
+        pickupRoute: null,
+        pickupTime: null,
+        dropoffRoute: row.dropoffRoute,
+        dropoffTime: row.dropoffTime,
+        type: "Dropoff"
+      });
+    }
+  }
+  return index;
+}
+function ensureStop(index, stop, description = null) {
+  if (!index[stop]) index[stop] = { stop, description, lat: null, lng: null, entries: [] };
+  if (description && !index[stop].description) index[stop].description = description;
+  return index[stop];
+}
+function parseCensusBatchResponse(csv) {
+  const results = {};
+  const lines = csv.split(/\r?\n/).filter(Boolean);
+  for (const line of lines) {
+    const fields = (line.match(/"([^"]*)"/g) || []).map((s) => s.slice(1, -1));
+    if (fields.length < 6) continue;
+    const id = fields[0];
+    const match = fields[2];
+    const coords = fields[5];
+    if (match !== "Match" || !coords) {
+      results[id] = null;
+      continue;
+    }
+    const [x, y] = coords.split(",");
+    if (!x || !y) {
+      results[id] = null;
+      continue;
+    }
+    results[id] = { lat: Number(y), lng: Number(x) };
+  }
+  return results;
+}
+function buildBatchCsv(stops) {
+  let csv = "id,street,city,state,zip\n";
+  for (let i = 0; i < stops.length; i++) {
+    const street = normalizeForGeocode(stops[i]);
+    csv += `${i},${street},Detroit,MI,
+`;
+  }
+  return csv;
+}
+async function geocodeBatch(stops, job) {
+  const results = {};
+  const batches = Math.ceil(stops.length / BATCH_SIZE);
+  for (let i = 0; i < stops.length; i += BATCH_SIZE) {
+    const batchNum = Math.floor(i / BATCH_SIZE) + 1;
+    const chunk = stops.slice(i, i + BATCH_SIZE);
+    job.stage = `geocoding batch ${batchNum} of ${batches}`;
+    job.progress = 10 + Math.round(i / stops.length * 80);
+    const csv = buildBatchCsv(chunk);
+    const blob = new Blob([csv], { type: "text/csv" });
+    const form = new FormData();
+    form.append("benchmark", "4");
+    form.append("vintage", "Current_Current");
+    form.append("addressFile", blob, "addresses.csv");
+    try {
+      const res = await $fetch("https://geocoding.geo.census.gov/geocoder/locations/addressbatch", {
+        method: "POST",
+        body: form,
+        responseType: "text",
+        timeout: 12e4
+      });
+      const chunkResults = parseCensusBatchResponse(res);
+      for (let j = 0; j < chunk.length; j++) {
+        const current = i + j + 1;
+        const stop = stops[i + j];
+        const key = String(j);
+        job.stage = `geocoding ${current} of ${stops.length} stops`;
+        job.progress = 10 + Math.round(current / stops.length * 75);
+        if (chunkResults[key] && isWithinAllowedArea(chunkResults[key].lat, chunkResults[key].lng)) {
+          results[stop] = chunkResults[key];
+        } else {
+          results[stop] = await geocodeSingleLine(stop);
+          if (results[stop]) await new Promise((r) => setTimeout(r, 1100));
+        }
+      }
+      if (i + BATCH_SIZE < stops.length) await new Promise((r) => setTimeout(r, 2e3));
+    } catch (err) {
+      console.error("Batch geocode error:", err);
+      for (const stop of chunk) results[stop] = null;
+    }
+  }
+  const failed = stops.filter((stop) => !results[stop]);
+  if (failed.length) {
+    job.stage = `final retry for ${failed.length} stops`;
+    for (let k = 0; k < failed.length; k++) {
+      const stop = failed[k];
+      job.progress = 86 + Math.round((k + 1) / failed.length * 10);
+      results[stop] = await geocodeSingleLine(stop);
+      if (results[stop]) await new Promise((r) => setTimeout(r, 1100));
+    }
+  }
+  job.progress = 98;
+  return results;
+}
+const DETROIT_CENTER = [42.3314, -83.0458];
+const HARDCODED_OVERRIDES = {
+  "TELEGRAPH RD & FENKELL ST": { lat: 42.408529, lng: -83.276723 },
+  "TRUMBULL ST & 1-94 ON RAMP S": { lat: 42.3553647, lng: -83.0804855 }
+};
+const ALLOWED_BOUNDS = {
+  north: 42.45,
+  south: 42.24,
+  east: -82.89,
+  west: -83.31
+};
+function isWithinAllowedArea(lat, lng) {
+  return lat >= ALLOWED_BOUNDS.south && lat <= ALLOWED_BOUNDS.north && lng >= ALLOWED_BOUNDS.west && lng <= ALLOWED_BOUNDS.east;
+}
+function squaredDistanceToDetroit(lat, lng) {
+  return Math.pow(lat - DETROIT_CENTER[0], 2) + Math.pow(lng - DETROIT_CENTER[1], 2);
+}
+async function bestFromCandidates(lat, lng, candidates) {
+  if (!candidates.length) return null;
+  let best = null;
+  let bestDist = Infinity;
+  for (const c of candidates) {
+    if (!isWithinAllowedArea(c.lat, c.lng)) continue;
+    const d = squaredDistanceToDetroit(c.lat, c.lng);
+    if (d < bestDist) {
+      bestDist = d;
+      best = c;
+    }
+  }
+  if (best && bestDist < 0.1) return best;
+  return null;
+}
+async function geocodeNominatim(address) {
+  try {
+    const res = await $fetch("https://nominatim.openstreetmap.org/search", {
+      query: {
+        q: address,
+        format: "json",
+        limit: 5,
+        countrycodes: "us",
+        "accept-language": "en-US"
+      },
+      headers: { "User-Agent": "DPSCD School Finder" },
+      timeout: 8e3
+    });
+    if (!res || !res.length) return null;
+    return await bestFromCandidates(0, 0, res.map((r) => ({ lat: Number(r.lat), lng: Number(r.lon) })));
+  } catch (err) {
+    console.error("Nominatim fallback error:", err);
+    return null;
+  }
+}
+async function geocodePhoton(address) {
+  try {
+    const res = await $fetch("https://photon.komoot.io/api/", {
+      query: {
+        q: address,
+        limit: 5,
+        lat: DETROIT_CENTER[0],
+        lon: DETROIT_CENTER[1]
+      },
+      timeout: 1e4
+    });
+    const features = (res == null ? void 0 : res.features) || [];
+    if (!features.length) return null;
+    const candidates = features.map((f) => {
+      const [lng, lat] = f.geometry.coordinates;
+      return { lat, lng };
+    });
+    return await bestFromCandidates(0, 0, candidates);
+  } catch (err) {
+    console.error("Photon fallback error:", err);
+    return null;
+  }
+}
+async function geocodeSingleLine(stop) {
+  var _a, _b;
+  const address = `${normalizeForGeocode(stop)}, Detroit, MI`;
+  const firstStreet = (_a = stop.split(" & ")[0]) == null ? void 0 : _a.trim();
+  try {
+    const data = await $fetch("https://geocoding.geo.census.gov/geocoder/locations/onelineaddress", {
+      query: { address, benchmark: "4", format: "json" },
+      timeout: 1e4
+    });
+    const matches = ((_b = data == null ? void 0 : data.result) == null ? void 0 : _b.addressMatches) || [];
+    if (matches.length) {
+      const match = { lat: Number(matches[0].coordinates.y), lng: Number(matches[0].coordinates.x) };
+      if (isWithinAllowedArea(match.lat, match.lng)) return match;
+    }
+  } catch (err) {
+    console.error("Single-line geocode error:", err);
+  }
+  const photonFull = await geocodePhoton(address);
+  if (photonFull) return photonFull;
+  if (firstStreet && firstStreet !== stop) {
+    const photonFirst = await geocodePhoton(`${firstStreet}, Detroit, MI`);
+    if (photonFirst) return photonFirst;
+  }
+  const nominatimFull = await geocodeNominatim(address);
+  if (nominatimFull) return nominatimFull;
+  if (firstStreet && firstStreet !== stop) {
+    const nominatimFirst = await geocodeNominatim(`${firstStreet}, Detroit, MI`);
+    if (nominatimFirst) return nominatimFirst;
+  }
+  if (HARDCODED_OVERRIDES[stop]) {
+    return HARDCODED_OVERRIDES[stop];
+  }
+  return null;
+}
+function computeDiff(oldStops, newStops) {
+  const oldMap = new Map(oldStops.map((s) => [s.stop, s]));
+  const newMap = new Map(newStops.map((s) => [s.stop, s]));
+  const removed = [];
+  const added = [];
+  const changed = [];
+  const unchanged = [];
+  const failed = newStops.filter((s) => s.lat === null || s.lng === null).map((s) => s.stop);
+  for (const [stop, oldStop] of oldMap) {
+    if (!newMap.has(stop)) removed.push(oldStop);
+  }
+  for (const [stop, newStop] of newMap) {
+    const oldStop = oldMap.get(stop);
+    if (!oldStop) {
+      added.push(newStop);
+      continue;
+    }
+    const coordsChanged = oldStop.lat !== newStop.lat || oldStop.lng !== newStop.lng;
+    const metaChanged = JSON.stringify(oldStop.entries) !== JSON.stringify(newStop.entries);
+    if (coordsChanged || metaChanged) {
+      changed.push(newStop);
+    } else {
+      unchanged.push(newStop);
+    }
+  }
+  return { removed, added, changed, unchanged, failed };
+}
+async function runJob(jobId, csvBuffer, filename) {
+  const job = jobs.get(jobId);
+  if (!job) return;
+  try {
+    ensureDir(BACKUPS_DIR);
+    if (existsSync(BUS_STOPS_FILE)) {
+      const stamp = nowStamp();
+      const backupPath = resolve(BACKUPS_DIR, `bus-stops_${stamp}.json`);
+      writeFileSync(backupPath, readFileSync(BUS_STOPS_FILE));
+      if (filename) {
+        const csvBackupPath = resolve(BACKUPS_DIR, `CornerStopLookup_${stamp}.csv`);
+        writeFileSync(csvBackupPath, csvBuffer);
+      }
+    }
+    job.stage = "reading and comparing";
+    job.progress = 5;
+    const text = csvBuffer.toString("utf-8");
+    const rows = readInputCsv(text);
+    const allSchools = Array.from(new Set(rows.map((r) => r.school).filter(Boolean)));
+    job.stage = "mapping school names";
+    job.progress = 7;
+    const schoolMap = loadSchoolMap(PUBLIC_DATA);
+    const locations = loadSchoolLocations(PUBLIC_DATA);
+    const unmapped = [];
+    for (const raw of allSchools) {
+      if (schoolMap[raw]) continue;
+      const match = resolveSchoolName(raw, locations);
+      if (match) {
+        schoolMap[raw] = match;
+      } else {
+        unmapped.push(raw);
+      }
+    }
+    saveSchoolMap(schoolMap, PUBLIC_DATA);
+    const newIndex = buildStopIndex(rows, schoolMap);
+    const oldStops = existsSync(BUS_STOPS_FILE) ? JSON.parse(readFileSync(BUS_STOPS_FILE, "utf-8")) : [];
+    const stops = Object.keys(newIndex);
+    job.stage = `preparing ${stops.length} stops`;
+    const geocoded = await geocodeBatch(stops, job);
+    for (const stop of stops) {
+      const coords = geocoded[stop];
+      if (coords) {
+        newIndex[stop].lat = coords.lat;
+        newIndex[stop].lng = coords.lng;
+      }
+    }
+    const newStops = Object.values(newIndex);
+    job.stage = "computing diff";
+    job.progress = 99;
+    const diff = computeDiff(oldStops, newStops);
+    job.stage = "writing bus-stops.json";
+    job.progress = 100;
+    ensureDir(dirname(BUS_STOPS_FILE));
+    writeFileSync(BUS_STOPS_FILE, JSON.stringify(newStops, null, 2));
+    job.stage = "done";
+    job.progress = 100;
+    job.status = "success";
+    job.endedAt = Date.now();
+    job.message = `Processed ${stops.length} stops.` + (unmapped.length ? ` ${unmapped.length} school names could not be mapped.` : "");
+    job.diff = {
+      removed: diff.removed.length,
+      added: diff.added.length,
+      changed: diff.changed.length,
+      unchanged: diff.unchanged.length,
+      failed: diff.failed.length,
+      removedDetails: diff.removed.map((s) => s.stop),
+      addedDetails: diff.added.map((s) => s.stop),
+      changedDetails: diff.changed.map((s) => s.stop),
+      failedDetails: diff.failed
+    };
+  } catch (err) {
+    job.status = "error";
+    job.stage = "error";
+    job.endedAt = Date.now();
+    job.error = err.message || String(err);
+  }
+}
+const index_post = defineEventHandler(async (event) => {
+  const password = useRuntimeConfig().busStopUpdatePassword;
+  const formData = await readMultipartFormData(event);
+  let providedPassword = "";
+  let fileBuffer;
+  let filename;
+  if (formData) {
+    for (const part of formData) {
+      if (part.name === "password") providedPassword = part.data.toString("utf-8");
+      if (part.name === "file") {
+        fileBuffer = part.data;
+        filename = part.filename;
+      }
+    }
+  }
+  if (password && providedPassword !== password) {
+    throw createError({ statusCode: 401, statusMessage: "Invalid password" });
+  }
+  let csvBuffer;
+  if (!fileBuffer) {
+    const defaultPath = resolve(ROOT, "CornerStopLookup.csv");
+    if (!existsSync(defaultPath)) {
+      throw createError({ statusCode: 400, statusMessage: "No file uploaded and default CornerStopLookup.csv not found" });
+    }
+    csvBuffer = readFileSync(defaultPath);
+    filename = "CornerStopLookup.csv";
+  } else {
+    csvBuffer = fileBuffer;
+  }
+  const jobId = randomUUID();
+  const job = { id: jobId, status: "running", stage: "uploading", progress: 0, startedAt: Date.now() };
+  jobs.set(jobId, job);
+  setTimeout(() => runJob(jobId, csvBuffer, filename).catch(console.error), 0);
+  return { jobId };
+});
+
+const index_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const status_get = defineEventHandler(async (event) => {
+  const { jobId } = getQuery$1(event);
+  if (!jobId || typeof jobId !== "string") {
+    throw createError({ statusCode: 400, statusMessage: "Missing jobId" });
+  }
+  const job = jobs.get(jobId);
+  if (!job) {
+    throw createError({ statusCode: 404, statusMessage: "Job not found" });
+  }
+  return job;
+});
+
+const status_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: status_get
+}, Symbol.toStringTag, { value: 'Module' }));
+
 const geocode_get = defineEventHandler(async (event) => {
   var _a;
   const { q } = getQuery$1(event);
@@ -3152,8 +3744,7 @@ const geocode_get = defineEventHandler(async (event) => {
         format: "json",
         limit: 5,
         countrycodes: "us",
-        "accept-language": "en-US",
-        viewbox: "-83.29,42.25,-82.91,42.45"
+        "accept-language": "en-US"
       },
       headers: {
         "User-Agent": "DPSCD School Finder"

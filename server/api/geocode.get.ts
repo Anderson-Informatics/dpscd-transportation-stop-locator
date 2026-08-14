@@ -32,8 +32,7 @@ export default defineEventHandler(async (event) => {
         format: 'json',
         limit: 5,
         countrycodes: 'us',
-        'accept-language': 'en-US',
-        viewbox: '-83.29,42.25,-82.91,42.45'
+        'accept-language': 'en-US'
       },
       headers: {
         'User-Agent': 'DPSCD School Finder'
