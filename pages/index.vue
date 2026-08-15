@@ -20,6 +20,8 @@ const detroitBoundary = ref(null)
 const neighborhood = ref({ elementary: null, middle: null, high: null })
 const closest = ref([])
 const schoolUrlMap = ref(new Map())
+// Schools that are closed or phasing out — hidden from both tabs.
+const excludedSchoolNames = ref(new Set())
 
 const homeIconUrl = '/SVG/Home.svg'
 const hoveredIndex = ref(null)
@@ -117,18 +119,22 @@ onMounted(async () => {
     $fetch('/data/Detroit_Boundary.geojson')
   ])
 
-  const phaseOutCodes = new Set()
-  for (const s of schools.features) {
-    if (s.properties?.Category === 'Phase-Out' && s.properties?.schoolCode) {
-      phaseOutCodes.add(s.properties.schoolCode)
-    }
-  }
+  const isExcluded = (p) => p?.Category === 'Phase-Out' || p?.status === 'Closed'
 
-  allSchools.value = schools.features.filter(s => s.properties?.Category !== 'Phase-Out')
+  const excludedCodes = new Set()
+  const excludedNames = new Set()
+  for (const s of schools.features) {
+    if (!isExcluded(s.properties)) continue
+    if (s.properties?.schoolCode) excludedCodes.add(s.properties.schoolCode)
+    if (s.properties?.schoolName) excludedNames.add(s.properties.schoolName)
+  }
+  excludedSchoolNames.value = excludedNames
+
+  allSchools.value = schools.features.filter(s => !isExcluded(s.properties))
   boundaryLists.value = {
-    elementary: elem.features.filter(f => !phaseOutCodes.has(f.properties?.schoolCode)),
-    middle: mid.features.filter(f => !phaseOutCodes.has(f.properties?.schoolCode)),
-    high: high.features.filter(f => !phaseOutCodes.has(f.properties?.schoolCode))
+    elementary: elem.features.filter(f => !excludedCodes.has(f.properties?.schoolCode)),
+    middle: mid.features.filter(f => !excludedCodes.has(f.properties?.schoolCode)),
+    high: high.features.filter(f => !excludedCodes.has(f.properties?.schoolCode))
   }
 
   const urls = new Map()
@@ -181,12 +187,42 @@ async function searchAddress() {
 }
 
 function flyTo(latLng, z = 16) {
-  center.value = latLng
-  zoom.value = z
   nextTick(() => {
     if (mapRef.value?.leafletObject) {
       mapRef.value.leafletObject.flyTo(latLng, z, { animate: true, duration: 1 })
     }
+  })
+}
+
+// Two steps closer than the zoom that fits a 1-mile radius, so cross streets read.
+function busStopDetailZoom(map, latLng) {
+  const oneMile = L.latLng(latLng[0], latLng[1]).toBounds(1609.344 * 2)
+  return Math.min(map.getMaxZoom() ?? 19, map.getBoundsZoom(oneMile) + 2)
+}
+
+function goToBusStop(s) {
+  const map = mapRef.value?.leafletObject
+  if (!map) return
+  // Drop the transient hover tooltip and any popup left over from a previous stop.
+  if (leaveTimer.value) {
+    clearTimeout(leaveTimer.value)
+    leaveTimer.value = null
+  }
+  activeListTooltip.value?.close()
+  activeListTooltip.value = null
+  map.closePopup()
+
+  const key = busStopKey(s)
+  selectedBusStopKey.value = key
+  const target = [s.lat, s.lng]
+  map.flyTo(target, busStopDetailZoom(map, target), { animate: true, duration: 0.8 })
+
+  // Re-open the popup only once the map has settled on the stop.
+  const marker = busMarkerIndex.get(key)
+  if (!marker) return
+  marker.setPopupContent(busStopPopup(s))
+  map.once('moveend', () => {
+    if (selectedBusStopKey.value === key) marker.openPopup()
   })
 }
 
@@ -345,6 +381,7 @@ function getBoundaryPoints(feature) {
 }
 
 function fitToResults() {
+  if (activeTab.value !== 'schools') return
   if (!selectedLocation.value) return
   const map = mapRef.value?.leafletObject
   if (!map) return
@@ -435,33 +472,61 @@ const router = useRouter()
 const activeTab = ref(route.query.tab === 'bus-stops' ? 'bus-stops' : 'schools')
 const busStops = ref([])
 const busRadius = ref(selectedLocation.value ? 1 : 100000)
-const selectedBusSchool = ref((route.query.school) || '')
-const busLoading = ref(false)
-const busHoveredStop = ref(null)
-const busIconUrl = '/SVG/Bus%20Stop.svg'
-
-const busIconSize = computed(() => {
-  const z = zoom.value
-  if (z <= 12) return [16, 16]
-  if (z <= 14) return [20, 20]
-  return [24, 24]
+const busRadiusSlider = computed({
+  get() {
+    return busRadius.value > 2 ? 2 : Math.max(busRadius.value, 0.5)
+  },
+  set(v) {
+    busRadius.value = v
+  }
 })
-const busIconAnchor = computed(() => [busIconSize.value[0] / 2, busIconSize.value[1] / 2])
-const busIconHoverSize = computed(() => [Math.round(busIconSize.value[0] * 1.33), Math.round(busIconSize.value[1] * 1.33)])
-const busIconHoverAnchor = computed(() => [busIconHoverSize.value[0] / 2, busIconHoverSize.value[1] / 2])
+const selectedBusSchool = ref((route.query.school) || '')
+const busRadiusLabel = computed(() => {
+  if (selectedBusSchool.value) return 'Show All'
+  if (!selectedLocation.value) return 'Show All'
+  return busRadius.value === 1 ? '1 mile' : `${busRadius.value} miles`
+})
+const busLoading = ref(false)
+const busIconUrl = '/SVG/Bus%20Stop.svg'
+const busIcon = L.icon({
+  iconUrl: busIconUrl,
+  iconSize: [18, 18],
+  iconAnchor: [9, 9],
+  popupAnchor: [0, -9]
+})
+const busIconHover = L.icon({
+  iconUrl: busIconUrl,
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
+  popupAnchor: [0, -12]
+})
 
-const busIcon = computed(() => L.icon({
-  iconUrl: busIconUrl,
-  iconSize: busIconSize.value,
-  iconAnchor: busIconAnchor.value,
-  popupAnchor: [0, -Math.round(busIconSize.value[1] / 2)]
-}))
-const busIconHover = computed(() => L.icon({
-  iconUrl: busIconUrl,
-  iconSize: busIconHoverSize.value,
-  iconAnchor: busIconHoverAnchor.value,
-  popupAnchor: [0, -Math.round(busIconHoverSize.value[1] / 2)]
-}))
+const homeIcon = L.icon({
+  iconUrl: homeIconUrl,
+  iconSize: [32, 32],
+  iconAnchor: [16, 16],
+  popupAnchor: [0, -16]
+})
+
+let busStopsLayer = null
+let busStopsLayerDirty = false
+let mapZooming = false
+let homeMarker = null
+let busSchoolLayer = null
+let busSchoolLayerDirty = false
+const busMarkerIndex = new Map()
+const busSchoolMarkerIndex = new Map()
+let hoveredBusKey = null
+const selectedBusStopKey = ref(null)
+let hoveredSchoolName = null
+const lockedSchoolName = ref(null)
+const busSchoolShortNames = new Map()
+const lockedSchoolShortName = computed(() => {
+  const name = lockedSchoolName.value
+  if (!name) return ''
+  return busSchoolShortNames.get(name) || name
+})
+const BUS_DIM_OPACITY = 0.2
 
 watch(() => route.query, (q) => {
   activeTab.value = q.tab === 'bus-stops' ? 'bus-stops' : 'schools'
@@ -477,35 +542,57 @@ watch(activeTab, (tab) => {
   router.replace({ query: { ...route.query, tab } })
 })
 
-watch(selectedBusSchool, (school) => {
+watch(selectedBusSchool, (school, oldSchool) => {
+  hoveredSchoolName = null
+  lockedSchoolName.value = null
   const query = { ...route.query, tab: activeTab.value }
-  if (school) query.school = school
-  else delete query.school
+  if (school) {
+    selectedLocation.value = null
+    address.value = ''
+    busRadius.value = 100000
+    query.school = school
+  } else {
+    if (oldSchool) {
+      busRadius.value = selectedLocation.value ? 1 : 100000
+    }
+    delete query.school
+  }
   router.replace({ query })
 })
 
-watch(selectedLocation, (newLoc, oldLoc) => {
-  if (newLoc && !oldLoc) busRadius.value = 1
-  else if (!newLoc && oldLoc) busRadius.value = 100000
+watch(() => selectedLocation.value, (newLoc, oldLoc) => {
+  hoveredSchoolName = null
+  lockedSchoolName.value = null
+  if (newLoc) {
+    selectedBusSchool.value = ''
+    busRadius.value = 1
+  } else if (oldLoc) {
+    busRadius.value = 100000
+  }
 })
 
-watchEffect(() => {
+// Like the markers, the radius circle is created once and only updated, so it is
+// never added to the map mid-animation (which can leave it stranded or unstyled).
+function drawBusRadiusCircle() {
   const map = mapRef.value?.leafletObject
   if (!map) return
-  if (busCircleLayer) {
-    map.removeLayer(busCircleLayer)
-    busCircleLayer = null
+  if (!busCircleLayer) {
+    busCircleLayer = L.circle(selectedLocation.value || [0, 0], {
+      radius: 0,
+      color: '#0033CC',
+      fill: false,
+      weight: 2,
+      dashArray: '5, 10',
+      interactive: false
+    }).addTo(map)
   }
-  if (activeTab.value !== 'bus-stops' || !selectedLocation.value) return
-  const [lat, lng] = selectedLocation.value
-  busCircleLayer = L.circle([lat, lng], {
-    radius: busRadius.value * 1609.344,
-    color: '#0033CC',
-    fill: false,
-    weight: 2,
-    dashArray: '5, 10'
-  }).addTo(map)
-})
+  const show = activeTab.value === 'bus-stops' && !!selectedLocation.value && busRadius.value <= 2
+  if (show) {
+    busCircleLayer.setLatLng(selectedLocation.value)
+    busCircleLayer.setRadius(busRadius.value * 1609.344)
+  }
+  busCircleLayer.setStyle({ opacity: show ? 0.9 : 0 })
+}
 
 onMounted(() => {
   if (activeTab.value === 'bus-stops') loadBusStops()
@@ -514,13 +601,10 @@ onMounted(() => {
 function fitMapToContent() {
   const map = mapRef.value?.leafletObject
   if (!map) return
-  const points = []
-  if (selectedLocation.value) {
-    const [lat, lng] = selectedLocation.value
-    points.push([lat, lng])
-  }
   if (activeTab.value === 'schools') {
+    const points = []
     if (selectedLocation.value) {
+      points.push(selectedLocation.value)
       for (const s of closest.value) points.push([s.latLng[0], s.latLng[1]])
       for (const b of relevantBoundaries.value) {
         if (b.latLng) points.push([b.latLng[0], b.latLng[1]])
@@ -530,24 +614,255 @@ function fitMapToContent() {
         points.push([s.geometry.coordinates[1], s.geometry.coordinates[0]])
       }
     }
-  } else if (activeTab.value === 'bus-stops') {
-    for (const s of nearbyBusStops.value) points.push([s.lat, s.lng])
-    const [lat, lng] = selectedLocation.value || []
-    if (lat !== undefined && lng !== undefined) points.push([lat, lng])
-  }
-  if (points.length === 1) {
-    map.flyTo(points[0], 16)
+    if (points.length < 2) return
+    const bounds = L.latLngBounds(points)
+    map.fitBounds(bounds, { padding: [40, 40], maxZoom: 15 })
     return
   }
-  if (points.length < 2) {
-    if (selectedLocation.value) map.flyTo(selectedLocation.value, 15)
+  if (activeTab.value !== 'bus-stops') return
+  map.stop()
+  if (selectedBusSchool.value && nearbyBusStops.value.length) {
+    const points = nearbyBusStops.value.map((s) => [s.lat, s.lng])
+    for (const s of nearbyBusStops.value) {
+      for (const e of visibleEntries(s)) {
+        const marker = e.schoolName && busSchoolMarkerIndex.get(e.schoolName)
+        if (marker) points.push(marker.getLatLng())
+      }
+    }
+    const bounds = L.latLngBounds(points)
+    map.fitBounds(bounds, { padding: [60, 60], maxZoom: 16, animate: true, duration: 0.8 })
     return
   }
-  const bounds = L.latLngBounds(points)
-  map.fitBounds(bounds, { padding: [60, 60], maxZoom: 16, animate: false })
+  if (selectedLocation.value) {
+    const [lat, lng] = selectedLocation.value
+    const bounds = L.latLng(lat, lng).toBounds(busRadius.value * 1609.344 * 2)
+    map.fitBounds(bounds, { padding: [60, 60], maxZoom: 16, animate: true, duration: 0.8 })
+    return
+  }
+  fitToDefaultView()
 }
 
-watchEffect(fitMapToContent)
+function onMapReady() {
+  const map = mapRef.value?.leafletObject
+  if (map) {
+    const settle = () => {
+      mapZooming = false
+      if (busStopsLayerDirty) updateBusStopsLayer()
+      if (busSchoolLayerDirty) updateBusSchoolMarkers()
+    }
+    map.on('zoomstart', () => { mapZooming = true })
+    map.on('zoomend', settle)
+    map.on('moveend', settle)
+  }
+  drawBusRadiusCircle()
+  updateHomeMarker()
+  updateBusStopsLayer()
+  updateBusSchoolMarkers()
+  fitMapToContent()
+}
+
+// The home marker for the bus-stops tab is a plain Leaflet marker that is created
+// once and only repositioned, so it is never added to the map mid zoom-animation
+// (which would leave it stuck to the viewport instead of the map).
+function updateHomeMarker() {
+  const map = mapRef.value?.leafletObject
+  if (!map) return
+  if (!homeMarker) {
+    homeMarker = L.marker(selectedLocation.value || [0, 0], { icon: homeIcon })
+      .bindPopup('Selected location')
+      .addTo(map)
+  }
+  const show = activeTab.value === 'bus-stops' && !!selectedLocation.value
+  if (show) homeMarker.setLatLng(selectedLocation.value)
+  const el = homeMarker.getElement()
+  if (el) el.style.display = show ? '' : 'none'
+}
+
+// The school card closes on a short delay so the pointer can travel from the icon
+// into the popup (to reach the Website link) without it disappearing.
+let schoolPopupTimer = null
+
+function cancelSchoolPopupClose() {
+  if (!schoolPopupTimer) return
+  clearTimeout(schoolPopupTimer)
+  schoolPopupTimer = null
+}
+
+function scheduleSchoolPopupClose(marker) {
+  cancelSchoolPopupClose()
+  schoolPopupTimer = setTimeout(() => {
+    schoolPopupTimer = null
+    hoveredSchoolName = null
+    marker.closePopup()
+    applyBusHighlight()
+  }, 250)
+}
+
+// Schools that have at least one bus stop in the current result set. Like the other
+// bus-stop layers these markers are created once and only toggled, never re-added.
+function updateBusSchoolMarkers() {
+  const map = mapRef.value?.leafletObject
+  if (!map) return
+  // Adding markers while a zoom animation is running strands them at stale screen
+  // positions, so defer the build until the map has settled.
+  if (mapZooming && !busSchoolMarkerIndex.size) {
+    busSchoolLayerDirty = true
+    return
+  }
+  busSchoolLayerDirty = false
+  if (!busSchoolLayer) busSchoolLayer = L.layerGroup().addTo(map)
+
+  if (allSchools.value.length && !busSchoolMarkerIndex.size) {
+    for (const f of allSchools.value) {
+      const name = f.properties.schoolName
+      if (!name) continue
+      const [lng, lat] = f.geometry.coordinates
+      const category = f.properties.Category || 'Unknown'
+      const marker = L.marker([lat, lng], {
+        icon: L.icon({
+          iconUrl: iconUrl(category),
+          iconSize: [30, 30],
+          iconAnchor: [15, 15],
+          popupAnchor: [0, -15]
+        })
+      })
+        // Hover info card: no autoPan so the map never shifts.
+        .bindPopup(busSchoolPopup(f), {
+          autoPan: false,
+          closeButton: false,
+          className: 'school-hover-popup'
+        })
+        .bindTooltip(f.properties.shortName || name, {
+          permanent: true,
+          direction: 'right',
+          offset: [16, 0],
+          className: 'school-label'
+        })
+        .on('mouseover', (ev) => {
+          cancelSchoolPopupClose()
+          hoveredSchoolName = name
+          ev.target.openPopup()
+          applyBusHighlight()
+        })
+        .on('mouseout', (ev) => {
+          scheduleSchoolPopupClose(ev.target)
+        })
+        .on('click', (ev) => {
+          cancelSchoolPopupClose()
+          lockedSchoolName.value = lockedSchoolName.value === name ? null : name
+          hoveredSchoolName = null
+          // Keep the map clear so every highlighted stop stays readable.
+          ev.target.closePopup()
+          applyBusHighlight()
+        })
+        // Moving the pointer into the card keeps it open; leaving it closes it.
+        .on('popupopen', (ev) => {
+          const el = ev.popup.getElement()
+          if (!el || el.dataset.hoverBound) return
+          el.dataset.hoverBound = '1'
+          el.addEventListener('mouseenter', cancelSchoolPopupClose)
+          el.addEventListener('mouseleave', () => scheduleSchoolPopupClose(ev.target))
+        })
+      busSchoolShortNames.set(name, f.properties.shortName || name)
+      busSchoolMarkerIndex.set(name, marker)
+      busSchoolLayer.addLayer(marker)
+    }
+  }
+
+  // Safety net: recompute every icon position from its lat/lng in case any marker
+  // was laid out while the map was mid-transition.
+  for (const marker of busSchoolMarkerIndex.values()) marker.update()
+
+  const visible = new Set()
+  if (activeTab.value === 'bus-stops' && selectedBusSchool.value) {
+    // Only the selected school, even if its stops are shared with other schools.
+    for (const s of nearbyBusStops.value) {
+      for (const e of s.entries) {
+        if (e.school === selectedBusSchool.value || e.schoolName === selectedBusSchool.value) {
+          if (e.schoolName) visible.add(e.schoolName)
+        }
+      }
+    }
+  } else if (activeTab.value === 'bus-stops' && selectedLocation.value) {
+    for (const s of nearbyBusStops.value) {
+      for (const e of s.entries) {
+        if (e.schoolName) visible.add(e.schoolName)
+      }
+    }
+  }
+  // A highlight can only stay armed while its school is actually on the map.
+  if (lockedSchoolName.value && !visible.has(lockedSchoolName.value)) lockedSchoolName.value = null
+  if (hoveredSchoolName && !visible.has(hoveredSchoolName)) hoveredSchoolName = null
+
+  // Every visible school icon gets its short-name label.
+  for (const [name, marker] of busSchoolMarkerIndex) {
+    const show = visible.has(name)
+    const el = marker.getElement()
+    if (el) el.style.display = show ? '' : 'none'
+    const tip = marker.getTooltip()?.getElement()
+    if (tip) tip.style.display = show ? '' : 'none'
+  }
+  applyBusHighlight()
+}
+
+// Hovering a school icon (or clicking to lock it) fades everything that is not
+// served by that school. Purely a style pass over the persistent markers, so it
+// survives zooming and never touches the layer lifecycle.
+function highlightedSchool() {
+  return hoveredSchoolName || lockedSchoolName.value
+}
+
+function stopKeysForSchool(name) {
+  const keys = new Set()
+  for (const s of nearbyBusStops.value) {
+    if (s.entries.some((e) => e.schoolName === name)) keys.add(busStopKey(s))
+  }
+  return keys
+}
+
+function clearBusHighlight() {
+  if (!hoveredSchoolName && !lockedSchoolName.value) return
+  hoveredSchoolName = null
+  lockedSchoolName.value = null
+  applyBusHighlight()
+}
+
+function applyBusHighlight() {
+  const active = highlightedSchool()
+  const keys = active ? stopKeysForSchool(active) : null
+  const dim = (el, faded) => {
+    if (el) el.style.opacity = faded ? String(BUS_DIM_OPACITY) : ''
+  }
+  for (const [key, marker] of busMarkerIndex) {
+    dim(marker.getElement(), !!active && !keys.has(key))
+  }
+  for (const [name, marker] of busSchoolMarkerIndex) {
+    const faded = !!active && name !== active
+    dim(marker.getElement(), faded)
+    dim(marker.getTooltip()?.getElement(), faded)
+  }
+}
+
+function busSchoolPopup(f) {
+  const p = f.properties
+  const url = lookupUrl(f)
+  const parts = [`<strong>${p.schoolName}</strong>`]
+  if (p.address) parts.push(p.address)
+  if (p.telephone) parts.push(p.telephone)
+  if (p.Category) parts.push(p.Category)
+  if (url) parts.push(`<a href="${url}" target="_blank" rel="noopener">Website</a>`)
+  return parts.join('<br/>')
+}
+
+watch(allSchools, updateBusSchoolMarkers, { flush: 'post' })
+
+watch([activeTab, selectedLocation, selectedBusSchool, busStops, excludedSchoolNames, busRadius], () => {
+  drawBusRadiusCircle()
+  updateHomeMarker()
+  updateBusStopsLayer()
+  updateBusSchoolMarkers()
+  fitMapToContent()
+}, { flush: 'post' })
 
 async function loadBusStops() {
   if (busStops.value.length) return
@@ -556,8 +871,6 @@ async function loadBusStops() {
     const res = await fetch('/data/bus-stops.json')
     if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`)
     busStops.value = await res.json()
-    await nextTick()
-    fitMapToContent()
   } catch (err) {
     console.error('Bus stops load error:', err)
     alert('Could not load bus stop data: ' + (err?.message || 'unknown'))
@@ -566,9 +879,22 @@ async function loadBusStops() {
   }
 }
 
+// Bus data can reference schools that are now closed or phasing out; drop those
+// entries (and any stop left with no entries) so both tabs stay consistent.
+const activeBusStops = computed(() => {
+  const excluded = excludedSchoolNames.value
+  if (!excluded.size) return busStops.value
+  const result = []
+  for (const stop of busStops.value) {
+    const entries = stop.entries.filter((e) => !excluded.has(e.schoolName))
+    if (entries.length) result.push({ ...stop, entries })
+  }
+  return result
+})
+
 const busSchoolOptions = computed(() => {
   const map = new Map()
-  for (const stop of busStops.value) {
+  for (const stop of activeBusStops.value) {
     for (const e of stop.entries) {
       map.set(e.school, e.schoolName || e.school)
     }
@@ -577,9 +903,9 @@ const busSchoolOptions = computed(() => {
     .sort((a, b) => a.name.localeCompare(b.name))
 })
 
-const nearbyBusStops = computed(() => {
-  if (!busStops.value.length) return []
-  let stops = busStops.value
+const busStopsWithDistance = computed(() => {
+  if (!activeBusStops.value.length) return []
+  let stops = activeBusStops.value
     .filter((s) => s.lat !== null && s.lng !== null)
     .map((s) => ({ ...s, distance: null }))
   if (selectedBusSchool.value) {
@@ -587,16 +913,93 @@ const nearbyBusStops = computed(() => {
   }
   if (selectedLocation.value) {
     const [lat, lng] = selectedLocation.value
-    stops = stops
-      .map((s) => {
-        const dist = distance([lng, lat], [s.lng, s.lat], { units: 'miles' })
-        return { ...s, distance: dist }
-      })
-      .filter((s) => s.distance <= busRadius.value)
+    stops = stops.map((s) => {
+      const dist = distance([lng, lat], [s.lng, s.lat], { units: 'miles' })
+      return { ...s, distance: dist }
+    })
+  }
+  return stops
+})
+
+const nearbyBusStops = computed(() => {
+  let stops = busStopsWithDistance.value
+  if (selectedLocation.value) {
+    stops = stops.filter((s) => s.distance <= busRadius.value)
       .sort((a, b) => a.distance - b.distance)
   }
   return stops
 })
+
+function busStopKey(s) {
+  return `${s.stop}|${s.lat}|${s.lng}`
+}
+
+function updateBusStopsLayer() {
+  const map = mapRef.value?.leafletObject
+  if (!map) return
+  if (mapZooming) {
+    busStopsLayerDirty = true
+    return
+  }
+  busStopsLayerDirty = false
+  if (!busStopsLayer) {
+    busStopsLayer = L.layerGroup().addTo(map)
+  }
+  // Markers are created once and never removed; visibility is toggled via CSS
+  // so Leaflet always keeps their positions in sync with the map.
+  for (const s of activeBusStops.value) {
+    if (s.lat === null || s.lng === null) continue
+    const key = busStopKey(s)
+    if (busMarkerIndex.has(key)) continue
+    const marker = L.marker([s.lat, s.lng], { icon: busIcon })
+      // autoPan off so opening a popup never fights an in-flight flyTo.
+      .bindPopup(busStopPopup(s), { autoPan: false })
+      .on('click', () => {
+        const active = highlightedSchool()
+        if (active && !s.entries.some((e) => e.schoolName === active)) clearBusHighlight()
+      })
+    busMarkerIndex.set(key, marker)
+    busStopsLayer.addLayer(marker)
+  }
+
+  setHoveredBusMarker(null)
+  const visible = new Map()
+  if (activeTab.value === 'bus-stops') {
+    for (const s of nearbyBusStops.value) visible.set(busStopKey(s), s)
+  }
+  // A stop that dropped out of the results can no longer be the selected one.
+  if (selectedBusStopKey.value && !visible.has(selectedBusStopKey.value)) {
+    selectedBusStopKey.value = null
+  }
+  for (const [key, marker] of busMarkerIndex) {
+    const el = marker.getElement()
+    if (!el) continue
+    const stop = visible.get(key)
+    if (stop) {
+      el.style.display = ''
+      marker.setPopupContent(busStopPopup(stop))
+    } else {
+      el.style.display = 'none'
+    }
+  }
+}
+
+function setHoveredBusMarker(key) {
+  if (hoveredBusKey === key) return
+  const prev = hoveredBusKey ? busMarkerIndex.get(hoveredBusKey) : null
+  if (prev) {
+    prev.setIcon(busIcon)
+    prev.setZIndexOffset(0)
+  }
+  hoveredBusKey = key
+  const next = key ? busMarkerIndex.get(key) : null
+  if (next) {
+    next.setIcon(busIconHover)
+    next.setZIndexOffset(1000)
+  }
+  // setIcon swaps the DOM element, so any dimming has to be re-applied.
+  if (prev || next) applyBusHighlight()
+}
 
 function setBusSchool(school) {
   activeTab.value = 'bus-stops'
@@ -604,13 +1007,13 @@ function setBusSchool(school) {
 }
 
 function onBusStopEnter(s) {
-  busHoveredStop.value = s.stop
   if (leaveTimer.value) {
     clearTimeout(leaveTimer.value)
     leaveTimer.value = null
   }
   const map = mapRef.value?.leafletObject
   if (!map) return
+  setHoveredBusMarker(busStopKey(s))
   activeListTooltip.value?.close()
   activeListTooltip.value = L.tooltip({
     className: 'school-tooltip',
@@ -623,10 +1026,10 @@ function onBusStopEnter(s) {
 }
 
 function onBusStopLeave() {
-  busHoveredStop.value = null
   if (leaveTimer.value) clearTimeout(leaveTimer.value)
   leaveTimer.value = setTimeout(() => {
-    if (busHoveredStop.value === null && activeListTooltip.value) {
+    setHoveredBusMarker(null)
+    if (activeListTooltip.value) {
       activeListTooltip.value.close()
       activeListTooltip.value = null
     }
@@ -634,12 +1037,19 @@ function onBusStopLeave() {
   }, 50)
 }
 
+// When a school filter is active, only that school's entries are relevant.
+function visibleEntries(s) {
+  if (!selectedBusSchool.value) return s.entries
+  const filtered = s.entries.filter((e) => e.school === selectedBusSchool.value || e.schoolName === selectedBusSchool.value)
+  return filtered.length ? filtered : s.entries
+}
+
 function busStopTooltip(s) {
   const parts = [`<strong>${s.stop}</strong>`]
   if (s.distance !== null && s.distance !== undefined) {
     parts.push(`${s.distance.toFixed(2)} miles`)
   }
-  for (const e of s.entries) {
+  for (const e of visibleEntries(s)) {
     let line = e.school
     if (e.type === 'Pickup') {
       line += ` — Pickup route ${e.pickupRoute} @ ${e.pickupTime}`
@@ -658,7 +1068,7 @@ function busStopPopup(s) {
   if (s.distance !== null && s.distance !== undefined) {
     parts.push(`${s.distance.toFixed(2)} miles`)
   }
-  for (const e of s.entries) {
+  for (const e of visibleEntries(s)) {
     let line = e.school
     if (e.type === 'Pickup') {
       line += ` — Pickup route ${e.pickupRoute} @ ${e.pickupTime}`
@@ -793,11 +1203,16 @@ function busStopPopup(s) {
           </form>
 
           <div class="field">
-            <label for="busRadius">Radius</label>
-            <select id="busRadius" v-model="busRadius">
-              <option v-for="r in [0.25, 0.5, 1, 1.5, 2]" :key="r" :value="r">{{ r }} miles</option>
-              <option :value="100000">Show All</option>
-            </select>
+            <label for="busRadius">Radius: {{ busRadiusLabel }}</label>
+            <input
+              id="busRadius"
+              v-model.number="busRadiusSlider"
+              type="range"
+              min="0.5"
+              max="2"
+              step="0.25"
+              :disabled="!!selectedBusSchool || !selectedLocation"
+            />
           </div>
 
           <div class="field">
@@ -817,14 +1232,15 @@ function busStopPopup(s) {
                 v-for="(s, i) in nearbyBusStops"
                 :key="`b-${i}`"
                 class="closest-row"
-                @click="flyTo([s.lat, s.lng])"
+                :class="{ 'stop-selected': busStopKey(s) === selectedBusStopKey }"
+                @click="goToBusStop(s)"
                 @mouseenter="onBusStopEnter(s)"
                 @mouseleave="onBusStopLeave"
               >
                 <strong>{{ s.stop }}</strong>
                 <span v-if="s.distance != null" class="tag">{{ s.distance.toFixed(2) }} miles</span>
                 <ul class="stop-entries">
-                  <li v-for="(e, j) in s.entries" :key="j" class="stop-entry">
+                  <li v-for="(e, j) in visibleEntries(s)" :key="j" class="stop-entry">
                     <div class="entry-line entry-school">
                       <button class="link-btn" @click.stop="setBusSchool(e.school)">{{ e.school }}</button>
                       <span class="entry-route">— Route {{ e.type === 'Dropoff' ? e.dropoffRoute : e.pickupRoute }}</span>
@@ -848,13 +1264,22 @@ function busStopPopup(s) {
       </aside>
 
       <main class="map-wrap">
+        <button
+          v-if="activeTab === 'bus-stops' && lockedSchoolName"
+          class="cancel-highlight"
+          type="button"
+          @click="clearBusHighlight()"
+        >
+          Click to Cancel Highlighting Stops for {{ lockedSchoolShortName }}
+        </button>
+
         <l-map
           ref="mapRef"
           :zoom="zoom"
           :center="center"
           style="height: 100%; width: 100%"
           @click="onMapClick"
-          @ready="fitMapToContent"
+          @ready="onMapReady"
         >
           <l-tile-layer
             url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
@@ -877,7 +1302,7 @@ function busStopPopup(s) {
           />
 
           <l-marker
-            v-if="selectedLocation"
+            v-if="selectedLocation && activeTab === 'schools'"
             :lat-lng="selectedLocation"
           >
             <l-icon
@@ -948,17 +1373,7 @@ function busStopPopup(s) {
             </l-marker>
           </template>
 
-          <template v-if="activeTab === 'bus-stops'">
-            <l-marker
-              v-for="s in nearbyBusStops"
-              :key="s.stop"
-              :lat-lng="[s.lat, s.lng]"
-              :z-index-offset="busHoveredStop === s.stop ? 1000 : 0"
-              :icon="busHoveredStop === s.stop ? busIconHover : busIcon"
-            >
-              <l-popup><span v-html="busStopPopup(s)"></span></l-popup>
-            </l-marker>
-          </template>
+
         </l-map>
 
         <div class="legend">
@@ -1094,6 +1509,17 @@ button {
   border-radius: 4px;
   font-size: 1rem;
   font-family: 'Roboto', sans-serif;
+}
+
+input[type="range"] {
+  padding: 0;
+  accent-color: var(--dpscd-primary);
+  cursor: pointer;
+}
+
+input[type="range"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 input:focus,
@@ -1249,6 +1675,16 @@ ol.ranked {
   background: #f5f5f5;
 }
 
+.closest-row.stop-selected {
+  background: #eaf0ff;
+  border-left: 4px solid var(--dpscd-primary);
+  padding-left: 0.5rem;
+}
+
+.closest-row.stop-selected strong {
+  color: var(--dpscd-primary);
+}
+
 .closest-row strong {
   color: var(--dpscd-text);
 }
@@ -1330,6 +1766,58 @@ ol.ranked .closest-row::before {
 
 .school-tooltip a.tooltip-link:hover {
   text-decoration: underline;
+}
+
+.school-label {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--dpscd-primary);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--dpscd-primary);
+  box-shadow: none;
+  white-space: nowrap;
+}
+
+.school-label::before {
+  display: none;
+}
+
+.school-hover-popup .leaflet-popup-content {
+  font-size: 0.85rem;
+  margin: 0.6rem 0.75rem;
+}
+
+.school-hover-popup a {
+  color: var(--dpscd-primary);
+  font-weight: 500;
+}
+
+.cancel-highlight {
+  position: absolute;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: var(--dpscd-secondary);
+  color: var(--dpscd-text);
+  border: 1px solid var(--dpscd-primary);
+  border-radius: 4px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.cancel-highlight:hover,
+.cancel-highlight:focus {
+  background: #fff;
+  color: var(--dpscd-primary);
 }
 
 .tabs {
