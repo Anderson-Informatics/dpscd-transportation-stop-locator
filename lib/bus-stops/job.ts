@@ -32,6 +32,26 @@ function parseCsvLine(line: string) {
   return line.split(',').map(s => s.trim())
 }
 
+// Times are stored and displayed as the CSV's "7:50 AM" strings, never as dates. Some
+// exports emit 24-hour "07:50:00" instead, so both are pinned to the 12-hour form here.
+// Anything unrecognized is passed through untouched rather than dropped.
+function normalizeTime(raw: string): string {
+  const value = raw.trim()
+  const match = value.match(/^(\d{1,2}):(\d{2})(?::\d{2})?\s*([AaPp])\.?[Mm]\.?$|^(\d{1,2}):(\d{2})(?::\d{2})?$/)
+  if (!match) return value
+  const meridiem = match[3]?.toUpperCase()
+  const minutes = match[2] ?? match[5]
+  let hours = Number(match[1] ?? match[4])
+  if (meridiem) {
+    if (hours < 1 || hours > 12) return value
+    if (meridiem === 'P' && hours !== 12) hours += 12
+    if (meridiem === 'A' && hours === 12) hours = 0
+  } else if (hours > 23) {
+    return value
+  }
+  return `${hours % 12 === 0 ? 12 : hours % 12}:${minutes} ${hours < 12 ? 'AM' : 'PM'}`
+}
+
 function readInputCsv(text: string): CsvRow[] {
   const lines = text.split(/\r?\n/).filter(Boolean)
   const rows: CsvRow[] = []
@@ -44,11 +64,11 @@ function readInputCsv(text: string): CsvRow[] {
       pickupRoute,
       pickupStop: normalizeForGeocode(rawPickupStop),
       pickupStopDesc: extractDescription(rawPickupStop),
-      pickupTime,
+      pickupTime: normalizeTime(pickupTime),
       dropoffRoute,
       dropoffStop: normalizeForGeocode(rawDropoffStop),
       dropoffStopDesc: extractDescription(rawDropoffStop),
-      dropoffTime
+      dropoffTime: normalizeTime(dropoffTime)
     })
   }
   return rows

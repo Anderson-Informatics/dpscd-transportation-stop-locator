@@ -40,7 +40,7 @@
         "pickupRoute": "308",
         "pickupTime": "6:28 AM",
         "dropoffRoute": "308",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -94,7 +94,7 @@
         "schoolId": 5,
         "schoolName": "A.L. Holmes Academy of Blended Learning",
         "pickupRoute": "210",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "210",
         "dropoffTime": "4:25 PM",
         "type": "Pickup & Dropoff"
@@ -134,7 +134,7 @@
         "pickupRoute": "210",
         "pickupTime": "8:05 AM",
         "dropoffRoute": "210",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -162,7 +162,7 @@
         "pickupRoute": "210",
         "pickupTime": "8:06 AM",
         "dropoffRoute": "210",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -226,7 +226,7 @@
         "pickupRoute": "244",
         "pickupTime": "7:54 AM",
         "dropoffRoute": "244",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -244,7 +244,7 @@
         "pickupRoute": "244",
         "pickupTime": "7:56 AM",
         "dropoffRoute": "244",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -278,7 +278,7 @@
         "schoolId": 5,
         "schoolName": "A.L. Holmes Academy of Blended Learning",
         "pickupRoute": "244",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "244",
         "dropoffTime": "4:11 PM",
         "type": "Pickup & Dropoff"
@@ -370,7 +370,7 @@
         "pickupRoute": "503",
         "pickupTime": "8:00 AM",
         "dropoffRoute": "503",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -512,9 +512,9 @@
         "schoolId": 5,
         "schoolName": "A.L. Holmes Academy of Blended Learning",
         "pickupRoute": "504",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "504",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -542,7 +542,7 @@
         "pickupRoute": "504",
         "pickupTime": "8:06 AM",
         "dropoffRoute": "504",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -704,7 +704,7 @@
         "schoolId": 168,
         "schoolName": "Bagley Elementary School of Journalism and Technology",
         "pickupRoute": "644",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "644",
         "dropoffTime": "4:01 PM",
         "type": "Pickup & Dropoff"
@@ -834,7 +834,7 @@
         "pickupRoute": "650",
         "pickupTime": "8:00 AM",
         "dropoffRoute": "650",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -844,7 +844,7 @@
         "pickupRoute": "616",
         "pickupTime": "7:47 AM",
         "dropoffRoute": "616",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -934,7 +934,7 @@
         "schoolId": 1552,
         "schoolName": "Palmer Park Preparatory Academy",
         "pickupRoute": "709",
-        "pickupTime": "8:47 AM",
+        "pickupTime": "8:46 AM",
         "dropoffRoute": "709",
         "dropoffTime": "4:22 PM",
         "type": "Pickup & Dropoff"
@@ -982,7 +982,7 @@
         "pickupRoute": "721",
         "pickupTime": "7:58 AM",
         "dropoffRoute": "721",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -1018,9 +1018,9 @@
         "schoolId": 853,
         "schoolName": "Mackenzie Elementary-Middle School",
         "pickupRoute": "627",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "627",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -1036,7 +1036,7 @@
         "schoolId": 3640,
         "schoolName": "Barton Elementary School",
         "pickupRoute": "721",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "721",
         "dropoffTime": "3:57 PM",
         "type": "Pickup & Dropoff"
@@ -1066,7 +1066,7 @@
         "pickupRoute": "721",
         "pickupTime": "8:05 AM",
         "dropoffRoute": "721",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -1110,7 +1110,7 @@
         "schoolId": 853,
         "schoolName": "Mackenzie Elementary-Middle School",
         "pickupRoute": "604",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "604",
         "dropoffTime": "4:01 PM",
         "type": "Pickup & Dropoff"
@@ -1260,7 +1260,7 @@
         "pickupRoute": "217",
         "pickupTime": "7:43 AM",
         "dropoffRoute": "217",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -1454,7 +1454,7 @@
         "schoolId": 6103,
         "schoolName": "Noble Elementary-Middle School",
         "pickupRoute": "4003",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "4003",
         "dropoffTime": "3:02 PM",
         "type": "Pickup & Dropoff"
@@ -1630,7 +1630,7 @@
         "schoolId": 1518,
         "schoolName": "Mary McLeod Bethune Elementary-Middle School",
         "pickupRoute": "613",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "613",
         "dropoffTime": "3:13 PM",
         "type": "Pickup & Dropoff"
@@ -1648,7 +1648,7 @@
         "schoolId": 1518,
         "schoolName": "Mary McLeod Bethune Elementary-Middle School",
         "pickupRoute": "613",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "613",
         "dropoffTime": "3:03 PM",
         "type": "Pickup & Dropoff"
@@ -1812,7 +1812,7 @@
         "schoolId": 1518,
         "schoolName": "Mary McLeod Bethune Elementary-Middle School",
         "pickupRoute": "614",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "614",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -1958,7 +1958,7 @@
         "schoolId": 1518,
         "schoolName": "Mary McLeod Bethune Elementary-Middle School",
         "pickupRoute": "644",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "644",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -1976,7 +1976,7 @@
         "schoolId": 1518,
         "schoolName": "Mary McLeod Bethune Elementary-Middle School",
         "pickupRoute": "644",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "644",
         "dropoffTime": "2:58 PM",
         "type": "Pickup & Dropoff"
@@ -2084,7 +2084,7 @@
         "schoolId": 1518,
         "schoolName": "Mary McLeod Bethune Elementary-Middle School",
         "pickupRoute": "680",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "680",
         "dropoffTime": "2:59 PM",
         "type": "Pickup & Dropoff"
@@ -2094,7 +2094,7 @@
         "schoolId": 6103,
         "schoolName": "Noble Elementary-Middle School",
         "pickupRoute": "240",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "240",
         "dropoffTime": "2:54 PM",
         "type": "Pickup & Dropoff"
@@ -2186,7 +2186,7 @@
         "schoolId": 4,
         "schoolName": "Henderson Academy",
         "pickupRoute": "4606",
-        "pickupTime": "8:25 AM",
+        "pickupTime": "8:24 AM",
         "dropoffRoute": "4606",
         "dropoffTime": "4:37 PM",
         "type": "Pickup & Dropoff"
@@ -2268,7 +2268,7 @@
         "schoolId": 1518,
         "schoolName": "Mary McLeod Bethune Elementary-Middle School",
         "pickupRoute": "709",
-        "pickupTime": "6:32 AM",
+        "pickupTime": "6:31 AM",
         "dropoffRoute": "709",
         "dropoffTime": "3:26 PM",
         "type": "Pickup & Dropoff"
@@ -2288,7 +2288,7 @@
         "pickupRoute": "709",
         "pickupTime": "6:34 AM",
         "dropoffRoute": "709",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -2314,7 +2314,7 @@
         "schoolId": 7633,
         "schoolName": "Paul Robeson Malcolm X Academy",
         "pickupRoute": "613",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "613",
         "dropoffTime": "4:24 PM",
         "type": "Pickup & Dropoff"
@@ -2388,7 +2388,7 @@
         "pickupRoute": "623",
         "pickupTime": "7:52 AM",
         "dropoffRoute": "623",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -2452,7 +2452,7 @@
         "schoolId": 781,
         "schoolName": "Cooke STEM Academy",
         "pickupRoute": "4615",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "4615",
         "dropoffTime": "3:00 PM",
         "type": "Pickup & Dropoff"
@@ -2516,7 +2516,7 @@
         "schoolId": 4319,
         "schoolName": "Bow Elementary-Middle School",
         "pickupRoute": "623",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "623",
         "dropoffTime": "3:52 PM",
         "type": "Pickup & Dropoff"
@@ -2534,7 +2534,7 @@
         "schoolId": 4319,
         "schoolName": "Bow Elementary-Middle School",
         "pickupRoute": "623",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "623",
         "dropoffTime": "3:53 PM",
         "type": "Pickup & Dropoff"
@@ -2756,6 +2756,16 @@
         "dropoffRoute": "722",
         "dropoffTime": "3:52 PM",
         "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6002",
+        "pickupTime": "7:21 AM",
+        "dropoffRoute": "6002",
+        "dropoffTime": "3:45 PM",
+        "type": "Pickup & Dropoff"
       }
     ]
   },
@@ -2818,7 +2828,7 @@
         "pickupRoute": "309",
         "pickupTime": "7:58 AM",
         "dropoffRoute": "309",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -2836,7 +2846,7 @@
         "pickupRoute": "309",
         "pickupTime": "8:00 AM",
         "dropoffRoute": "309",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -2844,7 +2854,7 @@
         "schoolId": 2377,
         "schoolName": "Marion Law Academy",
         "pickupRoute": "308",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "308",
         "dropoffTime": "3:00 PM",
         "type": "Pickup & Dropoff"
@@ -2926,7 +2936,7 @@
         "schoolId": 3130,
         "schoolName": "Pulaski Elementary-Middle School",
         "pickupRoute": "309",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "309",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -3276,7 +3286,7 @@
         "pickupRoute": "534",
         "pickupTime": "8:00 AM",
         "dropoffRoute": "534",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -3284,7 +3294,7 @@
         "schoolId": 9991,
         "schoolName": "Brewer Academy",
         "pickupRoute": "521",
-        "pickupTime": "8:26 AM",
+        "pickupTime": "8:25 AM",
         "dropoffRoute": "521",
         "dropoffTime": "4:32 PM",
         "type": "Pickup & Dropoff"
@@ -3302,7 +3312,7 @@
         "schoolId": 9341,
         "schoolName": "Brenda Scott Academy",
         "pickupRoute": "534",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "534",
         "dropoffTime": "3:50 PM",
         "type": "Pickup & Dropoff"
@@ -3532,7 +3542,7 @@
         "pickupRoute": "544",
         "pickupTime": "8:11 AM",
         "dropoffRoute": "544",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -3550,7 +3560,7 @@
         "pickupRoute": "544",
         "pickupTime": "8:13 AM",
         "dropoffRoute": "544",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -3568,7 +3578,7 @@
         "pickupRoute": "544",
         "pickupTime": "8:14 AM",
         "dropoffRoute": "544",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -3584,7 +3594,7 @@
         "schoolId": 9991,
         "schoolName": "Brewer Academy",
         "pickupRoute": "306",
-        "pickupTime": "8:26 AM",
+        "pickupTime": "8:25 AM",
         "dropoffRoute": "306",
         "dropoffTime": "4:35 PM",
         "type": "Pickup & Dropoff"
@@ -3660,7 +3670,7 @@
         "pickupRoute": "308",
         "pickupTime": "8:12 AM",
         "dropoffRoute": "308",
-        "dropoffTime": "4:48 PM",
+        "dropoffTime": "4:47 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -3778,7 +3788,7 @@
         "schoolId": 9991,
         "schoolName": "Brewer Academy",
         "pickupRoute": "508",
-        "pickupTime": "8:26 AM",
+        "pickupTime": "8:25 AM",
         "dropoffRoute": "508",
         "dropoffTime": "4:40 PM",
         "type": "Pickup & Dropoff"
@@ -3816,7 +3826,7 @@
         "pickupRoute": "508",
         "pickupTime": "8:39 AM",
         "dropoffRoute": "508",
-        "dropoffTime": "4:52 PM",
+        "dropoffTime": "4:51 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -3940,7 +3950,7 @@
         "schoolId": 9991,
         "schoolName": "Brewer Academy",
         "pickupRoute": "513",
-        "pickupTime": "8:24 AM",
+        "pickupTime": "8:23 AM",
         "dropoffRoute": "513",
         "dropoffTime": "4:36 PM",
         "type": "Pickup & Dropoff"
@@ -3958,7 +3968,7 @@
         "schoolId": 9991,
         "schoolName": "Brewer Academy",
         "pickupRoute": "513",
-        "pickupTime": "8:26 AM",
+        "pickupTime": "8:25 AM",
         "dropoffRoute": "513",
         "dropoffTime": "4:39 PM",
         "type": "Pickup & Dropoff"
@@ -3996,7 +4006,7 @@
         "pickupRoute": "521",
         "pickupTime": "8:00 AM",
         "dropoffRoute": "521",
-        "dropoffTime": "4:52 PM",
+        "dropoffTime": "4:51 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -4012,7 +4022,7 @@
         "schoolId": 9991,
         "schoolName": "Brewer Academy",
         "pickupRoute": "521",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "521",
         "dropoffTime": "4:47 PM",
         "type": "Pickup & Dropoff"
@@ -4186,7 +4196,7 @@
         "schoolId": 9991,
         "schoolName": "Brewer Academy",
         "pickupRoute": "525",
-        "pickupTime": "8:25 AM",
+        "pickupTime": "8:24 AM",
         "dropoffRoute": "525",
         "dropoffTime": "4:40 PM",
         "type": "Pickup & Dropoff"
@@ -4404,7 +4414,7 @@
         "schoolId": 446,
         "schoolName": "Bunche Preparatory Academy",
         "pickupRoute": "202",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "202",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -4504,7 +4514,7 @@
         "schoolId": 446,
         "schoolName": "Bunche Preparatory Academy",
         "pickupRoute": "227",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "227",
         "dropoffTime": "3:09 PM",
         "type": "Pickup & Dropoff"
@@ -4696,7 +4706,7 @@
         "schoolId": 446,
         "schoolName": "Bunche Preparatory Academy",
         "pickupRoute": "242",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "242",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -4714,7 +4724,7 @@
         "schoolId": 446,
         "schoolName": "Bunche Preparatory Academy",
         "pickupRoute": "242",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "242",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -4936,7 +4946,7 @@
         "schoolId": 456,
         "schoolName": "Burns Elementary-Middle School",
         "pickupRoute": "612",
-        "pickupTime": "8:25 AM",
+        "pickupTime": "8:24 AM",
         "dropoffRoute": "612",
         "dropoffTime": "4:30 PM",
         "type": "Pickup & Dropoff"
@@ -4948,7 +4958,7 @@
         "pickupRoute": "641",
         "pickupTime": "8:04 AM",
         "dropoffRoute": "641",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -5028,7 +5038,7 @@
         "schoolId": 2036,
         "schoolName": "John R.King Academic and Performing Arts Academy",
         "pickupRoute": "667",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "667",
         "dropoffTime": "3:07 PM",
         "type": "Pickup & Dropoff"
@@ -5048,7 +5058,7 @@
         "pickupRoute": "657",
         "pickupTime": "8:15 AM",
         "dropoffRoute": "657",
-        "dropoffTime": "4:48 PM",
+        "dropoffTime": "4:47 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -5110,7 +5120,7 @@
         "schoolId": 456,
         "schoolName": "Burns Elementary-Middle School",
         "pickupRoute": "657",
-        "pickupTime": "8:26 AM",
+        "pickupTime": "8:25 AM",
         "dropoffRoute": "657",
         "dropoffTime": "4:37 PM",
         "type": "Pickup & Dropoff"
@@ -5198,7 +5208,7 @@
         "pickupRoute": "643",
         "pickupTime": "8:04 AM",
         "dropoffRoute": "643",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -5284,7 +5294,7 @@
         "pickupRoute": "667",
         "pickupTime": "6:40 AM",
         "dropoffRoute": "667",
-        "dropoffTime": "3:22 PM",
+        "dropoffTime": "3:21 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -5402,7 +5412,7 @@
         "schoolId": 456,
         "schoolName": "Burns Elementary-Middle School",
         "pickupRoute": "657",
-        "pickupTime": "8:47 AM",
+        "pickupTime": "8:46 AM",
         "dropoffRoute": "657",
         "dropoffTime": "4:18 PM",
         "type": "Pickup & Dropoff"
@@ -5422,7 +5432,7 @@
         "pickupRoute": "714",
         "pickupTime": "8:13 AM",
         "dropoffRoute": "714",
-        "dropoffTime": "4:49 PM",
+        "dropoffTime": "4:48 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -5432,7 +5442,7 @@
         "pickupRoute": "642",
         "pickupTime": "7:55 AM",
         "dropoffRoute": "642",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -5450,7 +5460,7 @@
         "pickupRoute": "714",
         "pickupTime": "8:15 AM",
         "dropoffRoute": "714",
-        "dropoffTime": "4:52 PM",
+        "dropoffTime": "4:51 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -5512,7 +5522,7 @@
         "schoolId": 456,
         "schoolName": "Burns Elementary-Middle School",
         "pickupRoute": "714",
-        "pickupTime": "8:24 AM",
+        "pickupTime": "8:23 AM",
         "dropoffRoute": "714",
         "dropoffTime": "4:36 PM",
         "type": "Pickup & Dropoff"
@@ -5530,7 +5540,7 @@
         "schoolId": 456,
         "schoolName": "Burns Elementary-Middle School",
         "pickupRoute": "714",
-        "pickupTime": "8:25 AM",
+        "pickupTime": "8:24 AM",
         "dropoffRoute": "714",
         "dropoffTime": "4:41 PM",
         "type": "Pickup & Dropoff"
@@ -5822,7 +5832,7 @@
         "schoolId": 468,
         "schoolName": "Burton International Academy",
         "pickupRoute": "204",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "204",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -6066,7 +6076,7 @@
         "schoolId": 468,
         "schoolName": "Burton International Academy",
         "pickupRoute": "214",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "214",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -6084,7 +6094,7 @@
         "schoolId": 468,
         "schoolName": "Burton International Academy",
         "pickupRoute": "214",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "214",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -6480,7 +6490,7 @@
         "pickupRoute": "525",
         "pickupTime": "6:58 AM",
         "dropoffRoute": "525",
-        "dropoffTime": "3:18 PM",
+        "dropoffTime": "3:17 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -6506,7 +6516,7 @@
         "schoolId": 4349,
         "schoolName": "Fisher Magnet Academy (PreK-4)",
         "pickupRoute": "525",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "525",
         "dropoffTime": "3:15 PM",
         "type": "Pickup & Dropoff"
@@ -6524,7 +6534,7 @@
         "schoolId": 5553,
         "schoolName": "Carleton Elementary School",
         "pickupRoute": "533",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "533",
         "dropoffTime": "3:14 PM",
         "type": "Pickup & Dropoff"
@@ -6600,7 +6610,7 @@
         "pickupRoute": "501",
         "pickupTime": "6:43 AM",
         "dropoffRoute": "501",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -6710,7 +6720,17 @@
         "pickupRoute": "303",
         "pickupTime": "7:53 AM",
         "dropoffRoute": "303",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "228",
+        "pickupTime": "7:07 AM",
+        "dropoffRoute": "228",
+        "dropoffTime": "4:01 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -6746,7 +6766,7 @@
         "pickupRoute": "303",
         "pickupTime": "7:58 AM",
         "dropoffRoute": "303",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -6780,7 +6800,7 @@
         "schoolId": 542,
         "schoolName": "Carstens Academy of Aquatic Science at Remus ",
         "pickupRoute": "303",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "303",
         "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
@@ -6801,6 +6821,16 @@
         "pickupTime": "8:07 AM",
         "dropoffRoute": "303",
         "dropoffTime": "3:59 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "228",
+        "pickupTime": "7:03 AM",
+        "dropoffRoute": "228",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -6908,7 +6938,7 @@
         "pickupRoute": "307",
         "pickupTime": "7:44 AM",
         "dropoffRoute": "307",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -6926,7 +6956,7 @@
         "pickupRoute": "307",
         "pickupTime": "7:49 AM",
         "dropoffRoute": "307",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -7014,7 +7044,7 @@
         "schoolId": 542,
         "schoolName": "Carstens Academy of Aquatic Science at Remus ",
         "pickupRoute": "307",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "307",
         "dropoffTime": "4:21 PM",
         "type": "Pickup & Dropoff"
@@ -7052,7 +7082,7 @@
         "pickupRoute": "312",
         "pickupTime": "7:35 AM",
         "dropoffRoute": "312",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -7068,7 +7098,7 @@
         "schoolId": 542,
         "schoolName": "Carstens Academy of Aquatic Science at Remus ",
         "pickupRoute": "312",
-        "pickupTime": "7:40 AM",
+        "pickupTime": "7:39 AM",
         "dropoffRoute": "312",
         "dropoffTime": "3:54 PM",
         "type": "Pickup & Dropoff"
@@ -7144,6 +7174,16 @@
         "dropoffRoute": "312",
         "dropoffTime": "4:18 PM",
         "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:00 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "4:02 PM",
+        "type": "Pickup & Dropoff"
       }
     ]
   },
@@ -7170,7 +7210,7 @@
         "pickupRoute": "533",
         "pickupTime": "8:10 AM",
         "dropoffRoute": "533",
-        "dropoffTime": "4:50 PM",
+        "dropoffTime": "4:49 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -7200,6 +7240,16 @@
         "dropoffRoute": "312",
         "dropoffTime": "4:27 PM",
         "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:04 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "4:04 PM",
+        "type": "Pickup & Dropoff"
       }
     ]
   },
@@ -7226,7 +7276,7 @@
         "pickupRoute": "533",
         "pickupTime": "8:08 AM",
         "dropoffRoute": "533",
-        "dropoffTime": "4:52 PM",
+        "dropoffTime": "4:51 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -7288,7 +7338,7 @@
         "schoolId": 546,
         "schoolName": "Carver STEM Academy",
         "pickupRoute": "407",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "407",
         "dropoffTime": "2:52 PM",
         "type": "Pickup & Dropoff"
@@ -7388,7 +7438,7 @@
         "schoolId": 546,
         "schoolName": "Carver STEM Academy",
         "pickupRoute": "601",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "601",
         "dropoffTime": "3:02 PM",
         "type": "Pickup & Dropoff"
@@ -7408,7 +7458,7 @@
         "schoolId": 4,
         "schoolName": "Henderson Academy",
         "pickupRoute": "606",
-        "pickupTime": "8:47 AM",
+        "pickupTime": "8:46 AM",
         "dropoffRoute": "606",
         "dropoffTime": "4:19 PM",
         "type": "Pickup & Dropoff"
@@ -7448,7 +7498,7 @@
         "pickupRoute": "635",
         "pickupTime": "8:09 AM",
         "dropoffRoute": "635",
-        "dropoffTime": "4:50 PM",
+        "dropoffTime": "4:49 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -7570,7 +7620,7 @@
         "pickupRoute": "608",
         "pickupTime": "7:50 AM",
         "dropoffRoute": "608",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -7624,7 +7674,7 @@
         "schoolId": 18,
         "schoolName": "Cody High School",
         "pickupRoute": "253",
-        "pickupTime": "7:17 AM",
+        "pickupTime": "7:16 AM",
         "dropoffRoute": "253",
         "dropoffTime": "3:47 PM",
         "type": "Pickup & Dropoff"
@@ -7660,7 +7710,7 @@
         "schoolId": 546,
         "schoolName": "Carver STEM Academy",
         "pickupRoute": "602",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "602",
         "dropoffTime": "3:07 PM",
         "type": "Pickup & Dropoff"
@@ -7844,7 +7894,7 @@
         "pickupRoute": "654",
         "pickupTime": "6:49 AM",
         "dropoffRoute": "654",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -7872,7 +7922,7 @@
         "pickupRoute": "654",
         "pickupTime": "6:51 AM",
         "dropoffRoute": "654",
-        "dropoffTime": "3:21 PM",
+        "dropoffTime": "3:20 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -7888,7 +7938,7 @@
         "schoolId": 9125,
         "schoolName": "Charles Wright Academy of Arts and Science",
         "pickupRoute": "654",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "654",
         "dropoffTime": "3:12 PM",
         "type": "Pickup & Dropoff"
@@ -8018,6 +8068,16 @@
         "dropoffRoute": "655",
         "dropoffTime": "3:09 PM",
         "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6003",
+        "pickupTime": "7:09 AM",
+        "dropoffRoute": "6003",
+        "dropoffTime": "3:56 PM",
+        "type": "Pickup & Dropoff"
       }
     ]
   },
@@ -8088,7 +8148,7 @@
         "pickupRoute": "655",
         "pickupTime": "6:52 AM",
         "dropoffRoute": "655",
-        "dropoffTime": "3:22 PM",
+        "dropoffTime": "3:21 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -8096,7 +8156,7 @@
         "schoolId": 1438,
         "schoolName": "Gompers Elementary-Middle School",
         "pickupRoute": "640",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "640",
         "dropoffTime": "3:09 PM",
         "type": "Pickup & Dropoff"
@@ -8114,9 +8174,9 @@
         "schoolId": 9125,
         "schoolName": "Charles Wright Academy of Arts and Science",
         "pickupRoute": "655",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "655",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -8181,6 +8241,16 @@
         "pickupTime": "7:01 AM",
         "dropoffRoute": "655",
         "dropoffTime": "2:56 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6003",
+        "pickupTime": "7:05 AM",
+        "dropoffRoute": "6003",
+        "dropoffTime": "4:00 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -8406,7 +8476,7 @@
         "pickupRoute": "656",
         "pickupTime": "7:03 AM",
         "dropoffRoute": "656",
-        "dropoffTime": "3:18 PM",
+        "dropoffTime": "3:17 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -8424,7 +8494,17 @@
         "pickupRoute": "656",
         "pickupTime": "7:05 AM",
         "dropoffRoute": "656",
-        "dropoffTime": "3:21 PM",
+        "dropoffTime": "3:20 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6004",
+        "pickupTime": "7:30 AM",
+        "dropoffRoute": "6004",
+        "dropoffTime": "3:37 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -8476,7 +8556,7 @@
         "schoolId": 9125,
         "schoolName": "Charles Wright Academy of Arts and Science",
         "pickupRoute": "657",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "657",
         "dropoffTime": "3:13 PM",
         "type": "Pickup & Dropoff"
@@ -8624,6 +8704,16 @@
         "dropoffRoute": "692",
         "dropoffTime": "2:48 PM",
         "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6004",
+        "pickupTime": "7:11 AM",
+        "dropoffRoute": "6004",
+        "dropoffTime": "3:57 PM",
+        "type": "Pickup & Dropoff"
       }
     ]
   },
@@ -8678,6 +8768,16 @@
         "dropoffRoute": "692",
         "dropoffTime": "2:56 PM",
         "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6004",
+        "pickupTime": "7:13 AM",
+        "dropoffRoute": "6004",
+        "dropoffTime": "3:52 PM",
+        "type": "Pickup & Dropoff"
       }
     ]
   },
@@ -8710,7 +8810,7 @@
         "schoolId": 9125,
         "schoolName": "Charles Wright Academy of Arts and Science",
         "pickupRoute": "692",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "692",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -8728,7 +8828,7 @@
         "schoolId": 9125,
         "schoolName": "Charles Wright Academy of Arts and Science",
         "pickupRoute": "692",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "692",
         "dropoffTime": "3:04 PM",
         "type": "Pickup & Dropoff"
@@ -8838,7 +8938,7 @@
         "pickupRoute": "692",
         "pickupTime": "7:09 AM",
         "dropoffRoute": "692",
-        "dropoffTime": "3:20 PM",
+        "dropoffTime": "3:19 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -8872,7 +8972,7 @@
         "schoolId": 9125,
         "schoolName": "Charles Wright Academy of Arts and Science",
         "pickupRoute": "770",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "770",
         "dropoffTime": "3:11 PM",
         "type": "Pickup & Dropoff"
@@ -8921,6 +9021,16 @@
         "pickupTime": "7:00 AM",
         "dropoffRoute": "770",
         "dropoffTime": "3:07 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6004",
+        "pickupTime": "7:37 AM",
+        "dropoffRoute": "6004",
+        "dropoffTime": "3:32 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -9036,7 +9146,7 @@
         "schoolId": 3717,
         "schoolName": "Coleman A. Young Elementary School",
         "pickupRoute": "641",
-        "pickupTime": "7:39 AM",
+        "pickupTime": "7:38 AM",
         "dropoffRoute": "641",
         "dropoffTime": "4:21 PM",
         "type": "Pickup & Dropoff"
@@ -9048,7 +9158,7 @@
         "pickupRoute": "645",
         "pickupTime": "8:19 AM",
         "dropoffRoute": "645",
-        "dropoffTime": "4:50 PM",
+        "dropoffTime": "4:49 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -9074,7 +9184,7 @@
         "schoolId": 2036,
         "schoolName": "John R.King Academic and Performing Arts Academy",
         "pickupRoute": "643",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "643",
         "dropoffTime": "2:48 PM",
         "type": "Pickup & Dropoff"
@@ -9196,7 +9306,7 @@
         "pickupRoute": "641",
         "pickupTime": "8:07 AM",
         "dropoffRoute": "641",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -9224,7 +9334,7 @@
         "pickupRoute": "667",
         "pickupTime": "6:43 AM",
         "dropoffRoute": "667",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -9288,7 +9398,7 @@
         "pickupRoute": "643",
         "pickupTime": "8:06 AM",
         "dropoffRoute": "643",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -9380,7 +9490,7 @@
         "schoolId": 2036,
         "schoolName": "John R.King Academic and Performing Arts Academy",
         "pickupRoute": "645",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "645",
         "dropoffTime": "3:00 PM",
         "type": "Pickup & Dropoff"
@@ -9436,7 +9546,7 @@
         "pickupRoute": "776",
         "pickupTime": "6:42 AM",
         "dropoffRoute": "776",
-        "dropoffTime": "3:22 PM",
+        "dropoffTime": "3:21 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -9488,7 +9598,7 @@
         "schoolId": 781,
         "schoolName": "Cooke STEM Academy",
         "pickupRoute": "776",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "776",
         "dropoffTime": "3:09 PM",
         "type": "Pickup & Dropoff"
@@ -9498,7 +9608,7 @@
         "schoolId": 1134,
         "schoolName": "Emerson Elementary-Middle School",
         "pickupRoute": "624",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "624",
         "dropoffTime": "3:11 PM",
         "type": "Pickup & Dropoff"
@@ -9938,7 +10048,7 @@
         "schoolId": 39,
         "schoolName": "Detroit International Academy for Young Women",
         "pickupRoute": "537",
-        "pickupTime": "7:18 AM",
+        "pickupTime": "7:17 AM",
         "dropoffRoute": "537",
         "dropoffTime": "3:40 PM",
         "type": "Pickup & Dropoff"
@@ -9966,7 +10076,7 @@
         "schoolId": 3015,
         "schoolName": "Pershing High School",
         "pickupRoute": "352",
-        "pickupTime": "7:17 AM",
+        "pickupTime": "7:16 AM",
         "dropoffRoute": "352",
         "dropoffTime": "3:49 PM",
         "type": "Pickup & Dropoff"
@@ -10004,7 +10114,7 @@
         "pickupRoute": "505",
         "pickupTime": "6:39 AM",
         "dropoffRoute": "505",
-        "dropoffTime": "3:20 PM",
+        "dropoffTime": "3:19 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -10012,7 +10122,7 @@
         "schoolId": 2431,
         "schoolName": "Mason Academy",
         "pickupRoute": "545",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "545",
         "dropoffTime": "3:59 PM",
         "type": "Pickup & Dropoff"
@@ -10084,7 +10194,7 @@
         "schoolId": 880,
         "schoolName": "Davison Elementary-Middle School",
         "pickupRoute": "505",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "505",
         "dropoffTime": "3:07 PM",
         "type": "Pickup & Dropoff"
@@ -10412,7 +10522,7 @@
         "schoolId": 880,
         "schoolName": "Davison Elementary-Middle School",
         "pickupRoute": "558",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "558",
         "dropoffTime": "3:04 PM",
         "type": "Pickup & Dropoff"
@@ -10550,7 +10660,7 @@
         "schoolId": 39,
         "schoolName": "Detroit International Academy for Young Women",
         "pickupRoute": "537",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "537",
         "dropoffTime": "3:59 PM",
         "type": "Pickup & Dropoff"
@@ -10560,7 +10670,7 @@
         "schoolId": 176,
         "schoolName": "Golightly Education Center",
         "pickupRoute": "201",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "201",
         "dropoffTime": "3:04 PM",
         "type": "Pickup & Dropoff"
@@ -10598,7 +10708,7 @@
         "pickupRoute": "537",
         "pickupTime": "6:59 AM",
         "dropoffRoute": "537",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -10718,7 +10828,7 @@
         "pickupRoute": "240",
         "pickupTime": "8:34 AM",
         "dropoffRoute": "240",
-        "dropoffTime": "4:48 PM",
+        "dropoffTime": "4:47 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -10788,7 +10898,7 @@
         "schoolId": 7794,
         "schoolName": "Detroit School of Arts",
         "pickupRoute": "206",
-        "pickupTime": "7:18 AM",
+        "pickupTime": "7:17 AM",
         "dropoffRoute": "206",
         "dropoffTime": "3:43 PM",
         "type": "Pickup & Dropoff"
@@ -10834,7 +10944,7 @@
         "schoolId": 4,
         "schoolName": "Henderson Academy",
         "pickupRoute": "667",
-        "pickupTime": "8:47 AM",
+        "pickupTime": "8:46 AM",
         "dropoffRoute": "667",
         "dropoffTime": "4:18 PM",
         "type": "Pickup & Dropoff"
@@ -10844,7 +10954,7 @@
         "schoolId": 2341,
         "schoolName": "Mann Learning Community",
         "pickupRoute": "409",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "409",
         "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
@@ -11008,7 +11118,7 @@
         "pickupRoute": "605",
         "pickupTime": "6:39 AM",
         "dropoffRoute": "605",
-        "dropoffTime": "3:22 PM",
+        "dropoffTime": "3:21 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -11234,7 +11344,7 @@
         "pickupRoute": "608",
         "pickupTime": "6:41 AM",
         "dropoffRoute": "608",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -11380,7 +11490,7 @@
         "schoolId": 925,
         "schoolName": "Dixon Educational Learning Academy",
         "pickupRoute": "608",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "608",
         "dropoffTime": "3:09 PM",
         "type": "Pickup & Dropoff"
@@ -11526,7 +11636,7 @@
         "schoolId": 925,
         "schoolName": "Dixon Educational Learning Academy",
         "pickupRoute": "609",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "609",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -11538,7 +11648,7 @@
         "pickupRoute": "606",
         "pickupTime": "8:17 AM",
         "dropoffRoute": "606",
-        "dropoffTime": "4:52 PM",
+        "dropoffTime": "4:51 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -11630,7 +11740,7 @@
         "pickupRoute": "407",
         "pickupTime": "7:48 AM",
         "dropoffRoute": "407",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -11664,7 +11774,7 @@
         "schoolId": 925,
         "schoolName": "Dixon Educational Learning Academy",
         "pickupRoute": "630",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "630",
         "dropoffTime": "3:09 PM",
         "type": "Pickup & Dropoff"
@@ -11794,7 +11904,7 @@
         "pickupRoute": "693",
         "pickupTime": "6:40 AM",
         "dropoffRoute": "693",
-        "dropoffTime": "3:18 PM",
+        "dropoffTime": "3:17 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -11922,7 +12032,7 @@
         "pickupRoute": "693",
         "pickupTime": "8:11 AM",
         "dropoffRoute": "693",
-        "dropoffTime": "4:50 PM",
+        "dropoffTime": "4:49 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -12038,7 +12148,7 @@
         "schoolId": 939,
         "schoolName": "Dossin Elementary-Middle School",
         "pickupRoute": "642",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "642",
         "dropoffTime": "4:17 PM",
         "type": "Pickup & Dropoff"
@@ -12048,7 +12158,7 @@
         "schoolId": 1084,
         "schoolName": "Edison Elementary School",
         "pickupRoute": "690",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "690",
         "dropoffTime": "3:03 PM",
         "type": "Pickup & Dropoff"
@@ -12168,7 +12278,7 @@
         "pickupRoute": "654",
         "pickupTime": "7:46 AM",
         "dropoffRoute": "654",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -12196,7 +12306,7 @@
         "pickupRoute": "654",
         "pickupTime": "7:47 AM",
         "dropoffRoute": "654",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -12270,7 +12380,7 @@
         "pickupRoute": "635",
         "pickupTime": "6:58 AM",
         "dropoffRoute": "635",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -12394,7 +12504,7 @@
         "schoolId": 3737,
         "schoolName": "Edward 'Duke' Ellington Conservatory of Music & Art at Beckham Academy",
         "pickupRoute": "210",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "210",
         "dropoffTime": "3:06 PM",
         "type": "Pickup & Dropoff"
@@ -12486,7 +12596,7 @@
         "pickupRoute": "232",
         "pickupTime": "6:36 AM",
         "dropoffRoute": "232",
-        "dropoffTime": "3:22 PM",
+        "dropoffTime": "3:21 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -12504,7 +12614,7 @@
         "pickupRoute": "232",
         "pickupTime": "6:40 AM",
         "dropoffRoute": "232",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -12584,7 +12694,7 @@
         "schoolId": 4349,
         "schoolName": "Fisher Magnet Academy (PreK-4)",
         "pickupRoute": "3005",
-        "pickupTime": "6:33 AM",
+        "pickupTime": "6:32 AM",
         "dropoffRoute": "3005",
         "dropoffTime": "3:15 PM",
         "type": "Pickup & Dropoff"
@@ -12638,7 +12748,7 @@
         "schoolId": 3737,
         "schoolName": "Edward 'Duke' Ellington Conservatory of Music & Art at Beckham Academy",
         "pickupRoute": "232",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "232",
         "dropoffTime": "2:59 PM",
         "type": "Pickup & Dropoff"
@@ -12828,7 +12938,7 @@
         "schoolId": 975,
         "schoolName": "Durfee Elementary-Middle School",
         "pickupRoute": "219",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "219",
         "dropoffTime": "3:03 PM",
         "type": "Pickup & Dropoff"
@@ -12846,7 +12956,7 @@
         "schoolId": 975,
         "schoolName": "Durfee Elementary-Middle School",
         "pickupRoute": "219",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "219",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -13020,7 +13130,7 @@
         "schoolId": 975,
         "schoolName": "Durfee Elementary-Middle School",
         "pickupRoute": "223",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "223",
         "dropoffTime": "3:02 PM",
         "type": "Pickup & Dropoff"
@@ -13038,7 +13148,7 @@
         "schoolId": 975,
         "schoolName": "Durfee Elementary-Middle School",
         "pickupRoute": "223",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "223",
         "dropoffTime": "3:03 PM",
         "type": "Pickup & Dropoff"
@@ -13228,7 +13338,7 @@
         "schoolId": 975,
         "schoolName": "Durfee Elementary-Middle School",
         "pickupRoute": "224",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "224",
         "dropoffTime": "3:13 PM",
         "type": "Pickup & Dropoff"
@@ -13246,7 +13356,7 @@
         "schoolId": 975,
         "schoolName": "Durfee Elementary-Middle School",
         "pickupRoute": "224",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "224",
         "dropoffTime": "3:15 PM",
         "type": "Pickup & Dropoff"
@@ -13356,7 +13466,7 @@
         "schoolId": 857,
         "schoolName": "Thurgood Marshall Elementary School",
         "pickupRoute": "661",
-        "pickupTime": "8:25 AM",
+        "pickupTime": "8:24 AM",
         "dropoffRoute": "661",
         "dropoffTime": "4:36 PM",
         "type": "Pickup & Dropoff"
@@ -13402,7 +13512,7 @@
         "schoolId": 975,
         "schoolName": "Durfee Elementary-Middle School",
         "pickupRoute": "225",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "225",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -13494,7 +13604,7 @@
         "schoolId": 975,
         "schoolName": "Durfee Elementary-Middle School",
         "pickupRoute": "229",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "229",
         "dropoffTime": "3:03 PM",
         "type": "Pickup & Dropoff"
@@ -13512,7 +13622,7 @@
         "schoolId": 975,
         "schoolName": "Durfee Elementary-Middle School",
         "pickupRoute": "229",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "229",
         "dropoffTime": "3:00 PM",
         "type": "Pickup & Dropoff"
@@ -13658,7 +13768,7 @@
         "schoolId": 975,
         "schoolName": "Durfee Elementary-Middle School",
         "pickupRoute": "661",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "661",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -13848,7 +13958,7 @@
         "schoolId": 860,
         "schoolName": "Earhart Elementary-Middle School",
         "pickupRoute": "211",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "211",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -13866,7 +13976,7 @@
         "schoolId": 860,
         "schoolName": "Earhart Elementary-Middle School",
         "pickupRoute": "211",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "211",
         "dropoffTime": "3:00 PM",
         "type": "Pickup & Dropoff"
@@ -14038,7 +14148,7 @@
         "schoolId": 860,
         "schoolName": "Earhart Elementary-Middle School",
         "pickupRoute": "212",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "212",
         "dropoffTime": "3:03 PM",
         "type": "Pickup & Dropoff"
@@ -14056,7 +14166,7 @@
         "schoolId": 860,
         "schoolName": "Earhart Elementary-Middle School",
         "pickupRoute": "212",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "212",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -14240,7 +14350,7 @@
         "schoolId": 860,
         "schoolName": "Earhart Elementary-Middle School",
         "pickupRoute": "217",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "217",
         "dropoffTime": "3:02 PM",
         "type": "Pickup & Dropoff"
@@ -14322,7 +14432,7 @@
         "schoolId": 860,
         "schoolName": "Earhart Elementary-Middle School",
         "pickupRoute": "221",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "221",
         "dropoffTime": "3:02 PM",
         "type": "Pickup & Dropoff"
@@ -14430,7 +14540,7 @@
         "schoolId": 860,
         "schoolName": "Earhart Elementary-Middle School",
         "pickupRoute": "703",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "703",
         "dropoffTime": "3:03 PM",
         "type": "Pickup & Dropoff"
@@ -14458,9 +14568,9 @@
         "schoolId": 3123,
         "schoolName": "Priest Elementary-Middle School",
         "pickupRoute": "703",
-        "pickupTime": "7:40 AM",
+        "pickupTime": "7:39 AM",
         "dropoffRoute": "703",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -14504,7 +14614,7 @@
         "schoolId": 4477,
         "schoolName": "Western International High School",
         "pickupRoute": "230",
-        "pickupTime": "7:17 AM",
+        "pickupTime": "7:16 AM",
         "dropoffRoute": "230",
         "dropoffTime": "3:36 PM",
         "type": "Pickup & Dropoff"
@@ -14612,7 +14722,7 @@
         "schoolId": 860,
         "schoolName": "Earhart Elementary-Middle School",
         "pickupRoute": "761",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "761",
         "dropoffTime": "2:55 PM",
         "type": "Pickup & Dropoff"
@@ -14786,7 +14896,7 @@
         "schoolId": 860,
         "schoolName": "Earhart Elementary-Middle School",
         "pickupRoute": "777",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "777",
         "dropoffTime": "3:03 PM",
         "type": "Pickup & Dropoff"
@@ -14804,7 +14914,7 @@
         "schoolId": 860,
         "schoolName": "Earhart Elementary-Middle School",
         "pickupRoute": "777",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "777",
         "dropoffTime": "3:06 PM",
         "type": "Pickup & Dropoff"
@@ -14922,7 +15032,7 @@
         "schoolId": 860,
         "schoolName": "Earhart Elementary-Middle School",
         "pickupRoute": "778",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "778",
         "dropoffTime": "2:51 PM",
         "type": "Pickup & Dropoff"
@@ -14952,7 +15062,7 @@
         "pickupRoute": "217",
         "pickupTime": "7:46 AM",
         "dropoffRoute": "217",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -15022,7 +15132,7 @@
         "schoolId": 1084,
         "schoolName": "Edison Elementary School",
         "pickupRoute": "690",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "690",
         "dropoffTime": "3:08 PM",
         "type": "Pickup & Dropoff"
@@ -15076,7 +15186,7 @@
         "schoolId": 1134,
         "schoolName": "Emerson Elementary-Middle School",
         "pickupRoute": "615",
-        "pickupTime": "6:33 AM",
+        "pickupTime": "6:32 AM",
         "dropoffRoute": "615",
         "dropoffTime": "2:56 PM",
         "type": "Pickup & Dropoff"
@@ -15230,7 +15340,7 @@
         "schoolId": 1134,
         "schoolName": "Emerson Elementary-Middle School",
         "pickupRoute": "616",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "616",
         "dropoffTime": "3:02 PM",
         "type": "Pickup & Dropoff"
@@ -15356,7 +15466,7 @@
         "schoolId": 1134,
         "schoolName": "Emerson Elementary-Middle School",
         "pickupRoute": "617",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "617",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -15377,6 +15487,16 @@
         "pickupTime": "6:58 AM",
         "dropoffRoute": "617",
         "dropoffTime": "3:02 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6003",
+        "pickupTime": "7:26 AM",
+        "dropoffRoute": "6003",
+        "dropoffTime": "3:43 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -15466,7 +15586,7 @@
         "pickupRoute": "623",
         "pickupTime": "6:35 AM",
         "dropoffRoute": "623",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -15672,7 +15792,7 @@
         "schoolId": 1134,
         "schoolName": "Emerson Elementary-Middle School",
         "pickupRoute": "625",
-        "pickupTime": "6:33 AM",
+        "pickupTime": "6:32 AM",
         "dropoffRoute": "625",
         "dropoffTime": "2:54 PM",
         "type": "Pickup & Dropoff"
@@ -15744,7 +15864,7 @@
         "schoolId": 1134,
         "schoolName": "Emerson Elementary-Middle School",
         "pickupRoute": "625",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "625",
         "dropoffTime": "3:09 PM",
         "type": "Pickup & Dropoff"
@@ -15962,7 +16082,7 @@
         "pickupRoute": "628",
         "pickupTime": "6:28 AM",
         "dropoffRoute": "628",
-        "dropoffTime": "3:22 PM",
+        "dropoffTime": "3:21 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -16062,7 +16182,7 @@
         "pickupRoute": "645",
         "pickupTime": "6:36 AM",
         "dropoffRoute": "645",
-        "dropoffTime": "3:20 PM",
+        "dropoffTime": "3:19 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -16106,7 +16226,7 @@
         "schoolId": 4292,
         "schoolName": "Vernor Elementary-Middle School",
         "pickupRoute": "611",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "611",
         "dropoffTime": "3:02 PM",
         "type": "Pickup & Dropoff"
@@ -16214,7 +16334,7 @@
         "schoolId": 4349,
         "schoolName": "Fisher Magnet Academy (PreK-4)",
         "pickupRoute": "518",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "518",
         "dropoffTime": "3:12 PM",
         "type": "Pickup & Dropoff"
@@ -16414,7 +16534,7 @@
         "pickupRoute": "521",
         "pickupTime": "7:13 AM",
         "dropoffRoute": "521",
-        "dropoffTime": "3:18 PM",
+        "dropoffTime": "3:17 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -16430,7 +16550,7 @@
         "schoolId": 4349,
         "schoolName": "Fisher Magnet Academy (PreK-4)",
         "pickupRoute": "524",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "524",
         "dropoffTime": "3:12 PM",
         "type": "Pickup & Dropoff"
@@ -16576,7 +16696,7 @@
         "pickupRoute": "525",
         "pickupTime": "7:00 AM",
         "dropoffRoute": "525",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -16712,7 +16832,7 @@
         "pickupRoute": "529",
         "pickupTime": "6:52 AM",
         "dropoffRoute": "529",
-        "dropoffTime": "3:20 PM",
+        "dropoffTime": "3:19 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -16874,7 +16994,7 @@
         "pickupRoute": "534",
         "pickupTime": "6:52 AM",
         "dropoffRoute": "534",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -16890,7 +17010,7 @@
         "schoolId": 4349,
         "schoolName": "Fisher Magnet Academy (PreK-4)",
         "pickupRoute": "534",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "534",
         "dropoffTime": "3:15 PM",
         "type": "Pickup & Dropoff"
@@ -17000,7 +17120,7 @@
         "pickupRoute": "541",
         "pickupTime": "6:34 AM",
         "dropoffRoute": "541",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -17180,7 +17300,7 @@
         "schoolId": 3130,
         "schoolName": "Pulaski Elementary-Middle School",
         "pickupRoute": "531",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "531",
         "dropoffTime": "2:52 PM",
         "type": "Pickup & Dropoff"
@@ -17219,6 +17339,16 @@
         "pickupTime": "6:51 AM",
         "dropoffRoute": "3016",
         "dropoffTime": "3:11 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:19 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "3:48 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -17270,7 +17400,7 @@
         "schoolId": 1362,
         "schoolName": "Gardner Elementary School",
         "pickupRoute": "602",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "602",
         "dropoffTime": "3:58 PM",
         "type": "Pickup & Dropoff"
@@ -17290,7 +17420,7 @@
         "pickupRoute": "602",
         "pickupTime": "8:06 AM",
         "dropoffRoute": "602",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -17308,7 +17438,7 @@
         "pickupRoute": "602",
         "pickupTime": "8:08 AM",
         "dropoffRoute": "602",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -17382,7 +17512,7 @@
         "pickupRoute": "608",
         "pickupTime": "7:49 AM",
         "dropoffRoute": "608",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -17510,7 +17640,7 @@
         "schoolId": 1362,
         "schoolName": "Gardner Elementary School",
         "pickupRoute": "608",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "608",
         "dropoffTime": "3:55 PM",
         "type": "Pickup & Dropoff"
@@ -17540,7 +17670,7 @@
         "pickupRoute": "240",
         "pickupTime": "8:30 AM",
         "dropoffRoute": "240",
-        "dropoffTime": "4:50 PM",
+        "dropoffTime": "4:49 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -17576,7 +17706,7 @@
         "pickupRoute": "201",
         "pickupTime": "6:42 AM",
         "dropoffRoute": "201",
-        "dropoffTime": "3:21 PM",
+        "dropoffTime": "3:20 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -17612,7 +17742,7 @@
         "pickupRoute": "201",
         "pickupTime": "6:49 AM",
         "dropoffRoute": "201",
-        "dropoffTime": "3:18 PM",
+        "dropoffTime": "3:17 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -17646,7 +17776,7 @@
         "schoolId": 176,
         "schoolName": "Golightly Education Center",
         "pickupRoute": "201",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "201",
         "dropoffTime": "3:10 PM",
         "type": "Pickup & Dropoff"
@@ -17664,7 +17794,7 @@
         "schoolId": 176,
         "schoolName": "Golightly Education Center",
         "pickupRoute": "201",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "201",
         "dropoffTime": "3:07 PM",
         "type": "Pickup & Dropoff"
@@ -17826,7 +17956,7 @@
         "schoolId": 176,
         "schoolName": "Golightly Education Center",
         "pickupRoute": "203",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "203",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -17872,7 +18002,7 @@
         "schoolId": 3558,
         "schoolName": "Spain Elementary-Middle School",
         "pickupRoute": "205",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "205",
         "dropoffTime": "3:06 PM",
         "type": "Pickup & Dropoff"
@@ -17962,7 +18092,7 @@
         "schoolId": 1438,
         "schoolName": "Gompers Elementary-Middle School",
         "pickupRoute": "610",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "610",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -17972,9 +18102,9 @@
         "schoolId": 18,
         "schoolName": "Cody High School",
         "pickupRoute": "255",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "255",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -18020,7 +18150,7 @@
         "pickupRoute": "251",
         "pickupTime": "6:58 AM",
         "dropoffRoute": "251",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -18054,7 +18184,7 @@
         "schoolId": 1438,
         "schoolName": "Gompers Elementary-Middle School",
         "pickupRoute": "633",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "633",
         "dropoffTime": "3:08 PM",
         "type": "Pickup & Dropoff"
@@ -18072,7 +18202,7 @@
         "schoolId": 1438,
         "schoolName": "Gompers Elementary-Middle School",
         "pickupRoute": "633",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "633",
         "dropoffTime": "2:51 PM",
         "type": "Pickup & Dropoff"
@@ -18198,7 +18328,7 @@
         "schoolId": 1438,
         "schoolName": "Gompers Elementary-Middle School",
         "pickupRoute": "635",
-        "pickupTime": "6:32 AM",
+        "pickupTime": "6:31 AM",
         "dropoffRoute": "635",
         "dropoffTime": "3:27 PM",
         "type": "Pickup & Dropoff"
@@ -18270,7 +18400,7 @@
         "schoolId": 1438,
         "schoolName": "Gompers Elementary-Middle School",
         "pickupRoute": "635",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "635",
         "dropoffTime": "3:10 PM",
         "type": "Pickup & Dropoff"
@@ -18288,7 +18418,7 @@
         "schoolId": 1438,
         "schoolName": "Gompers Elementary-Middle School",
         "pickupRoute": "635",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "635",
         "dropoffTime": "3:11 PM",
         "type": "Pickup & Dropoff"
@@ -18398,7 +18528,7 @@
         "pickupRoute": "640",
         "pickupTime": "6:38 AM",
         "dropoffRoute": "640",
-        "dropoffTime": "3:20 PM",
+        "dropoffTime": "3:19 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -18558,7 +18688,7 @@
         "schoolId": 1438,
         "schoolName": "Gompers Elementary-Middle School",
         "pickupRoute": "665",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "665",
         "dropoffTime": "3:10 PM",
         "type": "Pickup & Dropoff"
@@ -18720,7 +18850,7 @@
         "schoolId": 1438,
         "schoolName": "Gompers Elementary-Middle School",
         "pickupRoute": "695",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "695",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -18810,7 +18940,7 @@
         "schoolId": 1438,
         "schoolName": "Gompers Elementary-Middle School",
         "pickupRoute": "714",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "714",
         "dropoffTime": "3:00 PM",
         "type": "Pickup & Dropoff"
@@ -18828,7 +18958,7 @@
         "schoolId": 1438,
         "schoolName": "Gompers Elementary-Middle School",
         "pickupRoute": "714",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "714",
         "dropoffTime": "3:02 PM",
         "type": "Pickup & Dropoff"
@@ -18984,7 +19114,7 @@
         "pickupRoute": "514",
         "pickupTime": "7:57 AM",
         "dropoffRoute": "514",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -19002,7 +19132,17 @@
         "pickupRoute": "514",
         "pickupTime": "8:00 AM",
         "dropoffRoute": "514",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "228",
+        "pickupTime": "7:20 AM",
+        "dropoffRoute": "228",
+        "dropoffTime": "3:51 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -19018,7 +19158,7 @@
         "schoolId": 9994,
         "schoolName": "Hamilton Elementary-Middle School",
         "pickupRoute": "514",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "514",
         "dropoffTime": "4:00 PM",
         "type": "Pickup & Dropoff"
@@ -19039,6 +19179,16 @@
         "pickupTime": "8:05 AM",
         "dropoffRoute": "514",
         "dropoffTime": "4:01 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "228",
+        "pickupTime": "7:24 AM",
+        "dropoffRoute": "228",
+        "dropoffTime": "3:48 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -19093,6 +19243,16 @@
         "pickupTime": "8:08 AM",
         "dropoffRoute": "517",
         "dropoffTime": "3:49 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:16 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "3:54 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -19262,7 +19422,7 @@
         "schoolId": 4,
         "schoolName": "Henderson Academy",
         "pickupRoute": "237",
-        "pickupTime": "8:26 AM",
+        "pickupTime": "8:25 AM",
         "dropoffRoute": "237",
         "dropoffTime": "4:46 PM",
         "type": "Pickup & Dropoff"
@@ -19436,7 +19596,7 @@
         "pickupRoute": "410",
         "pickupTime": "8:19 AM",
         "dropoffRoute": "410",
-        "dropoffTime": "4:51 PM",
+        "dropoffTime": "4:50 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -19452,7 +19612,7 @@
         "schoolId": 4,
         "schoolName": "Henderson Academy",
         "pickupRoute": "410",
-        "pickupTime": "8:24 AM",
+        "pickupTime": "8:23 AM",
         "dropoffRoute": "410",
         "dropoffTime": "4:42 PM",
         "type": "Pickup & Dropoff"
@@ -19464,7 +19624,7 @@
         "pickupRoute": "625",
         "pickupTime": "7:56 AM",
         "dropoffRoute": "625",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -19582,7 +19742,7 @@
         "pickupRoute": "606",
         "pickupTime": "8:18 AM",
         "dropoffRoute": "606",
-        "dropoffTime": "4:48 PM",
+        "dropoffTime": "4:47 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -19598,7 +19758,7 @@
         "schoolId": 4,
         "schoolName": "Henderson Academy",
         "pickupRoute": "606",
-        "pickupTime": "8:26 AM",
+        "pickupTime": "8:25 AM",
         "dropoffRoute": "606",
         "dropoffTime": "4:35 PM",
         "type": "Pickup & Dropoff"
@@ -19679,9 +19839,9 @@
         "school": "HENDERSON ES/MS",
         "schoolId": 4,
         "schoolName": "Henderson Academy",
-        "pickupRoute": "632",
+        "pickupRoute": "220",
         "pickupTime": "8:30 AM",
-        "dropoffRoute": "632",
+        "dropoffRoute": "220",
         "dropoffTime": "4:40 PM",
         "type": "Pickup & Dropoff"
       }
@@ -19697,9 +19857,9 @@
         "school": "HENDERSON ES/MS",
         "schoolId": 4,
         "schoolName": "Henderson Academy",
-        "pickupRoute": "632",
+        "pickupRoute": "220",
         "pickupTime": "8:33 AM",
-        "dropoffRoute": "632",
+        "dropoffRoute": "220",
         "dropoffTime": "4:37 PM",
         "type": "Pickup & Dropoff"
       },
@@ -19725,9 +19885,9 @@
         "school": "HENDERSON ES/MS",
         "schoolId": 4,
         "schoolName": "Henderson Academy",
-        "pickupRoute": "632",
+        "pickupRoute": "220",
         "pickupTime": "8:41 AM",
-        "dropoffRoute": "632",
+        "dropoffRoute": "220",
         "dropoffTime": "4:23 PM",
         "type": "Pickup & Dropoff"
       }
@@ -19743,9 +19903,9 @@
         "school": "HENDERSON ES/MS",
         "schoolId": 4,
         "schoolName": "Henderson Academy",
-        "pickupRoute": "632",
+        "pickupRoute": "220",
         "pickupTime": "8:44 AM",
-        "dropoffRoute": "632",
+        "dropoffRoute": "220",
         "dropoffTime": "4:21 PM",
         "type": "Pickup & Dropoff"
       },
@@ -19756,7 +19916,7 @@
         "pickupRoute": "625",
         "pickupTime": "7:53 AM",
         "dropoffRoute": "625",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -19771,9 +19931,9 @@
         "school": "HENDERSON ES/MS",
         "schoolId": 4,
         "schoolName": "Henderson Academy",
-        "pickupRoute": "632",
+        "pickupRoute": "220",
         "pickupTime": "8:46 AM",
-        "dropoffRoute": "632",
+        "dropoffRoute": "220",
         "dropoffTime": "4:19 PM",
         "type": "Pickup & Dropoff"
       }
@@ -19826,7 +19986,7 @@
         "schoolId": 4,
         "schoolName": "Henderson Academy",
         "pickupRoute": "635",
-        "pickupTime": "8:25 AM",
+        "pickupTime": "8:24 AM",
         "dropoffRoute": "635",
         "dropoffTime": "4:35 PM",
         "type": "Pickup & Dropoff"
@@ -19966,7 +20126,7 @@
         "pickupRoute": "667",
         "pickupTime": "8:18 AM",
         "dropoffRoute": "667",
-        "dropoffTime": "4:49 PM",
+        "dropoffTime": "4:48 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -19984,7 +20144,7 @@
         "pickupRoute": "667",
         "pickupTime": "8:22 AM",
         "dropoffRoute": "667",
-        "dropoffTime": "4:48 PM",
+        "dropoffTime": "4:47 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -20202,7 +20362,7 @@
         "pickupRoute": "4611",
         "pickupTime": "8:05 AM",
         "dropoffRoute": "4611",
-        "dropoffTime": "4:52 PM",
+        "dropoffTime": "4:51 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -20218,7 +20378,7 @@
         "schoolId": 1803,
         "schoolName": "Hutchinson Elementary-Middle School at Howe",
         "pickupRoute": "234",
-        "pickupTime": "6:32 AM",
+        "pickupTime": "6:31 AM",
         "dropoffRoute": "234",
         "dropoffTime": "3:26 PM",
         "type": "Pickup & Dropoff"
@@ -20238,7 +20398,7 @@
         "schoolId": 2703,
         "schoolName": "Nichols Elementary-Middle School",
         "pickupRoute": "313",
-        "pickupTime": "7:39 AM",
+        "pickupTime": "7:38 AM",
         "dropoffRoute": "313",
         "dropoffTime": "4:08 PM",
         "type": "Pickup & Dropoff"
@@ -20258,7 +20418,7 @@
         "pickupRoute": "234",
         "pickupTime": "6:34 AM",
         "dropoffRoute": "234",
-        "dropoffTime": "3:21 PM",
+        "dropoffTime": "3:20 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -20276,7 +20436,7 @@
         "pickupRoute": "234",
         "pickupTime": "6:39 AM",
         "dropoffRoute": "234",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -20286,7 +20446,7 @@
         "pickupRoute": "203",
         "pickupTime": "8:30 AM",
         "dropoffRoute": "203",
-        "dropoffTime": "4:51 PM",
+        "dropoffTime": "4:50 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -20420,7 +20580,7 @@
         "schoolId": 1803,
         "schoolName": "Hutchinson Elementary-Middle School at Howe",
         "pickupRoute": "234",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "234",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -20438,7 +20598,7 @@
         "schoolId": 1803,
         "schoolName": "Hutchinson Elementary-Middle School at Howe",
         "pickupRoute": "234",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "234",
         "dropoffTime": "3:07 PM",
         "type": "Pickup & Dropoff"
@@ -20520,7 +20680,7 @@
         "schoolId": 1803,
         "schoolName": "Hutchinson Elementary-Middle School at Howe",
         "pickupRoute": "312",
-        "pickupTime": "6:33 AM",
+        "pickupTime": "6:32 AM",
         "dropoffRoute": "312",
         "dropoffTime": "2:58 PM",
         "type": "Pickup & Dropoff"
@@ -20696,7 +20856,7 @@
         "pickupRoute": "312",
         "pickupTime": "7:10 AM",
         "dropoffRoute": "312",
-        "dropoffTime": "3:18 PM",
+        "dropoffTime": "3:17 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -21030,7 +21190,7 @@
         "schoolId": 2036,
         "schoolName": "John R.King Academic and Performing Arts Academy",
         "pickupRoute": "642",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "642",
         "dropoffTime": "3:08 PM",
         "type": "Pickup & Dropoff"
@@ -21178,6 +21338,16 @@
         "dropoffRoute": "643",
         "dropoffTime": "2:55 PM",
         "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6001",
+        "pickupTime": "7:14 AM",
+        "dropoffRoute": "6001",
+        "dropoffTime": "3:52 PM",
+        "type": "Pickup & Dropoff"
       }
     ]
   },
@@ -21195,6 +21365,16 @@
         "pickupTime": "6:57 AM",
         "dropoffRoute": "643",
         "dropoffTime": "2:50 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6001",
+        "pickupTime": "7:11 AM",
+        "dropoffRoute": "6001",
+        "dropoffTime": "3:54 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -21248,7 +21428,7 @@
         "pickupRoute": "643",
         "pickupTime": "7:06 AM",
         "dropoffRoute": "643",
-        "dropoffTime": "3:18 PM",
+        "dropoffTime": "3:17 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -21266,7 +21446,7 @@
         "pickupRoute": "643",
         "pickupTime": "7:09 AM",
         "dropoffRoute": "643",
-        "dropoffTime": "3:20 PM",
+        "dropoffTime": "3:19 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -21354,7 +21534,7 @@
         "schoolId": 2036,
         "schoolName": "John R.King Academic and Performing Arts Academy",
         "pickupRoute": "650",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "650",
         "dropoffTime": "3:03 PM",
         "type": "Pickup & Dropoff"
@@ -21544,7 +21724,7 @@
         "schoolId": 2036,
         "schoolName": "John R.King Academic and Performing Arts Academy",
         "pickupRoute": "651",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "651",
         "dropoffTime": "3:16 PM",
         "type": "Pickup & Dropoff"
@@ -21564,7 +21744,7 @@
         "pickupRoute": "651",
         "pickupTime": "6:57 AM",
         "dropoffRoute": "651",
-        "dropoffTime": "3:18 PM",
+        "dropoffTime": "3:17 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -21742,7 +21922,7 @@
         "schoolId": 2036,
         "schoolName": "John R.King Academic and Performing Arts Academy",
         "pickupRoute": "712",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "712",
         "dropoffTime": "2:55 PM",
         "type": "Pickup & Dropoff"
@@ -21852,7 +22032,7 @@
         "pickupRoute": "360",
         "pickupTime": "6:40 AM",
         "dropoffRoute": "360",
-        "dropoffTime": "3:22 PM",
+        "dropoffTime": "3:21 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -21870,7 +22050,7 @@
         "pickupRoute": "360",
         "pickupTime": "6:41 AM",
         "dropoffRoute": "360",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -21958,7 +22138,7 @@
         "schoolId": 2377,
         "schoolName": "Marion Law Academy",
         "pickupRoute": "360",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "360",
         "dropoffTime": "3:04 PM",
         "type": "Pickup & Dropoff"
@@ -21976,7 +22156,7 @@
         "schoolId": 2377,
         "schoolName": "Marion Law Academy",
         "pickupRoute": "360",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "360",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -22048,7 +22228,7 @@
         "schoolId": 2377,
         "schoolName": "Marion Law Academy",
         "pickupRoute": "512",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "512",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -22066,7 +22246,7 @@
         "schoolId": 2377,
         "schoolName": "Marion Law Academy",
         "pickupRoute": "512",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "512",
         "dropoffTime": "3:04 PM",
         "type": "Pickup & Dropoff"
@@ -22166,7 +22346,7 @@
         "schoolId": 2377,
         "schoolName": "Marion Law Academy",
         "pickupRoute": "515",
-        "pickupTime": "6:33 AM",
+        "pickupTime": "6:32 AM",
         "dropoffRoute": "515",
         "dropoffTime": "3:11 PM",
         "type": "Pickup & Dropoff"
@@ -22268,7 +22448,7 @@
         "schoolId": 2377,
         "schoolName": "Marion Law Academy",
         "pickupRoute": "560",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "560",
         "dropoffTime": "3:00 PM",
         "type": "Pickup & Dropoff"
@@ -22316,7 +22496,7 @@
         "pickupRoute": "604",
         "pickupTime": "8:00 AM",
         "dropoffRoute": "604",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -22388,7 +22568,7 @@
         "pickupRoute": "604",
         "pickupTime": "8:13 AM",
         "dropoffRoute": "604",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -22540,7 +22720,7 @@
         "schoolId": 6103,
         "schoolName": "Noble Elementary-Middle School",
         "pickupRoute": "409",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "409",
         "dropoffTime": "3:04 PM",
         "type": "Pickup & Dropoff"
@@ -22776,7 +22956,7 @@
         "pickupRoute": "720",
         "pickupTime": "7:57 AM",
         "dropoffRoute": "720",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -22794,7 +22974,7 @@
         "pickupRoute": "720",
         "pickupTime": "7:59 AM",
         "dropoffRoute": "720",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -23002,7 +23182,7 @@
         "pickupRoute": "727",
         "pickupTime": "7:56 AM",
         "dropoffRoute": "727",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -23036,9 +23216,9 @@
         "schoolId": 853,
         "schoolName": "Mackenzie Elementary-Middle School",
         "pickupRoute": "727",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "727",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -23102,7 +23282,7 @@
         "pickupRoute": "254",
         "pickupTime": "6:58 AM",
         "dropoffRoute": "254",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -23210,7 +23390,7 @@
         "pickupRoute": "730",
         "pickupTime": "7:59 AM",
         "dropoffRoute": "730",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -23228,7 +23408,7 @@
         "pickupRoute": "730",
         "pickupTime": "8:01 AM",
         "dropoffRoute": "730",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -23336,7 +23516,7 @@
         "pickupRoute": "407",
         "pickupTime": "7:51 AM",
         "dropoffRoute": "407",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -23354,7 +23534,7 @@
         "pickupRoute": "407",
         "pickupTime": "7:54 AM",
         "dropoffRoute": "407",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -23426,7 +23606,7 @@
         "pickupRoute": "409",
         "pickupTime": "7:58 AM",
         "dropoffRoute": "409",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -23480,7 +23660,7 @@
         "pickupRoute": "610",
         "pickupTime": "8:01 AM",
         "dropoffRoute": "610",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -23614,7 +23794,7 @@
         "schoolId": 7581,
         "schoolName": "Garvey Academy",
         "pickupRoute": "203",
-        "pickupTime": "8:26 AM",
+        "pickupTime": "8:25 AM",
         "dropoffRoute": "203",
         "dropoffTime": "4:47 PM",
         "type": "Pickup & Dropoff"
@@ -23668,7 +23848,7 @@
         "schoolId": 7581,
         "schoolName": "Garvey Academy",
         "pickupRoute": "205",
-        "pickupTime": "8:26 AM",
+        "pickupTime": "8:25 AM",
         "dropoffRoute": null,
         "dropoffTime": null,
         "type": "Pickup"
@@ -23688,7 +23868,7 @@
         "pickupRoute": null,
         "pickupTime": null,
         "dropoffRoute": "205",
-        "dropoffTime": "4:49 PM",
+        "dropoffTime": "4:48 PM",
         "type": "Dropoff"
       }
     ]
@@ -23732,7 +23912,7 @@
         "schoolId": 2703,
         "schoolName": "Nichols Elementary-Middle School",
         "pickupRoute": "202",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "202",
         "dropoffTime": "3:49 PM",
         "type": "Pickup & Dropoff"
@@ -23770,7 +23950,7 @@
         "pickupRoute": "232",
         "pickupTime": "8:12 AM",
         "dropoffRoute": "232",
-        "dropoffTime": "4:48 PM",
+        "dropoffTime": "4:47 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -23804,7 +23984,7 @@
         "schoolId": 7581,
         "schoolName": "Garvey Academy",
         "pickupRoute": "232",
-        "pickupTime": "8:24 AM",
+        "pickupTime": "8:23 AM",
         "dropoffRoute": "232",
         "dropoffTime": "4:34 PM",
         "type": "Pickup & Dropoff"
@@ -23984,7 +24164,7 @@
         "schoolId": 7581,
         "schoolName": "Garvey Academy",
         "pickupRoute": "533",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "533",
         "dropoffTime": "4:56 PM",
         "type": "Pickup & Dropoff"
@@ -24030,7 +24210,7 @@
         "schoolId": 7581,
         "schoolName": "Garvey Academy",
         "pickupRoute": "3606",
-        "pickupTime": "8:26 AM",
+        "pickupTime": "8:25 AM",
         "dropoffRoute": "3606",
         "dropoffTime": "4:36 PM",
         "type": "Pickup & Dropoff"
@@ -24068,7 +24248,7 @@
         "pickupRoute": "226",
         "pickupTime": "6:31 AM",
         "dropoffRoute": "226",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -24156,7 +24336,7 @@
         "schoolId": 2383,
         "schoolName": "Mark Twain School for Scholars",
         "pickupRoute": "226",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "226",
         "dropoffTime": "3:02 PM",
         "type": "Pickup & Dropoff"
@@ -24664,9 +24844,19 @@
         "schoolId": 2390,
         "schoolName": "Marquette Elementary-Middle School",
         "pickupRoute": "307",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "307",
         "dropoffTime": "2:49 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "247",
+        "pickupTime": "7:25 AM",
+        "dropoffRoute": "247",
+        "dropoffTime": "3:53 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -24730,7 +24920,7 @@
         "pickupRoute": "303",
         "pickupTime": "6:29 AM",
         "dropoffRoute": "303",
-        "dropoffTime": "3:18 PM",
+        "dropoffTime": "3:17 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -24749,6 +24939,16 @@
         "pickupTime": "7:05 AM",
         "dropoffRoute": "307",
         "dropoffTime": "3:01 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:38 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "3:37 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -24785,6 +24985,16 @@
         "pickupTime": "6:34 AM",
         "dropoffRoute": "310",
         "dropoffTime": "3:04 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "247",
+        "pickupTime": "7:32 AM",
+        "dropoffRoute": "247",
+        "dropoffTime": "3:46 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -24846,7 +25056,7 @@
         "schoolId": 4062,
         "schoolName": "Ronald Brown Academy",
         "pickupRoute": "303",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "303",
         "dropoffTime": "3:00 PM",
         "type": "Pickup & Dropoff"
@@ -24912,7 +25122,7 @@
         "pickupRoute": "310",
         "pickupTime": "6:50 AM",
         "dropoffRoute": "310",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -24946,7 +25156,7 @@
         "schoolId": 2390,
         "schoolName": "Marquette Elementary-Middle School",
         "pickupRoute": "310",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "310",
         "dropoffTime": "2:59 PM",
         "type": "Pickup & Dropoff"
@@ -25006,6 +25216,16 @@
         "dropoffRoute": "310",
         "dropoffTime": "2:55 PM",
         "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "247",
+        "pickupTime": "7:29 AM",
+        "dropoffRoute": "247",
+        "dropoffTime": "3:49 PM",
+        "type": "Pickup & Dropoff"
       }
     ]
   },
@@ -25058,7 +25278,7 @@
         "pickupRoute": "513",
         "pickupTime": "6:44 AM",
         "dropoffRoute": "513",
-        "dropoffTime": "3:20 PM",
+        "dropoffTime": "3:19 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -25092,9 +25312,19 @@
         "schoolId": 2390,
         "schoolName": "Marquette Elementary-Middle School",
         "pickupRoute": "513",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "513",
         "dropoffTime": "3:03 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "247",
+        "pickupTime": "7:06 AM",
+        "dropoffRoute": "247",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -25131,6 +25361,16 @@
         "pickupTime": "7:09 AM",
         "dropoffRoute": "513",
         "dropoffTime": "2:51 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "247",
+        "pickupTime": "7:10 AM",
+        "dropoffRoute": "247",
+        "dropoffTime": "4:00 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -25177,6 +25417,16 @@
         "pickupTime": "7:10 AM",
         "dropoffRoute": "511",
         "dropoffTime": "2:49 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:07 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "3:59 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -25338,9 +25588,9 @@
         "schoolId": 2431,
         "schoolName": "Mason Academy",
         "pickupRoute": "360",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "360",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -25522,7 +25772,7 @@
         "schoolId": 2708,
         "schoolName": "Nolan Elementary-Middle School",
         "pickupRoute": "243",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "243",
         "dropoffTime": "3:59 PM",
         "type": "Pickup & Dropoff"
@@ -25650,7 +25900,7 @@
         "pickupRoute": "526",
         "pickupTime": "7:59 AM",
         "dropoffRoute": "526",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -25666,7 +25916,7 @@
         "schoolId": 2431,
         "schoolName": "Mason Academy",
         "pickupRoute": "526",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "526",
         "dropoffTime": "3:58 PM",
         "type": "Pickup & Dropoff"
@@ -25794,7 +26044,7 @@
         "pickupRoute": "545",
         "pickupTime": "7:52 AM",
         "dropoffRoute": "545",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -25840,7 +26090,7 @@
         "pickupRoute": "545",
         "pickupTime": "7:59 AM",
         "dropoffRoute": "545",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -25976,7 +26226,7 @@
         "pickupRoute": "3007",
         "pickupTime": "7:37 AM",
         "dropoffRoute": "3007",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -26046,7 +26296,7 @@
         "schoolId": 2431,
         "schoolName": "Mason Academy",
         "pickupRoute": "3007",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "3007",
         "dropoffTime": "3:55 PM",
         "type": "Pickup & Dropoff"
@@ -26190,7 +26440,7 @@
         "schoolId": 858,
         "schoolName": "Munger Elementary-Middle School",
         "pickupRoute": "716",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "716",
         "dropoffTime": "2:57 PM",
         "type": "Pickup & Dropoff"
@@ -26254,7 +26504,7 @@
         "schoolId": 3123,
         "schoolName": "Priest Elementary-Middle School",
         "pickupRoute": "703",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "703",
         "dropoffTime": "4:22 PM",
         "type": "Pickup & Dropoff"
@@ -26452,7 +26702,7 @@
         "schoolId": 858,
         "schoolName": "Munger Elementary-Middle School",
         "pickupRoute": "721",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "721",
         "dropoffTime": "3:02 PM",
         "type": "Pickup & Dropoff"
@@ -26634,7 +26884,7 @@
         "schoolId": 858,
         "schoolName": "Munger Elementary-Middle School",
         "pickupRoute": "727",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "727",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -26698,9 +26948,9 @@
         "schoolId": 2669,
         "schoolName": "Neinas Dual Language Learning Academy",
         "pickupRoute": "716",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "716",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -26998,7 +27248,7 @@
         "pickupRoute": "202",
         "pickupTime": "8:16 AM",
         "dropoffRoute": "202",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -27016,7 +27266,7 @@
         "pickupRoute": "313",
         "pickupTime": "7:36 AM",
         "dropoffRoute": "313",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -27032,7 +27282,7 @@
         "schoolId": 2703,
         "schoolName": "Nichols Elementary-Middle School",
         "pickupRoute": "313",
-        "pickupTime": "7:41 AM",
+        "pickupTime": "7:40 AM",
         "dropoffRoute": "313",
         "dropoffTime": "4:10 PM",
         "type": "Pickup & Dropoff"
@@ -27358,7 +27608,7 @@
         "pickupRoute": "410",
         "pickupTime": "6:51 AM",
         "dropoffRoute": "410",
-        "dropoffTime": "3:21 PM",
+        "dropoffTime": "3:20 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -27646,7 +27896,7 @@
         "pickupRoute": "243",
         "pickupTime": "7:59 AM",
         "dropoffRoute": "243",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -27664,7 +27914,7 @@
         "pickupRoute": "243",
         "pickupTime": "8:05 AM",
         "dropoffRoute": "243",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -27746,7 +27996,7 @@
         "pickupRoute": "505",
         "pickupTime": "7:58 AM",
         "dropoffRoute": "505",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -27762,7 +28012,7 @@
         "schoolId": 2708,
         "schoolName": "Nolan Elementary-Middle School",
         "pickupRoute": "505",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "505",
         "dropoffTime": "4:09 PM",
         "type": "Pickup & Dropoff"
@@ -27954,7 +28204,7 @@
         "pickupRoute": "507",
         "pickupTime": "8:04 AM",
         "dropoffRoute": "507",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -27972,7 +28222,7 @@
         "pickupRoute": "507",
         "pickupTime": "8:06 AM",
         "dropoffRoute": "507",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -28042,7 +28292,7 @@
         "schoolId": 2708,
         "schoolName": "Nolan Elementary-Middle School",
         "pickupRoute": "515",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "515",
         "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
@@ -28060,9 +28310,9 @@
         "schoolId": 2708,
         "schoolName": "Nolan Elementary-Middle School",
         "pickupRoute": "515",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "515",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -28152,7 +28402,7 @@
         "pickupRoute": "519",
         "pickupTime": "7:48 AM",
         "dropoffRoute": "519",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -28296,7 +28546,7 @@
         "pickupRoute": "558",
         "pickupTime": "7:54 AM",
         "dropoffRoute": "558",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -28314,7 +28564,7 @@
         "pickupRoute": "558",
         "pickupTime": "7:55 AM",
         "dropoffRoute": "558",
-        "dropoffTime": "4:07 PM",
+        "dropoffTime": "4:06 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -28366,9 +28616,9 @@
         "schoolId": 2708,
         "schoolName": "Nolan Elementary-Middle School",
         "pickupRoute": "558",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "558",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -28538,7 +28788,7 @@
         "schoolId": 2969,
         "schoolName": "Pasteur Elementary School",
         "pickupRoute": "651",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "651",
         "dropoffTime": "4:01 PM",
         "type": "Pickup & Dropoff"
@@ -28576,7 +28826,7 @@
         "pickupRoute": "617",
         "pickupTime": "8:43 AM",
         "dropoffRoute": "617",
-        "dropoffTime": "4:49 PM",
+        "dropoffTime": "4:48 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -28592,7 +28842,7 @@
         "schoolId": 1552,
         "schoolName": "Palmer Park Preparatory Academy",
         "pickupRoute": "645",
-        "pickupTime": "8:25 AM",
+        "pickupTime": "8:24 AM",
         "dropoffRoute": "645",
         "dropoffTime": "4:44 PM",
         "type": "Pickup & Dropoff"
@@ -28738,7 +28988,7 @@
         "schoolId": 1552,
         "schoolName": "Palmer Park Preparatory Academy",
         "pickupRoute": "709",
-        "pickupTime": "8:26 AM",
+        "pickupTime": "8:25 AM",
         "dropoffRoute": "709",
         "dropoffTime": "4:43 PM",
         "type": "Pickup & Dropoff"
@@ -28750,7 +29000,7 @@
         "pickupRoute": "680",
         "pickupTime": "8:13 AM",
         "dropoffRoute": "680",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -28776,7 +29026,7 @@
         "schoolId": 3420,
         "schoolName": "Schulze Academy for Technology and Arts",
         "pickupRoute": "616",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "616",
         "dropoffTime": "3:51 PM",
         "type": "Pickup & Dropoff"
@@ -28830,9 +29080,9 @@
         "schoolId": 2969,
         "schoolName": "Pasteur Elementary School",
         "pickupRoute": "611",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "611",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -29058,7 +29308,7 @@
         "pickupRoute": "651",
         "pickupTime": "7:56 AM",
         "dropoffRoute": "651",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -29148,7 +29398,7 @@
         "pickupRoute": "207",
         "pickupTime": "7:59 AM",
         "dropoffRoute": "207",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -29164,7 +29414,7 @@
         "schoolId": 3123,
         "schoolName": "Priest Elementary-Middle School",
         "pickupRoute": "207",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "207",
         "dropoffTime": "3:57 PM",
         "type": "Pickup & Dropoff"
@@ -29312,7 +29562,7 @@
         "pickupRoute": "777",
         "pickupTime": "8:00 AM",
         "dropoffRoute": "777",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       },
       {
@@ -29322,7 +29572,7 @@
         "pickupRoute": "222",
         "pickupTime": "6:57 AM",
         "dropoffRoute": "222",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -29338,9 +29588,9 @@
         "schoolId": 3123,
         "schoolName": "Priest Elementary-Middle School",
         "pickupRoute": "777",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "777",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -29474,7 +29724,7 @@
         "schoolId": 3130,
         "schoolName": "Pulaski Elementary-Middle School",
         "pickupRoute": "309",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "309",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -29672,7 +29922,7 @@
         "schoolId": 3130,
         "schoolName": "Pulaski Elementary-Middle School",
         "pickupRoute": "504",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "504",
         "dropoffTime": "3:05 PM",
         "type": "Pickup & Dropoff"
@@ -30126,6 +30376,16 @@
         "dropoffRoute": "303",
         "dropoffTime": "3:02 PM",
         "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "247",
+        "pickupTime": "7:36 AM",
+        "dropoffRoute": "247",
+        "dropoffTime": "3:42 PM",
+        "type": "Pickup & Dropoff"
       }
     ]
   },
@@ -30194,7 +30454,7 @@
         "schoolId": 4062,
         "schoolName": "Ronald Brown Academy",
         "pickupRoute": "306",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "306",
         "dropoffTime": "2:59 PM",
         "type": "Pickup & Dropoff"
@@ -30215,6 +30475,16 @@
         "pickupTime": "7:03 AM",
         "dropoffRoute": "306",
         "dropoffTime": "2:55 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:39 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "3:37 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -30266,7 +30536,7 @@
         "schoolId": 4062,
         "schoolName": "Ronald Brown Academy",
         "pickupRoute": "511",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "511",
         "dropoffTime": "3:06 PM",
         "type": "Pickup & Dropoff"
@@ -30384,7 +30654,7 @@
         "schoolId": 4062,
         "schoolName": "Ronald Brown Academy",
         "pickupRoute": "514",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "514",
         "dropoffTime": "2:57 PM",
         "type": "Pickup & Dropoff"
@@ -30405,6 +30675,16 @@
         "pickupTime": "7:00 AM",
         "dropoffRoute": "514",
         "dropoffTime": "2:59 PM",
+        "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:20 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "3:52 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -30478,6 +30758,16 @@
         "dropoffRoute": "3616",
         "dropoffTime": "2:57 PM",
         "type": "Pickup & Dropoff"
+      },
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "228",
+        "pickupTime": "7:30 AM",
+        "dropoffRoute": "228",
+        "dropoffTime": "3:43 PM",
+        "type": "Pickup & Dropoff"
       }
     ]
   },
@@ -30528,7 +30818,7 @@
         "schoolId": 4413,
         "schoolName": "Sampson-Webber Leadership Academy",
         "pickupRoute": "204",
-        "pickupTime": "7:40 AM",
+        "pickupTime": "7:39 AM",
         "dropoffRoute": "204",
         "dropoffTime": "3:55 PM",
         "type": "Pickup & Dropoff"
@@ -30753,10 +31043,10 @@
         "school": "SAMPSON WEBBER ES/MS",
         "schoolId": 4413,
         "schoolName": "Sampson-Webber Leadership Academy",
-        "pickupRoute": "653",
+        "pickupRoute": "235",
         "pickupTime": "7:55 AM",
-        "dropoffRoute": "653",
-        "dropoffTime": "4:06 PM",
+        "dropoffRoute": "235",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -30771,9 +31061,9 @@
         "school": "SAMPSON WEBBER ES/MS",
         "schoolId": 4413,
         "schoolName": "Sampson-Webber Leadership Academy",
-        "pickupRoute": "653",
-        "pickupTime": "8:02 AM",
-        "dropoffRoute": "653",
+        "pickupRoute": "235",
+        "pickupTime": "8:01 AM",
+        "dropoffRoute": "235",
         "dropoffTime": "3:56 PM",
         "type": "Pickup & Dropoff"
       }
@@ -30789,9 +31079,9 @@
         "school": "SAMPSON WEBBER ES/MS",
         "schoolId": 4413,
         "schoolName": "Sampson-Webber Leadership Academy",
-        "pickupRoute": "653",
+        "pickupRoute": "235",
         "pickupTime": "8:07 AM",
-        "dropoffRoute": "653",
+        "dropoffRoute": "235",
         "dropoffTime": "3:53 PM",
         "type": "Pickup & Dropoff"
       }
@@ -30807,9 +31097,9 @@
         "school": "SAMPSON WEBBER ES/MS",
         "schoolId": 4413,
         "schoolName": "Sampson-Webber Leadership Academy",
-        "pickupRoute": "653",
+        "pickupRoute": "235",
         "pickupTime": "8:12 AM",
-        "dropoffRoute": "653",
+        "dropoffRoute": "235",
         "dropoffTime": "3:55 PM",
         "type": "Pickup & Dropoff"
       }
@@ -30825,9 +31115,9 @@
         "school": "SAMPSON WEBBER ES/MS",
         "schoolId": 4413,
         "schoolName": "Sampson-Webber Leadership Academy",
-        "pickupRoute": "653",
+        "pickupRoute": "235",
         "pickupTime": "8:15 AM",
-        "dropoffRoute": "653",
+        "dropoffRoute": "235",
         "dropoffTime": "3:50 PM",
         "type": "Pickup & Dropoff"
       }
@@ -30846,7 +31136,7 @@
         "pickupRoute": "741",
         "pickupTime": "7:45 AM",
         "dropoffRoute": "741",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -31060,7 +31350,7 @@
         "schoolId": 3420,
         "schoolName": "Schulze Academy for Technology and Arts",
         "pickupRoute": "614",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "614",
         "dropoffTime": "4:18 PM",
         "type": "Pickup & Dropoff"
@@ -31224,7 +31514,7 @@
         "pickupRoute": "616",
         "pickupTime": "8:17 AM",
         "dropoffRoute": "616",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -31240,7 +31530,7 @@
         "schoolId": 3420,
         "schoolName": "Schulze Academy for Technology and Arts",
         "pickupRoute": "680",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "680",
         "dropoffTime": "4:11 PM",
         "type": "Pickup & Dropoff"
@@ -31350,7 +31640,7 @@
         "pickupRoute": "205",
         "pickupTime": "6:41 AM",
         "dropoffRoute": "205",
-        "dropoffTime": "3:21 PM",
+        "dropoffTime": "3:20 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -31368,7 +31658,7 @@
         "pickupRoute": "205",
         "pickupTime": "6:43 AM",
         "dropoffRoute": "205",
-        "dropoffTime": "3:19 PM",
+        "dropoffTime": "3:18 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -31618,7 +31908,7 @@
         "schoolId": 4156,
         "schoolName": "Thirkell Elementary-Middle School",
         "pickupRoute": "223",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "223",
         "dropoffTime": "4:00 PM",
         "type": "Pickup & Dropoff"
@@ -31674,7 +31964,7 @@
         "pickupRoute": "223",
         "pickupTime": "8:08 AM",
         "dropoffRoute": "223",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -31818,7 +32108,7 @@
         "pickupRoute": "224",
         "pickupTime": "8:00 AM",
         "dropoffRoute": "224",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -31834,9 +32124,9 @@
         "schoolId": 4156,
         "schoolName": "Thirkell Elementary-Middle School",
         "pickupRoute": "224",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "224",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -31944,7 +32234,7 @@
         "pickupRoute": "225",
         "pickupTime": "7:59 AM",
         "dropoffRoute": "225",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -31960,7 +32250,7 @@
         "schoolId": 4156,
         "schoolName": "Thirkell Elementary-Middle School",
         "pickupRoute": "225",
-        "pickupTime": "8:03 AM",
+        "pickupTime": "8:02 AM",
         "dropoffRoute": "225",
         "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
@@ -32106,7 +32396,7 @@
         "pickupRoute": "229",
         "pickupTime": "8:00 AM",
         "dropoffRoute": "229",
-        "dropoffTime": "4:06 PM",
+        "dropoffTime": "4:05 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -32122,7 +32412,7 @@
         "schoolId": 4156,
         "schoolName": "Thirkell Elementary-Middle School",
         "pickupRoute": "229",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "229",
         "dropoffTime": "4:08 PM",
         "type": "Pickup & Dropoff"
@@ -32142,7 +32432,7 @@
         "pickupRoute": "229",
         "pickupTime": "8:05 AM",
         "dropoffRoute": "229",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -32266,9 +32556,9 @@
         "schoolId": 4156,
         "schoolName": "Thirkell Elementary-Middle School",
         "pickupRoute": "4615",
-        "pickupTime": "8:02 AM",
+        "pickupTime": "8:01 AM",
         "dropoffRoute": "4615",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -32358,7 +32648,7 @@
         "pickupRoute": "661",
         "pickupTime": "8:22 AM",
         "dropoffRoute": "661",
-        "dropoffTime": "4:48 PM",
+        "dropoffTime": "4:47 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -32698,7 +32988,7 @@
         "schoolId": 4292,
         "schoolName": "Vernor Elementary-Middle School",
         "pickupRoute": "641",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "641",
         "dropoffTime": "3:01 PM",
         "type": "Pickup & Dropoff"
@@ -32950,7 +33240,7 @@
         "schoolId": 4477,
         "schoolName": "Western International High School",
         "pickupRoute": "222",
-        "pickupTime": "7:17 AM",
+        "pickupTime": "7:16 AM",
         "dropoffRoute": "222",
         "dropoffTime": "3:41 PM",
         "type": "Pickup & Dropoff"
@@ -32986,9 +33276,9 @@
         "schoolId": 4477,
         "schoolName": "Western International High School",
         "pickupRoute": "230",
-        "pickupTime": "6:54 AM",
+        "pickupTime": "6:53 AM",
         "dropoffRoute": "230",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -33040,9 +33330,9 @@
         "schoolId": 4477,
         "schoolName": "Western International High School",
         "pickupRoute": "412",
-        "pickupTime": "6:56 AM",
+        "pickupTime": "6:55 AM",
         "dropoffRoute": "412",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -33256,7 +33546,7 @@
         "schoolId": 3015,
         "schoolName": "Pershing High School",
         "pickupRoute": "351",
-        "pickupTime": "7:40 AM",
+        "pickupTime": "7:39 AM",
         "dropoffRoute": "351",
         "dropoffTime": "3:33 PM",
         "type": "Pickup & Dropoff"
@@ -33276,7 +33566,7 @@
         "pickupRoute": "352",
         "pickupTime": "7:02 AM",
         "dropoffRoute": "352",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -33472,7 +33762,7 @@
         "schoolId": 3015,
         "schoolName": "Pershing High School",
         "pickupRoute": "353",
-        "pickupTime": "7:17 AM",
+        "pickupTime": "7:16 AM",
         "dropoffRoute": "353",
         "dropoffTime": "3:54 PM",
         "type": "Pickup & Dropoff"
@@ -33562,7 +33852,7 @@
         "schoolId": 3015,
         "schoolName": "Pershing High School",
         "pickupRoute": "353",
-        "pickupTime": "7:40 AM",
+        "pickupTime": "7:39 AM",
         "dropoffRoute": "353",
         "dropoffTime": "3:37 PM",
         "type": "Pickup & Dropoff"
@@ -33598,7 +33888,7 @@
         "schoolId": 3015,
         "schoolName": "Pershing High School",
         "pickupRoute": "354",
-        "pickupTime": "7:17 AM",
+        "pickupTime": "7:16 AM",
         "dropoffRoute": "354",
         "dropoffTime": "3:56 PM",
         "type": "Pickup & Dropoff"
@@ -33706,7 +33996,7 @@
         "schoolId": 3015,
         "schoolName": "Pershing High School",
         "pickupRoute": "354",
-        "pickupTime": "7:40 AM",
+        "pickupTime": "7:39 AM",
         "dropoffRoute": "354",
         "dropoffTime": "3:32 PM",
         "type": "Pickup & Dropoff"
@@ -33742,9 +34032,9 @@
         "schoolId": 18,
         "schoolName": "Cody High School",
         "pickupRoute": "251",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "251",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -33814,7 +34104,7 @@
         "schoolId": 18,
         "schoolName": "Cody High School",
         "pickupRoute": "251",
-        "pickupTime": "7:17 AM",
+        "pickupTime": "7:16 AM",
         "dropoffRoute": "251",
         "dropoffTime": "3:52 PM",
         "type": "Pickup & Dropoff"
@@ -33924,7 +34214,7 @@
         "pickupRoute": "252",
         "pickupTime": "7:00 AM",
         "dropoffRoute": "252",
-        "dropoffTime": "4:05 PM",
+        "dropoffTime": "4:04 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -33942,7 +34232,7 @@
         "pickupRoute": "252",
         "pickupTime": "7:03 AM",
         "dropoffRoute": "252",
-        "dropoffTime": "4:03 PM",
+        "dropoffTime": "4:02 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -33994,7 +34284,7 @@
         "schoolId": 18,
         "schoolName": "Cody High School",
         "pickupRoute": "252",
-        "pickupTime": "7:17 AM",
+        "pickupTime": "7:16 AM",
         "dropoffRoute": "252",
         "dropoffTime": "3:51 PM",
         "type": "Pickup & Dropoff"
@@ -34084,9 +34374,9 @@
         "schoolId": 18,
         "schoolName": "Cody High School",
         "pickupRoute": "253",
-        "pickupTime": "6:55 AM",
+        "pickupTime": "6:54 AM",
         "dropoffRoute": "253",
-        "dropoffTime": "4:04 PM",
+        "dropoffTime": "4:03 PM",
         "type": "Pickup & Dropoff"
       }
     ]
@@ -34282,7 +34572,7 @@
         "schoolId": 18,
         "schoolName": "Cody High School",
         "pickupRoute": "253",
-        "pickupTime": "7:39 AM",
+        "pickupTime": "7:38 AM",
         "dropoffRoute": "253",
         "dropoffTime": "3:33 PM",
         "type": "Pickup & Dropoff"
@@ -34498,7 +34788,7 @@
         "schoolId": 18,
         "schoolName": "Cody High School",
         "pickupRoute": "255",
-        "pickupTime": "7:18 AM",
+        "pickupTime": "7:17 AM",
         "dropoffRoute": "255",
         "dropoffTime": "3:49 PM",
         "type": "Pickup & Dropoff"
@@ -34678,7 +34968,7 @@
         "schoolId": 18,
         "schoolName": "Cody High School",
         "pickupRoute": "256",
-        "pickupTime": "7:17 AM",
+        "pickupTime": "7:16 AM",
         "dropoffRoute": "256",
         "dropoffTime": "3:48 PM",
         "type": "Pickup & Dropoff"
@@ -34750,9 +35040,1017 @@
         "schoolId": 18,
         "schoolName": "Cody High School",
         "pickupRoute": "256",
-        "pickupTime": "7:39 AM",
+        "pickupTime": "7:38 AM",
         "dropoffRoute": "256",
         "dropoffTime": "3:33 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "FREUD ST & DICKERSON ST",
+    "description": null,
+    "lat": 42.366996813884,
+    "lng": -82.950304613415,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "228",
+        "pickupTime": "6:57 AM",
+        "dropoffRoute": "228",
+        "dropoffTime": "4:13 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "MACK AVE & MANISTIQUE ST",
+    "description": "LA INSURANCE",
+    "lat": 42.386976810321,
+    "lng": -82.949764611765,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "228",
+        "pickupTime": "7:11 AM",
+        "dropoffRoute": "228",
+        "dropoffTime": "3:57 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "EASTLAWN ST & WAVENEY ST",
+    "description": null,
+    "lat": 42.389118810396,
+    "lng": -82.958845608776,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "228",
+        "pickupTime": "7:15 AM",
+        "dropoffRoute": "228",
+        "dropoffTime": "3:55 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "STRINGHAM CT & AILEY CT",
+    "description": null,
+    "lat": 42.392466810352,
+    "lng": -82.969816605096,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "228",
+        "pickupTime": "7:27 AM",
+        "dropoffRoute": "228",
+        "dropoffTime": "3:46 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "FRANKFORT ST & EASTLAWN ST",
+    "description": null,
+    "lat": 42.395877809421,
+    "lng": -82.963264606801,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "228",
+        "pickupTime": "7:33 AM",
+        "dropoffRoute": "228",
+        "dropoffTime": "3:42 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "NEWPORT ST & SOUTHAMPTON",
+    "description": "HAMILTON SCHOOL",
+    "lat": 42.398001809039,
+    "lng": -82.963129606649,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "228",
+        "pickupTime": "7:36 AM",
+        "dropoffRoute": "228",
+        "dropoffTime": "3:41 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "HERN ST & HARRELL ST",
+    "description": null,
+    "lat": 42.397227810117,
+    "lng": -82.981944100931,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "6:59 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "4:05 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "LINVILLE ST & LAKEVIEW ST",
+    "description": null,
+    "lat": 42.40040480884,
+    "lng": -82.967643105041,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:05 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "4:01 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "CHALMERS ST & LINVILLE ST",
+    "description": null,
+    "lat": 42.402033808325,
+    "lng": -82.963111606287,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:08 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "3:59 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "FRANKFORT ST & ALTER RD",
+    "description": "ROYAL SKATE",
+    "lat": 42.398577808573,
+    "lng": -82.955844108838,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:11 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "3:52 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "FRANKFORT ST & PHILIP ST",
+    "description": null,
+    "lat": 42.397758808827,
+    "lng": -82.95803110824,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:14 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "3:57 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "E WARREN AVE & BARHAM ST",
+    "description": "FAMILY DOLLAR",
+    "lat": 42.398541808305,
+    "lng": -82.950372110526,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:23 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "3:50 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "SOUTHAMPTON ST & SOMERSET AVE",
+    "description": null,
+    "lat": 42.402780807538,
+    "lng": -82.950021110248,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:27 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "3:47 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "E OUTER DR & LAKEPOINTE ST",
+    "description": null,
+    "lat": 42.4031948077,
+    "lng": -82.954723608763,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:30 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "3:45 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "HAVERHILL ST & LINVILLE ST",
+    "description": null,
+    "lat": 42.407865806496,
+    "lng": -82.947163610664,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:34 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "3:42 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "LINVILLE ST & AUDUBON RD",
+    "description": null,
+    "lat": 42.409710805919,
+    "lng": -82.942141612042,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "245",
+        "pickupTime": "7:37 AM",
+        "dropoffRoute": "245",
+        "dropoffTime": "3:40 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "MOROSS RD & MALLINA ST",
+    "description": null,
+    "lat": 42.421455802838,
+    "lng": -82.922076117148,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "247",
+        "pickupTime": "7:15 AM",
+        "dropoffRoute": "247",
+        "dropoffTime": "3:57 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "MOROSS RD & LINVILLE ST",
+    "description": "ST JOHNS HOSPITAL",
+    "lat": 42.419655802931,
+    "lng": -82.917562618702,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "247",
+        "pickupTime": "7:17 AM",
+        "dropoffRoute": "247",
+        "dropoffTime": "3:57 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "CHANDLER PARK DR & HILLCREST ST",
+    "description": null,
+    "lat": 42.417963803142,
+    "lng": -82.915803119398,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "247",
+        "pickupTime": "7:21 AM",
+        "dropoffRoute": "247",
+        "dropoffTime": "3:55 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "YORKSHIRE RD & WAVENEY ST",
+    "description": null,
+    "lat": 42.399693807131,
+    "lng": -82.930950116398,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "247",
+        "pickupTime": "7:38 AM",
+        "dropoffRoute": "247",
+        "dropoffTime": "3:38 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "BERKSHIRE ST & BREMEN ST",
+    "description": "CLARK ELEMENTARY",
+    "lat": 42.394023808609,
+    "lng": -82.940463113986,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "6:57 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "4:01 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "CORNWALL ST & 3 MILE DR",
+    "description": null,
+    "lat": 42.400674807353,
+    "lng": -82.938861113874,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:11 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "3:56 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "CORNWALL ST & BUCKINGHAM AVE",
+    "description": null,
+    "lat": 42.399261807796,
+    "lng": -82.942722112814,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:13 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "3:52 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "CORNWALL ST & BALFOUR RD",
+    "description": null,
+    "lat": 42.39819080813,
+    "lng": -82.94562011202,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:16 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "3:50 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "E WARREN AVE & HAVERHILL ST",
+    "description": "GRT PENT TEMPLE",
+    "lat": 42.401295807443,
+    "lng": -82.942866112585,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:22 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "3:53 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "E WARREN AVE & 3 MILE DR",
+    "description": "PUBLIC FOODS",
+    "lat": 42.40235780711,
+    "lng": -82.939963613381,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:24 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "3:55 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "SOUTHAMPTON ST & HAVERHILL ST",
+    "description": null,
+    "lat": 42.404607806966,
+    "lng": -82.945035111616,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:28 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "3:45 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "YORKSHIRE RD & HARPER AVE",
+    "description": "POPEYES",
+    "lat": 42.414030805062,
+    "lng": -82.94028311222,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:34 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "3:42 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "HARVARD RD & BERDEN ST",
+    "description": null,
+    "lat": 42.413877804889,
+    "lng": -82.936278113467,
+    "entries": [
+      {
+        "school": "EAST ENGLISH VILLAGE PREP HS",
+        "schoolId": 1189,
+        "schoolName": "East English Village Preparatory Academy",
+        "pickupRoute": "249",
+        "pickupTime": "7:35 AM",
+        "dropoffRoute": "249",
+        "dropoffTime": "3:40 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "WARD ST & PURITAN ST",
+    "description": null,
+    "lat": 42.409449817603,
+    "lng": -83.174085040741,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6001",
+        "pickupTime": "7:08 AM",
+        "dropoffRoute": "6001",
+        "dropoffTime": "3:57 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "PILGRIM ST & HUBBELL ST",
+    "description": "CA YOUNG ELEMENTARY",
+    "lat": 42.407226818754,
+    "lng": -83.189146536317,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6001",
+        "pickupTime": "7:17 AM",
+        "dropoffRoute": "6001",
+        "dropoffTime": "3:49 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "PURITAN ST & ASBURY PARK",
+    "description": null,
+    "lat": 42.40854081951,
+    "lng": -83.208748530176,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6001",
+        "pickupTime": "7:25 AM",
+        "dropoffRoute": "6001",
+        "dropoffTime": "3:42 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "MCNICHOLS RD W & ASBURY PARK",
+    "description": "MINI MART",
+    "lat": 42.415758818251,
+    "lng": -83.209032029426,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6001",
+        "pickupTime": "7:29 AM",
+        "dropoffRoute": "6001",
+        "dropoffTime": "3:40 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "SANTA MARIA ST & RUTHERFORD ST",
+    "description": null,
+    "lat": 42.417666817701,
+    "lng": -83.204793030553,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6001",
+        "pickupTime": "7:32 AM",
+        "dropoffRoute": "6001",
+        "dropoffTime": "3:37 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "SOUTHFIELD FWY & W OUTER DR",
+    "description": "GLORY SUPERMARKET",
+    "lat": 42.419268818117,
+    "lng": -83.218662026146,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6001",
+        "pickupTime": "7:36 AM",
+        "dropoffRoute": "6001",
+        "dropoffTime": "3:34 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "W 7 MILE RD & BILTMORE ST",
+    "description": "FIRST BAPTIST",
+    "lat": 42.430221815836,
+    "lng": -83.211732027268,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6002",
+        "pickupTime": "7:10 AM",
+        "dropoffRoute": "6002",
+        "dropoffTime": "3:38 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "W 7 MILE RD & GREENFIELD RD",
+    "description": "CVS",
+    "lat": 42.430419815204,
+    "lng": -83.199874530893,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6002",
+        "pickupTime": "7:13 AM",
+        "dropoffRoute": "6002",
+        "dropoffTime": "3:40 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "W 7 MILE RD & HUBBELL ST",
+    "description": null,
+    "lat": 42.430725814648,
+    "lng": -83.189920533923,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6002",
+        "pickupTime": "7:16 AM",
+        "dropoffRoute": "6002",
+        "dropoffTime": "3:42 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "PEMBROKE AVE & FORRER ST",
+    "description": null,
+    "lat": 42.437556814103,
+    "lng": -83.203002029276,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6002",
+        "pickupTime": "7:25 AM",
+        "dropoffRoute": "6002",
+        "dropoffTime": "3:48 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "PEMBROKE AVE & GILCHRIST ST",
+    "description": null,
+    "lat": 42.437340814671,
+    "lng": -83.213509526068,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6002",
+        "pickupTime": "7:29 AM",
+        "dropoffRoute": "6002",
+        "dropoffTime": "3:51 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "PEMBROKE AVE & FAUST AVE",
+    "description": null,
+    "lat": 42.437115815269,
+    "lng": -83.224579522688,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6002",
+        "pickupTime": "7:32 AM",
+        "dropoffRoute": "6002",
+        "dropoffTime": "3:31 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "VASSAR AVE & AVON AVE",
+    "description": null,
+    "lat": 42.433506816012,
+    "lng": -83.226699022368,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6002",
+        "pickupTime": "7:36 AM",
+        "dropoffRoute": "6002",
+        "dropoffTime": "3:33 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "W 7 MILE RD & AVON AVE",
+    "description": null,
+    "lat": 42.429879816644,
+    "lng": -83.226537022752,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6002",
+        "pickupTime": "7:38 AM",
+        "dropoffRoute": "6002",
+        "dropoffTime": "3:35 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "MCNICHOLS RD W & SALEM ST",
+    "description": null,
+    "lat": 42.414291822352,
+    "lng": -83.28517200618,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6003",
+        "pickupTime": "6:58 AM",
+        "dropoffRoute": "6003",
+        "dropoffTime": "4:08 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "MCNICHOLS RD W & LENORE",
+    "description": null,
+    "lat": 42.414426822116,
+    "lng": -83.280978007455,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6003",
+        "pickupTime": "7:01 AM",
+        "dropoffRoute": "6003",
+        "dropoffTime": "4:05 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "PILGRIM ST & PATTON ST",
+    "description": null,
+    "lat": 42.405966821739,
+    "lng": -83.243952019601,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6003",
+        "pickupTime": "7:14 AM",
+        "dropoffRoute": "6003",
+        "dropoffTime": "3:52 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "PATTON ST & FENKELL ST",
+    "description": null,
+    "lat": 42.400566822681,
+    "lng": -83.243740520161,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6003",
+        "pickupTime": "7:16 AM",
+        "dropoffRoute": "6003",
+        "dropoffTime": "3:49 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "MIDLAND ST & AUBURN ST",
+    "description": null,
+    "lat": 42.404346821576,
+    "lng": -83.235055522481,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6003",
+        "pickupTime": "7:21 AM",
+        "dropoffRoute": "6003",
+        "dropoffTime": "3:47 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "VAUGHAN ST & GROVE ST",
+    "description": null,
+    "lat": 42.413328820195,
+    "lng": -83.239087520418,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6003",
+        "pickupTime": "7:32 AM",
+        "dropoffRoute": "6003",
+        "dropoffTime": "3:36 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "MCNICHOLS RD W & BRAILE ST",
+    "description": null,
+    "lat": 42.414957820254,
+    "lng": -83.245945518162,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6003",
+        "pickupTime": "7:35 AM",
+        "dropoffRoute": "6003",
+        "dropoffTime": "3:34 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "EVERGREEN RD & CURTIS ST",
+    "description": null,
+    "lat": 42.422364818573,
+    "lng": -83.23852501976,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6003",
+        "pickupTime": "7:39 AM",
+        "dropoffRoute": "6003",
+        "dropoffTime": "3:30 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "CURTIS ST & NORTHROP ST",
+    "description": null,
+    "lat": 42.421914819812,
+    "lng": -83.261502012746,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6004",
+        "pickupTime": "7:05 AM",
+        "dropoffRoute": "6004",
+        "dropoffTime": "4:02 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "FIVE POINT ST & PEMBROKE AVE",
+    "description": null,
+    "lat": 42.435882818667,
+    "lng": -83.287552503461,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6004",
+        "pickupTime": "7:17 AM",
+        "dropoffRoute": "6004",
+        "dropoffTime": "3:48 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "PEMBROKE AVE & BERG RD",
+    "description": null,
+    "lat": 42.436251817622,
+    "lng": -83.268157509383,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6004",
+        "pickupTime": "7:25 AM",
+        "dropoffRoute": "6004",
+        "dropoffTime": "3:41 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "W 7 MILE RD & BRAILE ST",
+    "description": null,
+    "lat": 42.429384817736,
+    "lng": -83.246445016683,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6004",
+        "pickupTime": "7:34 AM",
+        "dropoffRoute": "6004",
+        "dropoffTime": "3:34 PM",
+        "type": "Pickup & Dropoff"
+      }
+    ]
+  },
+  {
+    "stop": "PEMBROKE AVE & BURT RD",
+    "description": null,
+    "lat": 42.436575816591,
+    "lng": -83.24888851527,
+    "entries": [
+      {
+        "school": "FORD HS",
+        "schoolId": 1634,
+        "schoolName": "Henry Ford High School",
+        "pickupRoute": "6004",
+        "pickupTime": "7:40 AM",
+        "dropoffRoute": "6004",
+        "dropoffTime": "3:29 PM",
         "type": "Pickup & Dropoff"
       }
     ]
