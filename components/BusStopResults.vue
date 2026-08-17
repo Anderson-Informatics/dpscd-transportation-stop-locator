@@ -13,6 +13,10 @@ const props = defineProps({
 
 const emits = defineEmits(['select', 'hover-enter', 'hover-leave', 'select-school'])
 
+function stopName(s) {
+  return s.description ? `${s.stop} (${s.description})` : s.stop
+}
+
 const showLocationEmpty = computed(() => !props.stops.length && !!props.selectedLocation && !props.selectedSchool)
 const showSchoolEmpty = computed(() => !props.stops.length && !!props.selectedSchool)
 const listTitle = computed(() => (props.selectedSchool ? props.selectedSchool : 'Nearby Bus Stops'))
@@ -31,7 +35,7 @@ const listTitle = computed(() => (props.selectedSchool ? props.selectedSchool : 
         @mouseenter="emits('hover-enter', s)"
         @mouseleave="emits('hover-leave')"
       >
-        <strong>{{ s.stop }}</strong>
+        <strong>{{ stopName(s) }}</strong>
         <span v-if="s.distance != null" class="tag">{{ s.distance.toFixed(2) }} miles</span>
         <ul class="stop-entries">
           <li v-for="(e, j) in visibleEntries(s)" :key="j" class="stop-entry">

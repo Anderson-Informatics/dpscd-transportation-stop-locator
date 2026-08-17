@@ -1123,8 +1123,12 @@ function visibleEntries(s) {
   return filtered.length ? filtered : s.entries
 }
 
+function busStopName(s) {
+  return s.description ? `${s.stop} (${s.description})` : s.stop
+}
+
 function busStopTooltip(s) {
-  const parts = [`<strong>${s.stop}</strong>`]
+  const parts = [`<strong>${busStopName(s)}</strong>`]
   if (s.distance !== null && s.distance !== undefined) {
     parts.push(`${s.distance.toFixed(2)} miles`)
   }
@@ -1143,7 +1147,7 @@ function busStopTooltip(s) {
 }
 
 function busStopPopup(s) {
-  const parts = [`<strong>${s.stop}</strong>`]
+  const parts = [`<strong>${busStopName(s)}</strong>`]
   if (s.distance !== null && s.distance !== undefined) {
     parts.push(`${s.distance.toFixed(2)} miles`)
   }
