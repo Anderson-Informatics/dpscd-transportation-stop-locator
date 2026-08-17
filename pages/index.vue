@@ -63,6 +63,8 @@ const categoryIcons = {
   'Unknown': 'Alternative.svg'
 }
 
+const legendOpen = ref(false)
+
 const legendItems = [
   { name: 'Elementary', category: 'Elementary' },
   { name: 'Elementary-Middle', category: 'Elementary-Middle' },
@@ -770,8 +772,14 @@ function updateBusSchoolMarkers() {
   }
 
   // Safety net: recompute every icon position from its lat/lng in case any marker
-  // was laid out while the map was mid-transition.
-  for (const marker of busSchoolMarkerIndex.values()) marker.update()
+  // was laid out while the map was mid-transition. Never do this during an
+  // animation, or it writes transitional coordinates and causes the very bug it
+  // is meant to repair.
+  if (mapZooming) {
+    busSchoolLayerDirty = true
+  } else {
+    for (const marker of busSchoolMarkerIndex.values()) marker.update()
+  }
 
   const visible = new Set()
   if (activeTab.value === 'bus-stops' && selectedBusSchool.value) {
@@ -868,7 +876,7 @@ async function loadBusStops() {
   if (busStops.value.length) return
   busLoading.value = true
   try {
-    const res = await fetch('/data/bus-stops.json')
+    const res = await fetch('/api/bus-stops')
     if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`)
     busStops.value = await res.json()
   } catch (err) {
@@ -930,6 +938,13 @@ const nearbyBusStops = computed(() => {
   return stops
 })
 
+// The map shows every stop in the default state, but listing all ~1,750 of them
+// is not useful, so the sidebar stays empty until a location or school narrows it.
+const busStopResults = computed(() => {
+  if (!selectedLocation.value && !selectedBusSchool.value) return []
+  return nearbyBusStops.value
+})
+
 function busStopKey(s) {
   return `${s.stop}|${s.lat}|${s.lng}`
 }
@@ -986,18 +1001,20 @@ function updateBusStopsLayer() {
 
 function setHoveredBusMarker(key) {
   if (hoveredBusKey === key) return
-  const prev = hoveredBusKey ? busMarkerIndex.get(hoveredBusKey) : null
-  if (prev) {
-    prev.setIcon(busIcon)
-    prev.setZIndexOffset(0)
+  // setIcon() builds a fresh DOM element, so inline styles must be re-applied.
+  const swapIcon = (marker, icon, zIndex) => {
+    const display = marker.getElement()?.style.display ?? ''
+    marker.setIcon(icon)
+    marker.setZIndexOffset(zIndex)
+    const el = marker.getElement()
+    if (el) el.style.display = display
   }
+  const prev = hoveredBusKey ? busMarkerIndex.get(hoveredBusKey) : null
+  if (prev) swapIcon(prev, busIcon, 0)
   hoveredBusKey = key
   const next = key ? busMarkerIndex.get(key) : null
-  if (next) {
-    next.setIcon(busIconHover)
-    next.setZIndexOffset(1000)
-  }
-  // setIcon swaps the DOM element, so any dimming has to be re-applied.
+  if (next) swapIcon(next, busIconHover, 1000)
+  // The swap also drops any dimming, so re-apply the highlight styles.
   if (prev || next) applyBusHighlight()
 }
 
@@ -1015,6 +1032,9 @@ function onBusStopEnter(s) {
   if (!map) return
   setHoveredBusMarker(busStopKey(s))
   activeListTooltip.value?.close()
+  activeListTooltip.value = null
+  // Adding a tooltip layer mid-animation strands it in the viewport.
+  if (mapZooming) return
   activeListTooltip.value = L.tooltip({
     className: 'school-tooltip',
     direction: 'top',
@@ -1225,11 +1245,11 @@ function busStopPopup(s) {
 
           <p v-if="!selectedLocation" class="hint">All bus stops are shown. Click the map or search an address to filter by radius.</p>
 
-          <section v-if="nearbyBusStops.length" class="results">
-            <h2>{{ selectedBusSchool ? selectedBusSchool : (selectedLocation ? 'Nearby Bus Stops' : 'All Bus Stops') }}</h2>
+          <section v-if="busStopResults.length" class="results">
+            <h2>{{ selectedBusSchool ? selectedBusSchool : 'Nearby Bus Stops' }}</h2>
             <ol class="cards ranked">
               <li
-                v-for="(s, i) in nearbyBusStops"
+                v-for="(s, i) in busStopResults"
                 :key="`b-${i}`"
                 class="closest-row"
                 :class="{ 'stop-selected': busStopKey(s) === selectedBusStopKey }"
@@ -1259,7 +1279,7 @@ function busStopPopup(s) {
             </ol>
           </section>
           <p v-else-if="selectedLocation" class="muted">No bus stops found within the selected radius.</p>
-          <p v-else class="muted">No bus stops found.</p>
+          <p v-else-if="selectedBusSchool" class="muted">No bus stops found for this school.</p>
         </div>
       </aside>
 
@@ -1376,9 +1396,18 @@ function busStopPopup(s) {
 
         </l-map>
 
-        <div class="legend">
-          <h4>School Types</h4>
-          <ul>
+        <div class="legend" :class="{ collapsed: !legendOpen }">
+          <button
+            class="legend-toggle"
+            type="button"
+            :aria-expanded="legendOpen"
+            aria-controls="legend-items"
+            @click="legendOpen = !legendOpen"
+          >
+            <span class="legend-title">School Types</span>
+            <span class="legend-caret" aria-hidden="true">{{ legendOpen ? '▾' : '▸' }}</span>
+          </button>
+          <ul v-show="legendOpen" id="legend-items">
             <li v-for="item in legendItems" :key="item.category">
               <img class="legend-icon" :src="iconUrl(item.category)" :alt="item.name" />
               {{ item.name }}
@@ -1706,31 +1735,62 @@ ol.ranked .closest-row::before {
   color: var(--dpscd-primary);
 }
 
+/* Matches the Leaflet zoom control (.leaflet-bar): square 4px corners,
+   solid white, same drop shadow and touch border. */
 .legend {
   position: absolute;
-  left: 0.5rem;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #e5e5e5;
-  border-radius: 4px 4px 0 0;
+  left: 10px;
+  bottom: 10px;
+  max-width: calc(100% - 20px);
+  background: #fff;
+  border-radius: 4px;
   padding: 0.5rem 0.75rem;
   font-size: 0.8rem;
   z-index: 1000;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
   pointer-events: none;
 }
 
-.legend h4,
+.leaflet-touch .legend {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+}
+
+.legend.collapsed {
+  padding: 0.35rem 0.6rem;
+}
+
+.legend-toggle,
 .legend li {
   pointer-events: auto;
 }
 
-.legend h4 {
+.legend-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
   margin: 0 0 0.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
   font-size: 0.85rem;
-  color: var(--dpscd-primary);
   font-family: 'Lora', serif;
+  color: var(--dpscd-primary);
+}
+
+.legend.collapsed .legend-toggle {
+  margin: 0;
+}
+
+.legend-title {
+  font-weight: 700;
+}
+
+.legend-caret {
+  font-size: 0.7rem;
+  line-height: 1;
 }
 
 .legend ul {
@@ -1738,7 +1798,7 @@ ol.ranked .closest-row::before {
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
   gap: 0.25rem 1rem;
 }
 

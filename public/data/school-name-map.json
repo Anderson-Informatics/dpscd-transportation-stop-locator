@@ -266,5 +266,13 @@
   "MARK TWAIN": {
     "schoolId": 2383,
     "schoolName": "Mark Twain School for Scholars"
+  },
+  "EAST ENGLISH VILLAGE PREP HS": {
+    "schoolId": 1189,
+    "schoolName": "East English Village Preparatory Academy"
+  },
+  "FORD HS": {
+    "schoolId": 1634,
+    "schoolName": "Henry Ford High School"
   }
 }
