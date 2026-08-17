@@ -46,15 +46,17 @@ function startDrag(clientY) {
 
 function onPointerDown(e) {
   if (props.lock) return
-  if (snap.value === 'full' && !e.target.closest('.bottom-sheet-handle')) return
   startDrag(e.clientY)
-  ;(e.target).setPointerCapture?.(e.pointerId)
+  document.addEventListener('pointermove', onPointerMove, { passive: false })
+  document.addEventListener('pointerup', onPointerUp, { once: true })
 }
 
 function onPointerMove(e) {
   if (!dragging.value) return
   e.preventDefault()
   currentTop = startTop + (e.clientY - startY)
+  lastY = e.clientY
+  lastT = performance.now()
   if (raf) cancelAnimationFrame(raf)
   raf = requestAnimationFrame(() => {
     if (sheetEl.value) sheetEl.value.style.transform = `translateY(${currentTop}px)`
@@ -67,10 +69,10 @@ let lastT = 0
 function onPointerUp(e) {
   if (!dragging.value) return
   dragging.value = false
+  document.removeEventListener('pointermove', onPointerMove)
+
   const now = performance.now()
   const velocity = (e.clientY - lastY) / Math.max(now - lastT, 1)
-  lastY = e.clientY
-  lastT = now
 
   const order = ['peek', 'half', 'full']
   const currentIndex = order.indexOf(snap.value)
@@ -108,12 +110,10 @@ defineExpose({ snapTo })
     class="bottom-sheet"
     :class="[snap, { dragging }]"
     :style="{ transform: sheetTransform }"
-    @pointerup="onPointerUp"
   >
     <div
       class="bottom-sheet-handle"
       @pointerdown="onPointerDown"
-      @pointermove="onPointerMove"
     >
       <div class="bottom-sheet-grab" />
       <div class="bottom-sheet-title">{{ title }}</div>
@@ -138,6 +138,7 @@ defineExpose({ snapTo })
   display: flex;
   flex-direction: column;
   transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
 }
 
 .bottom-sheet.dragging {
@@ -149,6 +150,7 @@ defineExpose({ snapTo })
   padding: 0.5rem 1rem calc(0.5rem + env(safe-area-inset-bottom, 0px));
   border-bottom: 1px solid #e5e5e5;
   touch-action: none;
+  pointer-events: auto;
 }
 
 .bottom-sheet-grab {
@@ -172,5 +174,6 @@ defineExpose({ snapTo })
   flex: 1;
   overflow-y: auto;
   padding: 0 1rem 1rem;
+  pointer-events: auto;
 }
 </style>
