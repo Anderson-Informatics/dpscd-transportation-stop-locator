@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const address = defineModel('address', { default: '' })
 const selectedSchool = defineModel('selectedSchool', { default: '' })
@@ -14,6 +14,13 @@ const props = defineProps({
 })
 
 const emits = defineEmits(['search', 'geolocate'])
+
+const addressInput = ref(null)
+
+function onSearch() {
+  emits('search')
+  addressInput.value?.blur()
+}
 
 const radiusLabel = computed(() => {
   if (props.selectedSchool) return 'Show All'
@@ -34,9 +41,9 @@ const sliderValue = computed({
 </script>
 
 <template>
-  <form v-if="showSearch" class="search" @submit.prevent="emits('search')">
+  <form v-if="showSearch" class="search" @submit.prevent="onSearch">
     <label for="busAddress">Address</label>
-    <input id="busAddress" v-model="address" placeholder="123 Main St" type="text" />
+    <input id="busAddress" ref="addressInput" v-model="address" placeholder="123 Main St" type="text" />
     <button
       v-if="showGeolocate"
       type="button"

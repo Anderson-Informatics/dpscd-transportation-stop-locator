@@ -11,18 +11,27 @@ const props = defineProps({
   schoolOptions: { type: Array, default: () => [] },
   selectedLocation: { type: Array, default: null },
   empty: { type: Boolean, default: false },
-  showGeolocate: { type: Boolean, default: true }
+  showGeolocate: { type: Boolean, default: true },
+  canReset: { type: Boolean, default: false },
+  lockedSchoolName: { type: String, default: '' },
+  lockedSchoolShortName: { type: String, default: '' }
 })
 
-const emits = defineEmits(['search', 'geolocate'])
+const emits = defineEmits(['search', 'geolocate', 'reset', 'clear-highlight'])
 const bottomSheetRef = ref(null)
 const showFilters = ref(false)
+const addressInput = ref(null)
 
 const activeSchoolLabel = computed(() => selectedSchool.value || 'All schools')
 const activeRadiusLabel = computed(() => {
   if (!props.selectedLocation || selectedSchool.value) return 'Show All'
   return radius.value === 1 ? '1 mi' : `${radius.value} mi`
 })
+
+function onSearch() {
+  emits('search')
+  addressInput.value?.blur()
+}
 
 function snapTo(point) {
   bottomSheetRef.value?.snapTo(point)
@@ -34,8 +43,9 @@ defineExpose({ snapTo })
 <template>
   <div class="mobile-shell">
     <div class="mobile-control-bar">
-      <form class="mobile-search" @submit.prevent="emits('search')">
+      <form class="mobile-search" @submit.prevent="onSearch">
         <input
+          ref="addressInput"
           v-model="address"
           type="text"
           placeholder="Search address..."
@@ -77,6 +87,24 @@ defineExpose({ snapTo })
           :show-geolocate="false"
           @search="emits('search')"
         />
+
+        <button
+          v-if="lockedSchoolName"
+          class="mobile-action mobile-cancel"
+          type="button"
+          @click="emits('clear-highlight')"
+        >
+          Click to Cancel Highlighting Stops for {{ lockedSchoolShortName }}
+        </button>
+
+        <button
+          v-if="canReset"
+          class="mobile-action mobile-reset"
+          type="button"
+          @click="emits('reset')"
+        >
+          Reset
+        </button>
       </div>
     </div>
 
@@ -178,5 +206,29 @@ defineExpose({ snapTo })
   margin-top: 0.5rem;
   padding-top: 0.5rem;
   border-top: 1px solid #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-action {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--dpscd-primary);
+  border-radius: 4px;
+  background: var(--dpscd-secondary);
+  color: var(--dpscd-text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+.mobile-action:hover,
+.mobile-action:focus {
+  background: #fff;
+  color: var(--dpscd-primary);
 }
 </style>

@@ -1262,8 +1262,13 @@ function busStopPopup(s) {
           :school-options="busSchoolOptions"
           :selected-location="selectedLocation"
           :empty="!busStopResults.length"
+          :can-reset="hasActiveFilter"
+          :locked-school-name="lockedSchoolName"
+          :locked-school-short-name="lockedSchoolShortName"
           @search="searchAddress"
           @geolocate="geolocate"
+          @reset="reset"
+          @clear-highlight="clearBusHighlight"
         >
           <BusStopResults
             :stops="busStopResults"
@@ -1916,30 +1921,10 @@ ol.ranked .closest-row::before {
     z-index: 1001;
   }
 
+  .content.mobile .legend,
+  .content.mobile .reset-view,
   .content.mobile .cancel-highlight {
-    top: 9.5rem;
-    z-index: 1001;
-    max-width: calc(100% - 2rem);
-    white-space: normal;
-    text-align: center;
-  }
-
-  .content.mobile .legend {
-    left: 0.5rem;
-    bottom: 120px;
-    max-width: calc(100% - 1rem);
-    z-index: 1001;
-  }
-
-  .content.mobile .legend ul {
-    max-height: 45dvh;
-    overflow-y: auto;
-  }
-
-  .content.mobile .legend-toggle {
-    min-height: 44px;
-    min-width: 44px;
-    padding: 0.5rem;
+    display: none;
   }
 }
 </style>
