@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 const address = defineModel('address', { default: '' })
 const selectedSchool = defineModel('selectedSchool', { default: '' })
@@ -15,12 +15,35 @@ const props = defineProps({
   showGeolocate: { type: Boolean, default: true },
   canReset: { type: Boolean, default: false },
   lockedSchoolName: { type: String, default: '' },
-  lockedSchoolShortName: { type: String, default: '' }
+  lockedSchoolShortName: { type: String, default: '' },
+  suggestions: { type: Array, default: () => [] }
 })
 
-const emits = defineEmits(['search', 'geolocate', 'reset', 'clear-highlight'])
+const emits = defineEmits(['search', 'geolocate', 'reset', 'clear-highlight', 'select-suggestion'])
 const bottomSheetRef = ref(null)
 const addressInput = ref(null)
+const activeSuggestion = ref(-1)
+
+watch(() => props.suggestions, () => {
+  activeSuggestion.value = -1
+})
+
+function onSuggestionKeydown(e) {
+  if (!props.suggestions.length) return
+  if (e.key === 'ArrowDown') {
+    e.preventDefault()
+    activeSuggestion.value = (activeSuggestion.value + 1) % props.suggestions.length
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault()
+    activeSuggestion.value = (activeSuggestion.value - 1 + props.suggestions.length) % props.suggestions.length
+  } else if (e.key === 'Enter' && activeSuggestion.value >= 0) {
+    e.preventDefault()
+    emits('select-suggestion', props.suggestions[activeSuggestion.value])
+    activeSuggestion.value = -1
+  } else if (e.key === 'Escape') {
+    activeSuggestion.value = -1
+  }
+}
 
 const activeSchoolLabel = computed(() => selectedSchool.value || 'All schools')
 const activeRadiusLabel = computed(() => {
@@ -50,6 +73,9 @@ defineExpose({ snapTo })
           type="text"
           placeholder="Search address..."
           aria-label="Search address"
+          autocomplete="off"
+          aria-autocomplete="none"
+          @keydown="onSuggestionKeydown"
         />
         <button
           v-if="showGeolocate"
@@ -61,6 +87,18 @@ defineExpose({ snapTo })
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         </button>
         <button :disabled="!address.trim() || loading" type="submit">Search</button>
+        <ul v-if="suggestions.length" class="mobile-suggestions">
+          <li
+            v-for="(s, i) in suggestions"
+            :key="s.place_id"
+            class="mobile-suggestion"
+            :class="{ active: activeSuggestion === i }"
+            @click="emits('select-suggestion', s)"
+          >
+            <span class="mobile-suggestion-main">{{ s.main_text }}</span>
+            <span class="mobile-suggestion-desc">{{ s.description }}</span>
+          </li>
+        </ul>
       </form>
 
       <div class="mobile-chips">
@@ -139,6 +177,7 @@ defineExpose({ snapTo })
 }
 
 .mobile-search {
+  position: relative;
   display: flex;
   gap: 0.4rem;
 }
@@ -166,6 +205,56 @@ defineExpose({ snapTo })
 .mobile-search button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.mobile-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.mobile-suggestion {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mobile-suggestion:last-child {
+  border-bottom: none;
+}
+
+.mobile-suggestion.active {
+  background: var(--dpscd-primary);
+  color: #fff;
+}
+
+.mobile-suggestion.active .mobile-suggestion-desc {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.mobile-suggestion-main {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--dpscd-text);
+}
+
+.mobile-suggestion-desc {
+  display: block;
+  font-size: 0.75rem;
+  color: #666;
 }
 
 .geolocate-btn {

@@ -73,6 +73,7 @@ export default defineNuxtConfig({
     devOptions: { enabled: false }
   },
   runtimeConfig: {
-    busStopUpdatePassword: ''
+    busStopUpdatePassword: '',
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY || ''
   }
 })

@@ -15,6 +15,10 @@ const selectedGrade = ref('all')
 const selectedLocation = ref(null)
 const loading = ref(false)
 const filtersOpen = ref(false)
+const selectedAddressLabel = ref('')
+const addressSuggestions = ref([])
+let autocompleteTimer = null
+let selectingSuggestion = false
 
 const allSchools = ref([])
 const boundaryLists = ref({ elementary: [], middle: [], high: [] })
@@ -161,16 +165,26 @@ onMounted(async () => {
 
 watch(() => [selectedLocation.value, selectedGrade.value, allSchools.value, boundaryLists.value], computeResults)
 
-function onMapClick(e) {
+async function onMapClick(e) {
   if (isMobile.value && filtersOpen.value) {
     filtersOpen.value = false
     return
   }
   selectedLocation.value = [e.latlng.lat, e.latlng.lng]
+  try {
+    const r = await $fetch('/api/reverse-geocode', {
+      query: { lat: e.latlng.lat, lon: e.latlng.lng }
+    })
+    selectedAddressLabel.value = r.name || ''
+  } catch (err) {
+    console.error('Reverse geocode error:', err)
+    selectedAddressLabel.value = ''
+  }
 }
 
 async function searchAddress() {
   if (!address.value.trim()) return
+  addressSuggestions.value = []
   loading.value = true
   try {
     const raw = address.value.trim()
@@ -181,13 +195,17 @@ async function searchAddress() {
     const match = results?.find(r => /Detroit/i.test(r.name))
     if (match) {
       selectedLocation.value = [match.lat, match.lon]
+      selectedAddressLabel.value = match.name
     } else if (results && results.length) {
       selectedLocation.value = [results[0].lat, results[0].lon]
+      selectedAddressLabel.value = results[0].name
     } else {
+      selectedAddressLabel.value = ''
       alert('That address was not found. The geocoders do not cover every address. Try a nearby major street or click the map.')
     }
   } catch (err) {
     console.error(err)
+    selectedAddressLabel.value = ''
     alert('Could not reach the address search service. Try again later or click the map.')
   } finally {
     loading.value = false
@@ -197,9 +215,19 @@ async function searchAddress() {
 function geolocate() {
   if (!navigator.geolocation) return
   navigator.geolocation.getCurrentPosition(
-    (pos) => {
+    async (pos) => {
       selectedLocation.value = [pos.coords.latitude, pos.coords.longitude]
       address.value = ''
+      addressSuggestions.value = []
+      try {
+        const r = await $fetch('/api/reverse-geocode', {
+          query: { lat: pos.coords.latitude, lon: pos.coords.longitude }
+        })
+        selectedAddressLabel.value = r.name || ''
+      } catch (err) {
+        console.error('Reverse geocode error:', err)
+        selectedAddressLabel.value = ''
+      }
     },
     (err) => {
       console.error('Geolocation error:', err)
@@ -207,6 +235,55 @@ function geolocate() {
     { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
   )
 }
+
+async function fetchAddressSuggestions(q) {
+  if (!q.trim()) {
+    addressSuggestions.value = []
+    return
+  }
+  try {
+    const results = await $fetch('/api/autocomplete', {
+      query: { input: q }
+    })
+    addressSuggestions.value = results || []
+  } catch (err) {
+    console.error('Autocomplete error:', err)
+    addressSuggestions.value = []
+  }
+}
+
+async function selectSuggestion(s) {
+  if (!s?.place_id) return
+  selectingSuggestion = true
+  address.value = s.description
+  addressSuggestions.value = []
+  loading.value = true
+  try {
+    const details = await $fetch('/api/place-details', {
+      query: { placeId: s.place_id }
+    })
+    if (details) {
+      selectedLocation.value = [details.lat, details.lon]
+      selectedAddressLabel.value = details.name
+    }
+  } catch (err) {
+    console.error('Place details error:', err)
+  } finally {
+    loading.value = false
+    nextTick(() => { selectingSuggestion = false })
+  }
+}
+
+watch(address, (val) => {
+  if (selectingSuggestion) return
+  if (!val.trim()) {
+    addressSuggestions.value = []
+    clearTimeout(autocompleteTimer)
+    return
+  }
+  clearTimeout(autocompleteTimer)
+  autocompleteTimer = setTimeout(() => fetchAddressSuggestions(val), 250)
+})
 
 function flyTo(latLng, z = 16) {
   nextTick(() => {
@@ -695,9 +772,11 @@ function updateHomeMarker() {
   if (!map) return
   if (!homeMarker) {
     homeMarker = L.marker(selectedLocation.value || [0, 0], { icon: homeIcon })
-      .bindPopup('Selected location')
+      .bindPopup(selectedAddressLabel.value || 'Selected location')
+      .on('click', () => homeMarker.openPopup())
       .addTo(map)
   }
+  homeMarker.setPopupContent(selectedAddressLabel.value || 'Selected location')
   const show = activeTab.value === 'bus-stops' && !!selectedLocation.value
   if (show) homeMarker.setLatLng(selectedLocation.value)
   const el = homeMarker.getElement()
@@ -891,7 +970,7 @@ function busSchoolPopup(f) {
 
 watch(allSchools, updateBusSchoolMarkers, { flush: 'post' })
 
-watch([activeTab, selectedLocation, selectedBusSchool, busStops, excludedSchoolNames, busRadius, lockedSchoolName], () => {
+watch([activeTab, selectedLocation, selectedBusSchool, busStops, excludedSchoolNames, busRadius, lockedSchoolName, selectedAddressLabel], () => {
   drawBusRadiusCircle()
   updateHomeMarker()
   updateBusStopsLayer()
@@ -1067,6 +1146,7 @@ function setBusSchool(school) {
 // Clear every active filter and return to the default city-wide view.
 function reset() {
   selectedLocation.value = null
+  selectedAddressLabel.value = ''
   address.value = ''
   selectedBusSchool.value = ''
   lockedSchoolName.value = null
@@ -1196,6 +1276,8 @@ function busStopPopup(s) {
             :school-options="busSchoolOptions"
             :selected-location="selectedLocation"
             :show-geolocate="false"
+            :suggestions="addressSuggestions"
+            @select-suggestion="selectSuggestion"
             @search="searchAddress"
           />
 
@@ -1271,6 +1353,8 @@ function busStopPopup(s) {
           :can-reset="hasActiveFilter"
           :locked-school-name="lockedSchoolName"
           :locked-school-short-name="lockedSchoolShortName"
+          :suggestions="addressSuggestions"
+          @select-suggestion="selectSuggestion"
           @search="searchAddress"
           @geolocate="geolocate"
           @reset="reset"

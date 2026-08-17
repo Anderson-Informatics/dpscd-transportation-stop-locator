@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 const address = defineModel('address', { default: '' })
 const selectedSchool = defineModel('selectedSchool', { default: '' })
@@ -10,12 +10,35 @@ const props = defineProps({
   schoolOptions: { type: Array, default: () => [] },
   selectedLocation: { type: Array, default: null },
   showGeolocate: { type: Boolean, default: false },
-  showSearch: { type: Boolean, default: true }
+  showSearch: { type: Boolean, default: true },
+  suggestions: { type: Array, default: () => [] }
 })
 
-const emits = defineEmits(['search', 'geolocate'])
+const emits = defineEmits(['search', 'geolocate', 'select-suggestion'])
 
 const addressInput = ref(null)
+const activeSuggestion = ref(-1)
+
+watch(() => props.suggestions, () => {
+  activeSuggestion.value = -1
+})
+
+function onSuggestionKeydown(e) {
+  if (!props.suggestions.length) return
+  if (e.key === 'ArrowDown') {
+    e.preventDefault()
+    activeSuggestion.value = (activeSuggestion.value + 1) % props.suggestions.length
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault()
+    activeSuggestion.value = (activeSuggestion.value - 1 + props.suggestions.length) % props.suggestions.length
+  } else if (e.key === 'Enter' && activeSuggestion.value >= 0) {
+    e.preventDefault()
+    emits('select-suggestion', props.suggestions[activeSuggestion.value])
+    activeSuggestion.value = -1
+  } else if (e.key === 'Escape') {
+    activeSuggestion.value = -1
+  }
+}
 
 function onSearch() {
   emits('search')
@@ -43,7 +66,16 @@ const sliderValue = computed({
 <template>
   <form v-if="showSearch" class="search" @submit.prevent="onSearch">
     <label for="busAddress">Address</label>
-    <input id="busAddress" ref="addressInput" v-model="address" placeholder="123 Main St" type="text" />
+    <input
+      id="busAddress"
+      ref="addressInput"
+      v-model="address"
+      placeholder="123 Main St"
+      type="text"
+      autocomplete="off"
+      aria-autocomplete="none"
+      @keydown="onSuggestionKeydown"
+    />
     <button
       v-if="showGeolocate"
       type="button"
@@ -55,6 +87,18 @@ const sliderValue = computed({
     <button :disabled="!address.trim() || loading" type="submit">
       {{ loading ? 'Searching…' : 'Search' }}
     </button>
+    <ul v-if="suggestions.length" class="suggestions">
+      <li
+        v-for="(s, i) in suggestions"
+        :key="s.place_id"
+        class="suggestion"
+        :class="{ active: activeSuggestion === i }"
+        @click="emits('select-suggestion', s)"
+      >
+        <span class="suggestion-main">{{ s.main_text }}</span>
+        <span class="suggestion-desc">{{ s.description }}</span>
+      </li>
+    </ul>
   </form>
 
   <div class="field">
@@ -78,3 +122,61 @@ const sliderValue = computed({
     </select>
   </div>
 </template>
+
+<style scoped>
+.search {
+  position: relative;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.suggestion {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestion:last-child {
+  border-bottom: none;
+}
+
+.suggestion:hover,
+.suggestion:focus,
+.suggestion.active {
+  background: var(--dpscd-primary);
+  color: #fff;
+}
+
+.suggestion.active .suggestion-desc,
+.suggestion:hover .suggestion-desc,
+.suggestion:focus .suggestion-desc {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.suggestion-main {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.suggestion-desc {
+  display: block;
+  font-size: 0.75rem;
+  color: #666;
+}
+</style>
