@@ -7,6 +7,7 @@ import distance from '@turf/distance'
 import centroid from '@turf/centroid'
 
 const mapRef = ref(null)
+const mobileShellRef = ref(null)
 const center = ref([42.3314, -83.0458])
 const zoom = ref(11)
 const address = ref('')
@@ -188,6 +189,20 @@ async function searchAddress() {
   }
 }
 
+function geolocate() {
+  if (!navigator.geolocation) return
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      selectedLocation.value = [pos.coords.latitude, pos.coords.longitude]
+      address.value = ''
+    },
+    (err) => {
+      console.error('Geolocation error:', err)
+    },
+    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+  )
+}
+
 function flyTo(latLng, z = 16) {
   nextTick(() => {
     if (mapRef.value?.leafletObject) {
@@ -195,7 +210,17 @@ function flyTo(latLng, z = 16) {
     }
   })
 }
+// Shift the center up so the selected stop sits between the top control bar
+// and the peeking bottom sheet on mobile.
+function flyToOnMobile(map, latLng, zoom) {
+  const point = map.project(latLng, zoom)
+  const controlBarH = 110
+  const peekH = 96
+  point.y -= (controlBarH - peekH) / 2
+  return map.unproject(point, zoom)
+}
 
+// 
 // Two steps closer than the zoom that fits a 1-mile radius, so cross streets read.
 function busStopDetailZoom(map, latLng) {
   const oneMile = L.latLng(latLng[0], latLng[1]).toBounds(1609.344 * 2)
@@ -216,8 +241,11 @@ function goToBusStop(s) {
 
   const key = busStopKey(s)
   selectedBusStopKey.value = key
+  if (isMobile.value) mobileShellRef.value?.snapTo('peek')
   const target = [s.lat, s.lng]
-  map.flyTo(target, busStopDetailZoom(map, target), { animate: true, duration: 0.8 })
+  const z = busStopDetailZoom(map, target)
+  const flyTarget = isMobile.value ? flyToOnMobile(map, target, z) : target
+  map.flyTo(flyTarget, z, { animate: true, duration: 0.8 })
 
   // Re-open the popup only once the map has settled on the stop.
   const marker = busMarkerIndex.get(key)
@@ -471,23 +499,11 @@ watch(hoveredBoundary, (newLevel, oldLevel) => {
 
 const route = useRoute()
 const router = useRouter()
+const { isMobile } = useIsMobile()
 const activeTab = ref('bus-stops')
 const busStops = ref([])
 const busRadius = ref(selectedLocation.value ? 1 : 100000)
-const busRadiusSlider = computed({
-  get() {
-    return busRadius.value > 2 ? 2 : Math.max(busRadius.value, 0.5)
-  },
-  set(v) {
-    busRadius.value = v
-  }
-})
 const selectedBusSchool = ref((route.query.school) || '')
-const busRadiusLabel = computed(() => {
-  if (selectedBusSchool.value) return 'Show All'
-  if (!selectedLocation.value) return 'Show All'
-  return busRadius.value === 1 ? '1 mile' : `${busRadius.value} miles`
-})
 const busLoading = ref(false)
 const busIconUrl = '/SVG/Bus%20Stop.svg'
 const busIcon = L.icon({
@@ -550,8 +566,6 @@ watch(selectedBusSchool, (school, oldSchool) => {
   lockedSchoolName.value = null
   const query = { ...route.query }
   if (school) {
-    selectedLocation.value = null
-    address.value = ''
     busRadius.value = 100000
     query.school = school
   } else {
@@ -656,6 +670,10 @@ function onMapReady() {
     map.on('zoomstart', () => { mapZooming = true })
     map.on('zoomend', settle)
     map.on('moveend', settle)
+    // Re-evaluate school label visibility after zoom changes on mobile.
+    map.on('zoomend', () => {
+      if (isMobile.value) updateBusSchoolMarkers()
+    })
   }
   drawBusRadiusCircle()
   updateHomeMarker()
@@ -742,20 +760,26 @@ function updateBusSchoolMarkers() {
           className: 'school-label'
         })
         .on('mouseover', (ev) => {
+          if (isMobile.value) return
           cancelSchoolPopupClose()
           hoveredSchoolName = name
           ev.target.openPopup()
           applyBusHighlight()
         })
         .on('mouseout', (ev) => {
+          if (isMobile.value) return
           scheduleSchoolPopupClose(ev.target)
         })
         .on('click', (ev) => {
           cancelSchoolPopupClose()
           lockedSchoolName.value = lockedSchoolName.value === name ? null : name
           hoveredSchoolName = null
-          // Keep the map clear so every highlighted stop stays readable.
-          ev.target.closePopup()
+          // On mobile the tap itself should show the card; on desktop the hover does.
+          if (isMobile.value) {
+            ev.target.openPopup()
+          } else {
+            ev.target.closePopup()
+          }
           applyBusHighlight()
         })
         // Moving the pointer into the card keeps it open; leaving it closes it.
@@ -804,12 +828,13 @@ function updateBusSchoolMarkers() {
   if (hoveredSchoolName && !visible.has(hoveredSchoolName)) hoveredSchoolName = null
 
   // Every visible school icon gets its short-name label.
+  const mobileHideLabels = isMobile.value && map.getZoom() < 14
   for (const [name, marker] of busSchoolMarkerIndex) {
     const show = visible.has(name)
     const el = marker.getElement()
     if (el) el.style.display = show ? '' : 'none'
     const tip = marker.getTooltip()?.getElement()
-    if (tip) tip.style.display = show ? '' : 'none'
+    if (tip) tip.style.display = show && !mobileHideLabels ? '' : 'none'
   }
   applyBusHighlight()
 }
@@ -872,6 +897,10 @@ watch([activeTab, selectedLocation, selectedBusSchool, busStops, excludedSchoolN
   updateBusSchoolMarkers()
   fitMapToContent()
 }, { flush: 'post' })
+
+watch(isMobile, () => {
+  nextTick(() => mapRef.value?.leafletObject?.invalidateSize())
+})
 
 async function loadBusStops() {
   if (busStops.value.length) return
@@ -945,6 +974,17 @@ const busStopResults = computed(() => {
   if (!selectedLocation.value && !selectedBusSchool.value) return []
   return nearbyBusStops.value
 })
+
+// Summary shown in the mobile bottom sheet header.
+const sheetTitle = computed(() => {
+  if (selectedBusSchool.value) return selectedBusSchool.value
+  if (selectedLocation.value) return 'Nearby Bus Stops'
+  return 'Tap the map or pick a school to list stops'
+})
+
+const hasActiveFilter = computed(() =>
+  !!selectedLocation.value || !!selectedBusSchool.value || !!lockedSchoolName.value
+)
 
 function busStopKey(s) {
   return `${s.stop}|${s.lat}|${s.lng}`
@@ -1023,7 +1063,24 @@ function setBusSchool(school) {
   selectedBusSchool.value = school
 }
 
+// Clear every active filter and return to the default city-wide view.
+function reset() {
+  selectedLocation.value = null
+  address.value = ''
+  selectedBusSchool.value = ''
+  lockedSchoolName.value = null
+  hoveredSchoolName = null
+  selectedBusStopKey.value = null
+  activeListTooltip.value?.close()
+  activeListTooltip.value = null
+  const query = { ...route.query }
+  delete query.school
+  router.replace({ query })
+  fitToDefaultView()
+}
+
 function onBusStopEnter(s) {
+  if (isMobile.value) return
   if (leaveTimer.value) {
     clearTimeout(leaveTimer.value)
     leaveTimer.value = null
@@ -1046,6 +1103,7 @@ function onBusStopEnter(s) {
 }
 
 function onBusStopLeave() {
+  if (isMobile.value) return
   if (leaveTimer.value) clearTimeout(leaveTimer.value)
   leaveTimer.value = setTimeout(() => {
     setHoveredBusMarker(null)
@@ -1114,87 +1172,55 @@ function busStopPopup(s) {
       >
         <img
           class="brand-logo"
-          src="https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_2/v1759325653/detroitk12org/s9zv8kfabfwpje1emanh/DPSCDLogoNoTag-White-RGB-HEX.png"
+          src="/logo-header.png"
           alt="Detroit Public Schools Community District"
         />
       </a>
       <h1 class="brand-title">DPSCD Bus Stop Locator</h1>
     </header>
 
-    <div class="content">
-      <aside class="panel">
+    <div class="content" :class="{ mobile: isMobile }">
+      <aside v-if="!isMobile" class="panel">
         <p class="muted">Find bus stops near you.</p>
         <div class="bus-stops">
-          <form class="search" @submit.prevent="searchAddress">
-            <label for="busAddress">Address</label>
-            <input id="busAddress" v-model="address" placeholder="123 Main St" type="text" />
-            <button :disabled="!address.trim() || loading" type="submit">
-              {{ loading ? 'Searching…' : 'Search' }}
-            </button>
-          </form>
-
-          <div class="field">
-            <label for="busRadius">Radius: {{ busRadiusLabel }}</label>
-            <input
-              id="busRadius"
-              v-model.number="busRadiusSlider"
-              type="range"
-              min="0.5"
-              max="2"
-              step="0.25"
-              :disabled="!!selectedBusSchool || !selectedLocation"
-            />
-          </div>
-
-          <div class="field">
-            <label for="busSchool">School</label>
-            <select id="busSchool" v-model="selectedBusSchool">
-              <option value="">All schools</option>
-              <option v-for="s in busSchoolOptions" :key="s.raw" :value="s.raw">{{ s.name }}</option>
-            </select>
-          </div>
+          <BusStopControls
+            v-model:address="address"
+            v-model:selected-school="selectedBusSchool"
+            v-model:radius="busRadius"
+            :loading="loading"
+            :school-options="busSchoolOptions"
+            :selected-location="selectedLocation"
+            :show-geolocate="false"
+            @search="searchAddress"
+          />
 
           <p v-if="!selectedLocation" class="hint">All bus stops are shown. Click the map or search an address to filter by radius.</p>
 
-          <section v-if="busStopResults.length" class="results">
-            <h2>{{ selectedBusSchool ? selectedBusSchool : 'Nearby Bus Stops' }}</h2>
-            <ol class="cards ranked">
-              <li
-                v-for="(s, i) in busStopResults"
-                :key="`b-${i}`"
-                class="closest-row"
-                :class="{ 'stop-selected': busStopKey(s) === selectedBusStopKey }"
-                @click="goToBusStop(s)"
-                @mouseenter="onBusStopEnter(s)"
-                @mouseleave="onBusStopLeave"
-              >
-                <strong>{{ s.stop }}</strong>
-                <span v-if="s.distance != null" class="tag">{{ s.distance.toFixed(2) }} miles</span>
-                <ul class="stop-entries">
-                  <li v-for="(e, j) in visibleEntries(s)" :key="j" class="stop-entry">
-                    <div class="entry-line entry-school">
-                      <button class="link-btn" @click.stop="setBusSchool(e.school)">{{ e.school }}</button>
-                      <span class="entry-route">— Route {{ e.type === 'Dropoff' ? e.dropoffRoute : e.pickupRoute }}</span>
-                    </div>
-                    <div class="entry-line entry-meta">
-                      <span v-if="e.type === 'Pickup'" class="entry-type pickup">Pickup</span>
-                      <span v-else-if="e.type === 'Dropoff'" class="entry-type dropoff">Dropoff</span>
-                      <span v-else class="entry-type both">Pickup & Dropoff</span>
-                      <span v-if="e.pickupTime" class="time">{{ e.pickupTime }}</span>
-                      <span v-if="e.pickupTime && e.dropoffTime" class="time-sep"> / </span>
-                      <span v-if="e.dropoffTime" class="time">{{ e.dropoffTime }}</span>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-            </ol>
-          </section>
-          <p v-else-if="selectedLocation" class="muted">No bus stops found within the selected radius.</p>
-          <p v-else-if="selectedBusSchool" class="muted">No bus stops found for this school.</p>
+          <BusStopResults
+            :stops="busStopResults"
+            :selected-key="selectedBusStopKey"
+            :visible-entries="visibleEntries"
+            :bus-stop-key="busStopKey"
+            :selected-school="selectedBusSchool"
+            :selected-location="selectedLocation"
+            @select="goToBusStop"
+            @hover-enter="onBusStopEnter"
+            @hover-leave="onBusStopLeave"
+            @select-school="setBusSchool"
+          />
         </div>
       </aside>
 
       <main class="map-wrap">
+        <button
+          v-if="hasActiveFilter"
+          class="reset-view"
+          type="button"
+          @click="reset"
+        >
+          Reset
+        </button>
+
         <button
           v-if="lockedSchoolName"
           class="cancel-highlight"
@@ -1224,6 +1250,35 @@ function busStopPopup(s) {
           />
 
         </l-map>
+
+        <MobileShell
+          v-if="isMobile"
+          ref="mobileShellRef"
+          v-model:address="address"
+          v-model:selected-school="selectedBusSchool"
+          v-model:radius="busRadius"
+          :title="sheetTitle"
+          :loading="loading"
+          :school-options="busSchoolOptions"
+          :selected-location="selectedLocation"
+          :empty="!busStopResults.length"
+          @search="searchAddress"
+          @geolocate="geolocate"
+        >
+          <BusStopResults
+            :stops="busStopResults"
+            :selected-key="selectedBusStopKey"
+            :visible-entries="visibleEntries"
+            :bus-stop-key="busStopKey"
+            :selected-school="selectedBusSchool"
+            :selected-location="selectedLocation"
+            :is-mobile="true"
+            @select="goToBusStop"
+            @hover-enter="onBusStopEnter"
+            @hover-leave="onBusStopLeave"
+            @select-school="setBusSchool"
+          />
+        </MobileShell>
 
         <div class="legend" :class="{ collapsed: !legendOpen }">
           <button
@@ -1276,6 +1331,7 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -1683,9 +1739,35 @@ ol.ranked .closest-row::before {
   font-weight: 500;
 }
 
-.cancel-highlight {
+.reset-view {
   position: absolute;
   top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: var(--dpscd-secondary);
+  color: var(--dpscd-text);
+  border: 1px solid var(--dpscd-primary);
+  border-radius: 4px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.reset-view:hover,
+.reset-view:focus {
+  background: #fff;
+  color: var(--dpscd-primary);
+}
+
+.cancel-highlight {
+  position: absolute;
+  top: 3.25rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
@@ -1806,5 +1888,58 @@ ol.ranked .closest-row::before {
 .time-sep {
   color: #999;
   font-size: 0.75rem;
+}
+
+@media (max-width: 1023px) {
+  .brand-header {
+    display: none;
+  }
+
+  .content.mobile {
+    display: block;
+    position: relative;
+    height: 100dvh;
+  }
+
+  .content.mobile .panel {
+    display: none;
+  }
+
+  .content.mobile .map-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .content.mobile .reset-view {
+    top: 6.5rem;
+    z-index: 1001;
+  }
+
+  .content.mobile .cancel-highlight {
+    top: 9.5rem;
+    z-index: 1001;
+    max-width: calc(100% - 2rem);
+    white-space: normal;
+    text-align: center;
+  }
+
+  .content.mobile .legend {
+    left: 0.5rem;
+    bottom: 120px;
+    max-width: calc(100% - 1rem);
+    z-index: 1001;
+  }
+
+  .content.mobile .legend ul {
+    max-height: 45dvh;
+    overflow-y: auto;
+  }
+
+  .content.mobile .legend-toggle {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem;
+  }
 }
 </style>
