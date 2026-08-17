@@ -254,6 +254,7 @@ async function fetchAddressSuggestions(q) {
 
 async function selectSuggestion(s) {
   if (!s?.place_id) return
+  clearTimeout(autocompleteTimer)
   selectingSuggestion = true
   address.value = s.description
   addressSuggestions.value = []
@@ -275,13 +276,12 @@ async function selectSuggestion(s) {
 }
 
 watch(address, (val) => {
+  clearTimeout(autocompleteTimer)
   if (selectingSuggestion) return
   if (!val.trim()) {
     addressSuggestions.value = []
-    clearTimeout(autocompleteTimer)
     return
   }
-  clearTimeout(autocompleteTimer)
   autocompleteTimer = setTimeout(() => fetchAddressSuggestions(val), 250)
 })
 
