@@ -14,6 +14,7 @@ const address = ref('')
 const selectedGrade = ref('all')
 const selectedLocation = ref(null)
 const loading = ref(false)
+const filtersOpen = ref(false)
 
 const allSchools = ref([])
 const boundaryLists = ref({ elementary: [], middle: [], high: [] })
@@ -161,6 +162,10 @@ onMounted(async () => {
 watch(() => [selectedLocation.value, selectedGrade.value, allSchools.value, boundaryLists.value], computeResults)
 
 function onMapClick(e) {
+  if (isMobile.value && filtersOpen.value) {
+    filtersOpen.value = false
+    return
+  }
   selectedLocation.value = [e.latlng.lat, e.latlng.lng]
 }
 
@@ -774,12 +779,7 @@ function updateBusSchoolMarkers() {
           cancelSchoolPopupClose()
           lockedSchoolName.value = lockedSchoolName.value === name ? null : name
           hoveredSchoolName = null
-          // On mobile the tap itself should show the card; on desktop the hover does.
-          if (isMobile.value) {
-            ev.target.openPopup()
-          } else {
-            ev.target.closePopup()
-          }
+          ev.target.closePopup()
           applyBusHighlight()
         })
         // Moving the pointer into the card keeps it open; leaving it closes it.
@@ -834,7 +834,8 @@ function updateBusSchoolMarkers() {
     const el = marker.getElement()
     if (el) el.style.display = show ? '' : 'none'
     const tip = marker.getTooltip()?.getElement()
-    if (tip) tip.style.display = show && !mobileHideLabels ? '' : 'none'
+    const isActive = hoveredSchoolName === name || lockedSchoolName.value === name
+    if (tip) tip.style.display = (show && (!mobileHideLabels || isActive)) ? '' : 'none'
   }
   applyBusHighlight()
 }
@@ -890,7 +891,7 @@ function busSchoolPopup(f) {
 
 watch(allSchools, updateBusSchoolMarkers, { flush: 'post' })
 
-watch([activeTab, selectedLocation, selectedBusSchool, busStops, excludedSchoolNames, busRadius], () => {
+watch([activeTab, selectedLocation, selectedBusSchool, busStops, excludedSchoolNames, busRadius, lockedSchoolName], () => {
   drawBusRadiusCircle()
   updateHomeMarker()
   updateBusStopsLayer()
@@ -1257,6 +1258,7 @@ function busStopPopup(s) {
           v-model:address="address"
           v-model:selected-school="selectedBusSchool"
           v-model:radius="busRadius"
+          v-model:filters-open="filtersOpen"
           :title="sheetTitle"
           :loading="loading"
           :school-options="busSchoolOptions"

@@ -4,6 +4,7 @@ import { ref, computed } from 'vue'
 const address = defineModel('address', { default: '' })
 const selectedSchool = defineModel('selectedSchool', { default: '' })
 const radius = defineModel('radius', { default: 100000 })
+const filtersOpen = defineModel('filtersOpen', { default: false })
 
 const props = defineProps({
   title: { type: String, default: '' },
@@ -19,7 +20,6 @@ const props = defineProps({
 
 const emits = defineEmits(['search', 'geolocate', 'reset', 'clear-highlight'])
 const bottomSheetRef = ref(null)
-const showFilters = ref(false)
 const addressInput = ref(null)
 
 const activeSchoolLabel = computed(() => selectedSchool.value || 'All schools')
@@ -64,18 +64,18 @@ defineExpose({ snapTo })
       </form>
 
       <div class="mobile-chips">
-        <button class="mobile-chip" :class="{ active: showFilters }" @click="showFilters = !showFilters">
+        <button class="mobile-chip" :class="{ active: filtersOpen }" @click="filtersOpen = !filtersOpen">
           Filters
         </button>
-        <button class="mobile-chip" @click="showFilters = !showFilters">
+        <button class="mobile-chip" @click="filtersOpen = !filtersOpen">
           {{ activeSchoolLabel }} ▾
         </button>
-        <button class="mobile-chip" @click="showFilters = !showFilters">
+        <button class="mobile-chip" @click="filtersOpen = !filtersOpen">
           {{ activeRadiusLabel }} ▾
         </button>
       </div>
 
-      <div v-if="showFilters" class="mobile-filters">
+      <div v-if="filtersOpen" class="mobile-filters">
         <BusStopControls
           v-model:address="address"
           v-model:selected-school="selectedSchool"
