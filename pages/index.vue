@@ -471,7 +471,7 @@ watch(hoveredBoundary, (newLevel, oldLevel) => {
 
 const route = useRoute()
 const router = useRouter()
-const activeTab = ref(route.query.tab === 'bus-stops' ? 'bus-stops' : 'schools')
+const activeTab = ref('bus-stops')
 const busStops = ref([])
 const busRadius = ref(selectedLocation.value ? 1 : 100000)
 const busRadiusSlider = computed({
@@ -530,24 +530,25 @@ const lockedSchoolShortName = computed(() => {
 })
 const BUS_DIM_OPACITY = 0.2
 
-watch(() => route.query, (q) => {
-  activeTab.value = q.tab === 'bus-stops' ? 'bus-stops' : 'schools'
-  if (q.school && typeof q.school === 'string') {
-    selectedBusSchool.value = q.school
-  } else {
+// Strip any legacy ?tab= query parameter on initial load.
+if (route.query.tab !== undefined) {
+  const next = { ...route.query }
+  delete next.tab
+  router.replace({ query: next })
+}
+
+watch(() => route.query.school, (school) => {
+  if (school && typeof school === 'string') {
+    selectedBusSchool.value = school
+  } else if (school === undefined || school === null) {
     selectedBusSchool.value = ''
   }
-}, { immediate: true })
-
-watch(activeTab, (tab) => {
-  if (tab === 'bus-stops') loadBusStops()
-  router.replace({ query: { ...route.query, tab } })
 })
 
 watch(selectedBusSchool, (school, oldSchool) => {
   hoveredSchoolName = null
   lockedSchoolName.value = null
-  const query = { ...route.query, tab: activeTab.value }
+  const query = { ...route.query }
   if (school) {
     selectedLocation.value = null
     address.value = ''
@@ -1019,7 +1020,6 @@ function setHoveredBusMarker(key) {
 }
 
 function setBusSchool(school) {
-  activeTab.value = 'bus-stops'
   selectedBusSchool.value = school
 }
 
@@ -1118,102 +1118,13 @@ function busStopPopup(s) {
           alt="Detroit Public Schools Community District"
         />
       </a>
-      <h1 class="brand-title">DPSCD School Locator</h1>
+      <h1 class="brand-title">DPSCD Bus Stop Locator</h1>
     </header>
 
     <div class="content">
       <aside class="panel">
-        <nav class="tabs">
-          <button
-            :class="['tab', { active: activeTab === 'schools' }]"
-            @click="activeTab = 'schools'"
-          >Schools</button>
-          <button
-            :class="['tab', { active: activeTab === 'bus-stops' }]"
-            @click="activeTab = 'bus-stops'"
-          >Bus Stops</button>
-        </nav>
-
-        <p v-if="activeTab === 'schools'" class="muted">Find your neighborhood school and other schools near you.</p>
-        <p v-if="activeTab === 'bus-stops'" class="muted">Find bus stops near you.</p>
-        <div v-if="activeTab === 'schools'">
-
-        <form class="search" @submit.prevent="searchAddress">
-          <label for="address">Address</label>
-          <input id="address" v-model="address" placeholder="123 Main St" type="text" />
-          <button :disabled="!address.trim() || loading" type="submit">
-            {{ loading ? 'Searching…' : 'Search' }}
-          </button>
-        </form>
-
-        <div class="field">
-          <label for="grade">Grade level</label>
-          <select id="grade" v-model="selectedGrade">
-            <option v-for="g in gradeOptions" :key="g.value" :value="g.value">
-              {{ g.label }}
-            </option>
-          </select>
-        </div>
-
-        <p v-if="!selectedLocation" class="hint">Click the map or search an address to set your location.</p>
-
-        <section v-if="selectedLocation" class="results">
-          <h2>Neighborhood Schools</h2>
-          <ul class="cards">
-            <li
-              v-for="b in relevantBoundaries"
-              :key="b.level"
-              class="card"
-              :class="b.level"
-              @click="flyTo(b.latLng)"
-              @mouseenter="onNeighborhoodEnter(b)"
-              @mouseleave="onNeighborhoodLeave()"
-            >
-              <span class="level-tag">{{ b.level }}</span>
-              <strong>{{ b.schoolName }}</strong>
-              <span v-if="b.address">{{ b.address }}</span>
-              <span v-if="b.telephone">{{ b.telephone }}</span>
-              <div class="tags">
-                <span class="tag category">
-                  <img class="tag-icon" :src="iconUrl(b.category)" :alt="b.category" />
-                  {{ b.category }}
-                </span>
-              </div>
-              <a v-if="b.url" :href="b.url" target="_blank" rel="noopener" class="card-link">
-                Website
-              </a>
-            </li>
-          </ul>
-
-          <h2>10 Closest {{ gradeLabel }} Schools</h2>
-          <ol v-if="closest.length" class="cards ranked">
-            <li
-              v-for="(s, i) in closest"
-              :key="i"
-              class="closest-row"
-              @click="flyTo(s.latLng)"
-              @mouseenter="onClosestEnter(s, i)"
-              @mouseleave="onClosestLeave"
-            >
-              <strong>{{ s.schoolName }}</strong>
-              <span v-if="s.address">{{ s.address }}</span>
-              <div class="tags">
-                <span class="tag category">
-                  <img class="tag-icon" :src="iconUrl(s.category)" :alt="s.category" />
-                  {{ s.category }}
-                </span>
-                <span class="tag">{{ s.distance.toFixed(2) }} miles</span>
-              </div>
-              <a v-if="s.url" :href="s.url" target="_blank" rel="noopener" class="card-link">
-                Website
-              </a>
-            </li>
-          </ol>
-          <p v-else class="muted">No schools found for this grade level.</p>
-        </section>
-        </div>
-
-        <div v-if="activeTab === 'bus-stops'" class="bus-stops">
+        <p class="muted">Find bus stops near you.</p>
+        <div class="bus-stops">
           <form class="search" @submit.prevent="searchAddress">
             <label for="busAddress">Address</label>
             <input id="busAddress" v-model="address" placeholder="123 Main St" type="text" />
@@ -1285,7 +1196,7 @@ function busStopPopup(s) {
 
       <main class="map-wrap">
         <button
-          v-if="activeTab === 'bus-stops' && lockedSchoolName"
+          v-if="lockedSchoolName"
           class="cancel-highlight"
           type="button"
           @click="clearBusHighlight()"
@@ -1307,92 +1218,10 @@ function busStopPopup(s) {
           />
 
           <l-geo-json
-            v-if="activeTab === 'schools'"
-            v-for="b in relevantBoundaries"
-            :key="b.level"
-            :ref="el => setBoundaryLayer(el, b.level)"
-            :geojson="b.feature"
-            :options="boundaryOptions(b.level)"
-          />
-
-          <l-geo-json
             v-if="detroitBoundary"
             :geojson="detroitBoundary"
             :options-style="detroitBoundaryStyle"
           />
-
-          <l-marker
-            v-if="selectedLocation && activeTab === 'schools'"
-            :lat-lng="selectedLocation"
-          >
-            <l-icon
-              :icon-url="homeIconUrl"
-              :icon-size="[32, 32]"
-              :icon-anchor="[16, 16]"
-            />
-            <l-popup>Selected location</l-popup>
-          </l-marker>
-
-          <l-marker
-            v-if="activeTab === 'schools'"
-            v-for="b in relevantBoundaries"
-            :key="`n-${b.level}`"
-            :lat-lng="b.latLng"
-            :z-index-offset="hoveredBoundary === b.level ? 1000 : 0"
-          >
-            <l-icon
-              :icon-url="iconUrl(b.category)"
-              :icon-size="hoveredBoundary === b.level ? [40, 40] : [30, 30]"
-              :icon-anchor="hoveredBoundary === b.level ? [20, 20] : [15, 15]"
-            />
-            <l-popup>
-              <strong>{{ b.schoolName }}</strong><br />
-              {{ b.address }}<br v-if="b.address" />
-              {{ b.telephone }}<br v-if="b.telephone" />
-              {{ b.category }}<br />
-              <a v-if="b.url" :href="b.url" target="_blank" rel="noopener">Website</a>
-            </l-popup>
-          </l-marker>
-
-          <l-marker
-            v-if="activeTab === 'schools'"
-            v-for="(s, i) in closest"
-            :key="`c-${i}`"
-            :lat-lng="s.latLng"
-            :z-index-offset="hoveredIndex === i ? 1000 : 0"
-          >
-            <l-icon
-              :icon-url="iconUrl(s.category)"
-              :icon-size="hoveredIndex === i ? [36, 36] : [24, 24]"
-              :icon-anchor="hoveredIndex === i ? [18, 18] : [12, 12]"
-            />
-            <l-popup>
-              <strong>{{ s.schoolName }}</strong><br />
-              {{ s.address }}<br v-if="s.address" />
-              {{ s.distance.toFixed(2) }} miles<br />
-              {{ s.category }}<br />
-              <a v-if="s.url" :href="s.url" target="_blank" rel="noopener">Website</a>
-            </l-popup>
-          </l-marker>
-
-          <template v-if="activeTab === 'schools' && !selectedLocation">
-            <l-marker
-              v-for="(s, i) in allSchools"
-              :key="`all-${i}`"
-              :lat-lng="[s.geometry.coordinates[1], s.geometry.coordinates[0]]"
-            >
-              <l-icon
-                :icon-url="iconUrl(s.properties.Category)"
-                :icon-size="[20, 20]"
-                :icon-anchor="[10, 10]"
-              />
-              <l-tooltip
-                :content="tooltipContent(s)"
-                :options="{ interactive: true, direction: 'top', className: 'school-tooltip' }"
-              />
-            </l-marker>
-          </template>
-
 
         </l-map>
 
